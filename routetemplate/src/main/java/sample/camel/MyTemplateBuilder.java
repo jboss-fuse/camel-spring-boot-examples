@@ -19,8 +19,10 @@ package sample.camel;
 import org.apache.camel.CamelContext;
 import org.apache.camel.main.ConfigureRouteTemplates;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 @Configuration
+@Profile("java")
 public class MyTemplateBuilder implements ConfigureRouteTemplates {
 
     /**
@@ -35,7 +37,6 @@ public class MyTemplateBuilder implements ConfigureRouteTemplates {
         // and you can also use both java and yaml together
 
         // in this example we use properties by default and have disabled java
-        /*
         TemplatedRouteBuilder.builder(context, "myTemplate")
                 .parameter("name", "one")
                 .parameter("greeting", "Hello")
@@ -46,6 +47,6 @@ public class MyTemplateBuilder implements ConfigureRouteTemplates {
                 .parameter("greeting", "Bonjour")
                 .parameter("myPeriod", "5s")
                 .add();
-         */
+
     }
 }
