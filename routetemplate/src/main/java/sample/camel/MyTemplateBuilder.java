@@ -17,7 +17,9 @@
 package sample.camel;
 
 import org.apache.camel.CamelContext;
+import org.apache.camel.builder.TemplatedRouteBuilder;
 import org.apache.camel.main.ConfigureRouteTemplates;
+
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
