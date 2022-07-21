@@ -103,7 +103,6 @@
 		<reactor-version>3.2.22.RELEASE</reactor-version>
 		<testcontainers-version>1.16.3</testcontainers-version>
 		<hapi-structures-v24-version>2.3</hapi-structures-v24-version>
-		<narayana-spring-boot-version>2.6.3</narayana-spring-boot-version>
 	</properties>
 
 	<repositories>
