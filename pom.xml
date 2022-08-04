@@ -25,7 +25,7 @@
 	<parent>
 		<groupId>org.apache.camel.springboot</groupId>
 		<artifactId>spring-boot</artifactId>
-		<version>3.14.2.redhat-00034</version>
+		<version>3.14.2.redhat-00054</version>
 	</parent>
 
 	<groupId>org.apache.camel.springboot.example</groupId>
@@ -93,9 +93,7 @@
 	</modules>
 
 	<properties>
-		<camel-version>3.14.2.redhat-00050</camel-version>
-        <camel-community-version>3.14.2</camel-community-version>
-		<camel-spring-boot-version>3.14.2.redhat-00034</camel-spring-boot-version>
+		<camel-spring-boot-version>3.14.2.redhat-00054</camel-spring-boot-version>
 		<skip.starting.camel.context>false</skip.starting.camel.context>
 		<javax.servlet.api.version>4.0.1</javax.servlet.api.version>
 		<fabric8-maven-plugin-version>4.4.1</fabric8-maven-plugin-version>
@@ -159,7 +157,7 @@
 			<plugin>
 				<groupId>org.apache.camel</groupId>
 				<artifactId>camel-package-maven-plugin</artifactId>
-				<version>${camel-community-version}</version>
+				<version>${camel-community.version}</version>
 				<configuration>
 					<startingFolder></startingFolder>
 					<filter>spring-boot</filter>
@@ -178,7 +176,7 @@
 			<plugin>
 				<groupId>org.apache.camel</groupId>
 				<artifactId>camel-report-maven-plugin</artifactId>
-				<version>${camel-community-version}</version>
+				<version>${camel-community.version}</version>
 				<configuration>
 					<failOnError>false</failOnError>
 					<includeTest>true</includeTest>
