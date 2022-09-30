@@ -1,8 +1,8 @@
-= Spring Boot Example with gRPC on Kubernetes
+= Spring Boot Example with gRPC on Openshift
 
 == Introduction
 
-This example demonstrates how you can use Camel-gRPC Starter component. The example is composed of a standalone gRPC server and a Camel Spring-boot gRPC route acting as client. We will run this example on Minikube (0.21.0)
+This example demonstrates how you can use Camel-gRPC Starter component. The example is composed of a standalone gRPC server and a Camel Spring-boot gRPC route acting as client. We will run this example on Minishift (1.34.3)
 
 === Server
 
@@ -12,11 +12,11 @@ You can build the server under the directory hello-camel-grpc-server with:
 
 and then run the server with
 
-    $ mvn -Pkubernetes-install fabric8:deploy
+    $ mvn -Popenshift oc:deploy
 
 then check your pod status with
 
-    $ kubectl get pods
+    $ oc get pods
 
 [source,bash]
 ----
@@ -44,11 +44,11 @@ You can build the client example under the directory hello-camel-grpc-client wit
 
 and then run the server with
 
-    $ mvn -Pkubernetes-install fabric8:deploy
+    $ mvn -Popenshift oc:deploy
 
 then check your pod status with
 
-    $ kubectl get pods
+    $ oc get pods
 
 [source,bash]
 ----
@@ -60,7 +60,7 @@ camel-example-hello-grpc-server-kubernetes-2604940788-g47hr   1/1       Running 
 
 and get the logs
 
-    $ kubectl logs camel-example-hello-grpc-client-kubernetes-1594657646-ptrkn
+    $ oc logs camel-example-hello-grpc-client-kubernetes-1594657646-ptrkn
 
 And you should see this output in the console.
 
@@ -113,15 +113,15 @@ Undeploy server and client
 [source,bash]
 ----
 $ cd hello-camel-grpc-client-kubernetes
-$ mvn -Pkubernetes-install fabric8:undeploy
+$ mvn -Popenshift oc:undeploy
 $ cd ../hello-camel-grpc-server-kubernetes
-$ mvn -Pkubernetes-install fabric8:undeploy
+$ mvn -Popenshift oc:undeploy
 ----
 Make sure no pod is running
 
 [source,bash]
 ----
-$ kubectl get pods
+$ oc get pods
 No resources found.
 ----
 
