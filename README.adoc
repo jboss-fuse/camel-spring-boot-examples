@@ -43,6 +43,8 @@ Number of Examples: 53 (0 deprecated)
 
 | link:webhook/readme.adoc[Webhook] (webhook) | Advanced | Example on how to use the Camel Webhook component
 
+| link:soap-cxf/README.adoc[Spring Boot SOAP CXF] (cxf-soap) | CXF | An example showing how to work with Camel SOAP CXF and Spring Boot
+
 | link:jira/README.adoc[Jira] (jira) | Beginner | An example that uses Jira Camel API
 
 | link:kamelet-chucknorris/readme.adoc[Kamelet Chucknorris] (kamelet-chucknorris) | Beginner | How easy it is to create your own Kamelets
