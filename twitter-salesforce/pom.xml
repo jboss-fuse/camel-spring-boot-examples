@@ -24,7 +24,7 @@
     <parent>
         <groupId>org.apache.camel.springboot.example</groupId>
         <artifactId>examples</artifactId>
-        <version>3.14.5-SNAPSHOT</version>
+        <version>3.14.5.redhat-00001</version>
     </parent>
 
     <artifactId>camel-example-spring-boot-twitter-salesforce</artifactId>
@@ -33,10 +33,10 @@
     <description>Twitter mentions is created as contacts in Salesforce</description>
 
 	<properties>
-		<camelSalesforce.clientId></camelSalesforce.clientId>
-		<camelSalesforce.clientSecret></camelSalesforce.clientSecret>
-		<camelSalesforce.userName></camelSalesforce.userName>
-		<camelSalesforce.password></camelSalesforce.password>
+		<camelSalesforce.clientId />
+		<camelSalesforce.clientSecret />
+		<camelSalesforce.userName />
+		<camelSalesforce.password />
 		<camelSalesforce.loginUrl>https://login.salesforce.com</camelSalesforce.loginUrl>
 	</properties>
 
