@@ -14,7 +14,7 @@ spec:
   definition:
     title: "Chuck Norris Source"
     description: |-
-      Gets peridically Chuck Norris jokes from https://api.chucknorris.io/
+      Gets periodically Chuck Norris jokes from https://api.chucknorris.io/
     type: object
     properties:
       period:
