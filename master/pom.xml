@@ -116,7 +116,6 @@
             <id>openshift</id>
             <properties>
                 <sbProfile>openshift</sbProfile>
-                <jkube.generator.from>registry.access.redhat.com/ubi8/openjdk-11</jkube.generator.from>
             </properties>
             <activation>
                 <property>
