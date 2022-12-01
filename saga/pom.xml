@@ -36,7 +36,7 @@
         <category>EIP</category>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <jkube.generator.from>${jkube.generator.from}</jkube.generator.from>
+        <jkube.generator.from>registry.access.redhat.com/ubi8/openjdk-11:1.14</jkube.generator.from>
 
     </properties>
 

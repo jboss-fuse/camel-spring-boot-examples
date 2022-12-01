@@ -37,7 +37,7 @@
         <title>gRPC Kubernetes</title>
         <!-- gRPC requires strong own of the Google Guava version -->
         <google-guava-version>${grpc-guava-version}</google-guava-version>
-        <jkube.generator.from>${jkube.generator.from}</jkube.generator.from>
+        <jkube.generator.from>registry.access.redhat.com/ubi8/openjdk-11:1.14</jkube.generator.from>
 
     </properties>
 
