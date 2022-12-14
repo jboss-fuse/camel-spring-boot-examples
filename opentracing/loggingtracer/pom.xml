@@ -35,9 +35,9 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>org.apache.camel</groupId>
-                <artifactId>camel-bom</artifactId>
-                <version>${camel-version}</version>
+                <groupId>com.redhat.camel.springboot.platform</groupId>
+                <artifactId>camel-springboot-bom</artifactId>
+                <version>${camel-spring-boot-version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
