@@ -37,16 +37,12 @@
 
 	<modules>
 		<module>spring-boot</module>
-		<module>spring-boot-jta-jpa</module>
-		<module>activemq</module>
 		<module>actuator-http-metrics</module>
 		<module>amqp</module>
-		<module>apm-opentracing</module>
 		<module>arangodb</module>
 		<module>aws2-s3</module>
 		<module>fhir</module>
 		<module>fhir-auth-tx</module>
-		<module>geocoder</module>
 		<module>grpc</module>
 		<module>grpc-kubernetes</module>
 		<module>health-checks</module>
