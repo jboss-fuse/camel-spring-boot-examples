@@ -43,7 +43,6 @@
 		<module>aws2-s3</module>
 		<module>fhir</module>
 		<module>fhir-auth-tx</module>
-		<module>grpc</module>
 		<module>health-checks</module>
 		<module>infinispan</module>
 		<module>jira</module>
