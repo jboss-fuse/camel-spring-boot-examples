@@ -19,6 +19,8 @@ package sample.camel;
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
 
+import jakarta.jms.ConnectionFactory;
+
 @Component
 public class Service1Route extends RouteBuilder {
 
