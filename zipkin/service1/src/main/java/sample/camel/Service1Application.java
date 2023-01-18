@@ -19,6 +19,9 @@ package sample.camel;
 import org.apache.camel.zipkin.starter.CamelZipkin;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+
+import jakarta.jms.ConnectionFactory;
 
 //CHECKSTYLE:OFF
 /**
