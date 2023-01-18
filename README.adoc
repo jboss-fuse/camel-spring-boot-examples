@@ -27,7 +27,7 @@ readme's instructions.
 === Examples
 
 // examples: START
-Number of Examples: 55 (0 deprecated)
+Number of Examples: 50 (0 deprecated)
 
 [width="100%",cols="4,2,4",options="header"]
 |===
@@ -79,8 +79,6 @@ Number of Examples: 55 (0 deprecated)
 | link:xml-import/readme.adoc[Spring Boot XML Import] (xml-import) | Beginner | An example showing how to work with Spring XML files imported with embedded CamelContext
 
 | link:aws2-s3/README.adoc[Aws2 S3] (aws2-s3) | Cloud | An example showing the Camel AWS2 S3 component with Spring Boot
-
-| link:grpc/README.adoc[gRPC Spring Boot] (grpc) | Cloud | An example showing the Camel gRPC component with Spring Boot
 
 | link:infinispan/README.adoc[Infinispan] (infinispan) | Cloud | An example showing the Camel Infinispan component with Spring Boot
 
