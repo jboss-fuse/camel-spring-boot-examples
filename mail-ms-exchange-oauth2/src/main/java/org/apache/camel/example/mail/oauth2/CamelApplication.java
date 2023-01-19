@@ -18,7 +18,7 @@ package org.apache.camel.example.mail.oauth2;
 
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
-import org.apache.camel.component.mail.MicrosoftExchangeOnlineOAuth2MailAuthenticator;
+import org.apache.camel.component.mail.microsoft.authenticator.MicrosoftExchangeOnlineOAuth2MailAuthenticator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
