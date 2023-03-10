@@ -125,7 +125,7 @@
             <plugin>
                 <groupId>org.apache.camel</groupId>
                 <artifactId>camel-maven-plugin</artifactId>
-                <version>${camel-version}</version>
+                <version>${camel-community.version}</version>
                 <!-- allows to fail if not all routes are fully covered during testing -->
                 <!--
                         <configuration>
