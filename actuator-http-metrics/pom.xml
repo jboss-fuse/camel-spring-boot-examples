@@ -42,7 +42,7 @@
         <dependencies>
             <dependency>
                 <groupId>com.redhat.camel.springboot.platform</groupId>
-                <artifactId>camel-springboot-bom</artifactId>
+                <artifactId>camel-spring-boot-bom</artifactId>
                 <version>${camel-spring-boot-version}</version>
                 <type>pom</type>
                 <scope>import</scope>
