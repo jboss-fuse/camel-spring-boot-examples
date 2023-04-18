@@ -66,7 +66,7 @@
 		<module>route-reload</module>
 		<module>spring-boot-jta-jpa-xml</module>
 		<module>spring-boot-jta-jpa-autoconfigure</module>
-		<!--<module>saga</module>-->
+		<module>saga</module>
 		<module>supervising-route-controller</module>
 		<module>twitter-salesforce</module>
 		<module>type-converter</module>
