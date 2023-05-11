@@ -27,26 +27,18 @@ readme's instructions.
 === Examples
 
 // examples: START
-Number of Examples: 47 (0 deprecated)
+Number of Examples: 42 (0 deprecated)
 
 [width="100%",cols="4,2,4",options="header"]
 |===
 | Example | Category | Description
 
-| link:azure/camel-example-spring-boot-azure-eventhubs/README.adoc[Spring Boot Azure Eventhubs] (camel-example-spring-boot-azure-eventhubs) |  | An example showing how to work with Camel, Azure Event Hubs and Spring Boot
-
-| link:azure/camel-example-spring-boot-azure-servicebus/README.adoc[Spring Boot Azure Servicebus] (camel-example-spring-boot-azure-servicebus) |  | An example showing how to work with Camel, Azure Service Bus and Spring Boot
+| link:health-checks/readme.adoc[Health Checks] (health-checks) |  | 
 
 | link:mail-ms-exchange-oauth2/Readme.adoc[Mail Ms Exchange Oauth2] (mail-ms-exchange-oauth2) |  | An example showing how to use Camel on Spring Boot to connect
         with IMAP protocol and access email data for Office 365 users using OAuth2 authentication
-
-| link:spring-boot-jta-jpa/readme.adoc[Spring Boot Jta Jpa] (spring-boot-jta-jpa) |  | An example showing JTA with Spring Boot
 
 | link:twitter-salesforce/README.adoc[Twitter Salesforce] (twitter-salesforce) |  | Twitter mentions is created as contacts in Salesforce
-| link:mail-ms-exchange-oauth2/Readme.adoc[Mail Ms Exchange Oauth2] (mail-ms-exchange-oauth2) |  | An example showing how to use Camel on Spring Boot to connect
-        with IMAP protocol and access email data for Office 365 users using OAuth2 authentication
-
-| link:undertow-spring-security/readme.adoc[Undertow Spring Security] (undertow-spring-security) | Advanced | Example on how to use the Camel Undertow component with spring security and Keycloak
 
 | link:webhook/readme.adoc[Webhook] (webhook) | Advanced | Example on how to use the Camel Webhook component
 
@@ -62,8 +54,6 @@ Number of Examples: 47 (0 deprecated)
 
 | link:rest-openapi-simple/README.adoc[REST OpenApi] (rest-openapi-simple) | Beginner | This example shows how to call a Rest service defined using OpenApi specification
 
-| link:rest-swagger-simple/README.adoc[REST Swagger] (rest-swagger-simple) | Beginner | This example shows how to call a Rest service defined using Swagger specification
-
 | link:route-reload/readme.adoc[Spring Boot Route Reload] (route-reload) | Beginner | Live reload of routes if file is updated and saved
 
 | link:routetemplate/readme.adoc[Routetemplate] (routetemplate) | Beginner | How to use route templates (parameterized routes)
@@ -73,8 +63,6 @@ Number of Examples: 47 (0 deprecated)
 | link:spring-boot/readme.adoc[Spring Boot] (spring-boot) | Beginner | An example showing how to work with Camel and Spring Boot
 
 | link:type-converter/README.adoc[Type Converter] (type-converter) | Beginner | An example showing how to create custom type converter with Camel and Spring Boot
-
-| link:unit-testing/README.adoc[Unit Testing] (unit-testing) | Beginner | An example showing how to write unit tests with Camel and Spring Boot
 
 | link:xml/readme.adoc[Spring Boot XML] (xml) | Beginner | An example showing how to work with Camel routes in XML files and Spring Boot
 
@@ -92,10 +80,6 @@ Number of Examples: 47 (0 deprecated)
 
 | link:arangodb/README.adoc[Arangodb] (arangodb) | Database | An example showing the Camel ArangoDb component with Spring Boot
 
-| link:dynamic-router-eip/README.adoc[Dynamic Router Eip] (dynamic-router-eip) | EIP | An example on how to use the Dynamic Router EIP component in Spring Boot
-
-| link:load-balancer-eip/README.adoc[Load Balancer Eip] (load-balancer-eip) | EIP | An example showing Load Balancer EIP with Camel and Spring Boot
-
 | link:resilience4j/README.adoc[Resilience4j] (resilience4j) | EIP | An example showing how to use Resilience4j EIP as circuit breaker in Camel routes
 
 | link:saga/readme.adoc[Saga] (saga) | EIP | This example shows how to work with a simple Apache Camel application using Spring Boot and Narayana LRA Coordinator to manage distributed actions implementing SAGA pattern
@@ -109,11 +93,10 @@ Number of Examples: 47 (0 deprecated)
 
 | link:actuator-http-metrics/readme.adoc[Actuator Http Metrics] (actuator-http-metrics) | Management and Monitoring | Example on how to use Spring Boot's Actuator endpoints to gather info like mappings or metrics
 
-| link:apm-opentracing/README.adoc[OpenTracing APM] (apm-opentracing) | Management and Monitoring | An example showing how to trace incoming and outgoing messages from Camel with OpenTracing with ElastiCo APM
-    
-| link:health-checks/readme.adoc[Health Checks] (health-checks) | Management and Monitoring | An example how to use custom health-checks
-
 | link:metrics/README.adoc[Metrics] (metrics) | Management and Monitoring | An example showing how to work with Camel and Spring Boot and report metrics to Graphite
+
+| link:observation/README.adoc[Micrometer Observation] (observation) | Management and Monitoring | An example showing how to trace incoming and outgoing messages from Camel with Micrometer Observation
+    
 
 | link:supervising-route-controller/readme.adoc[Supervising Route Controller] (supervising-route-controller) | Management and Monitoring | An example showing how to work with Camel's Supervising Route Controller and Spring Boot
 
@@ -136,15 +119,9 @@ Number of Examples: 47 (0 deprecated)
 | link:reactive-streams/readme.adoc[Reactive Streams] (reactive-streams) | Reactive | An example that shows how Camel can exchange data using reactive streams with Spring Boot reactor
     
 
-| link:platform-http/README.adoc[Platform Http] (platform-http) | Rest | An example showing Camel REST DSL with platform HTTP
-
 | link:rest-openapi/README.adoc[Rest Openapi] (rest-openapi) | Rest | An example showing Camel REST DSL and OpenApi with Spring Boot
 
 | link:rest-openapi-springdoc/README.adoc[Rest Openapi Springdoc] (rest-openapi-springdoc) | Rest | An example showing Camel REST DSL and OpenApi with a Springdoc UI in a Spring Boot application
-
-| link:jira/README.adoc[Jira] (jira) | SaaS | An example that uses Jira Camel API
-
-| link:twitter-salesforce/README.adoc[Twitter Salesforce] (twitter-salesforce) | SaaS | Twitter mentions is created as contacts in Salesforce
 |===
 // examples: END
 

@@ -86,8 +86,8 @@
         </dependency>
         <!-- JMX is needed for route coverage testing -->
         <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-management</artifactId>
+            <groupId>org.apache.camel.springboot</groupId>
+            <artifactId>camel-management-starter</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
