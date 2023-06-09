@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+  <profiles>
+    <profile>
+      <repositories>
+        <repository>
+          <releases>
+            <enabled>false</enabled>
+          </releases>
+          <snapshots />
+          <id>apache.snapshots</id>
+          <name>Apache Snapshot Repo</name>
+          <url>https://repository.apache.org/snapshots/</url>
+        </repository>
+        <repository>
+          <id>atlassian-public</id>
+          <name>atlassian-public</name>
+          <url>https://packages.atlassian.com/maven-external</url>
+        </repository>
+        <repository>
+          <id>confluent</id>
+          <name>confluent</name>
+          <url>https://packages.confluent.io/maven/</url>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <releases>
+            <enabled>false</enabled>
+          </releases>
+          <snapshots />
+          <id>apache.snapshots</id>
+          <name>apache.snapshots</name>
+          <url>https://repository.apache.org/snapshots/</url>
+        </pluginRepository>
+      </pluginRepositories>
+      <id>removed-by-pme</id>
+    </profile>
+  </profiles>
+  <activeProfiles>
+    <activeProfile>removed-by-pme</activeProfile>
+  </activeProfiles>
+</settings>
