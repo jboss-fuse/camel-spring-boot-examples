@@ -1,0 +1,128 @@
+= REST HTTP security with OpenID Connect: A Camel Spring Boot example
+:sb-example-description: An example that shows how to secure Camel REST endpoint with an OpenID Connect identity provider
+
+
+== Prerequisites
+
+The example application requires an OpenID Connect identity provider, we choose to use a Red Hat SSO instance,
+but it can be any OIDC compliant identity provider.
+You can find more information on how to install and configure an instance of Red Hat SSO https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/7.6/html/server_installation_and_configuration_guide/index[here]
+
+
+=== Run the Red Hat SSO container
+[source,shell]
+----
+$ docker run --name rhsso_test -p 8080:8080 \
+-e SSO_ADMIN_USERNAME=admin -e SSO_ADMIN_PASSWORD=admin \
+registry.redhat.io/rh-sso-7/sso76-openshift-rhel8:7.6
+----
+[[rhsso-instance-configuration]]
+==== Import preconfigured realm
+Then go to `http://localhost:8080/` click on `Administrator console` and login with `admin:admin`. Then we are going to import already pre-configured realm (`realm-export.json`) stored within `config` folder placed at root of this example.
+Navigate to left upper panel and click on `Add realm` select file `src/main/config/realm-export.json` and `create` it.
+After the import process is completed, you should see a new realm called `camel`.
+
+[[users-configuration]]
+==== Users and clients configuration
+We will need two users: `boss` (with role `admin-role` and password `boss-pass`) and `employee` (with role `regular-role` and password `employee-pass`). Employee user can be authenticated and access secured HTTP endpoints and boss user can in addition access also restricted HTTP resources.
+
+TIP: Don't use `temporary` passwords.
+
+==== Get client credentials secret
+Go to `Configure` left panel and select `service` under `Clients`. Go to `Credentials` and `Regenerate Secret`. Save it as `SERVICE_OIDC_CREDENTIALS_SECRET`. Do the same for `consumer` client. Do the same for the `consumer` client and save it as `CONSUMER_OIDC_CREDENTIALS_SECRET`.
+
+
+== Run the app
+Configure application modifying the  `src/main/resources/application.properties` file,
+
+[source,properties]
+----
+###################################
+#### OIDC configuration
+###################################
+sso.realm = camel
+sso.port = 8080
+sso.service.client-id = service
+sso.service.client-secret = <FILL ME WITH SERVICE_OIDC_CREDENTIALS_SECRET>
+----
+
+and then run the application:
+
+[source,shell]
+----
+$ mvn clean package -DskipTests  spring-boot:run
+----
+
+The above command compiles the project and starts the application
+
+Now you can move on to <<playground>> section with assumption that `RHSSO_URL=http://localhost:8080` and `APP_URL=http://localhost:8082`.
+
+[[playground]]
+=== Playground
+First thing you need to do is to obtain Bearer token from the running Red Hat SSO instance for each created user. Save those tokens for further authentication.
+
+For employee user (extract value from response of key `access_token` and call it `EMPLOYEE_TOKEN`):
+
+[source,shell]
+----
+$ curl -d "client_id=consumer" -d "client_secret=<FILL ME WITH CONSUMER_OIDC_CREDENTIALS_SECRET>" -d "username=employee" -d "password=employee-pass" -d "grant_type=password" $RHSSO_URL/realms/camel/protocol/openid-connect/token
+----
+
+For boss user (extract value from response of key `access_token` and call it `BOSS_TOKEN`):
+
+[source,shell]
+----
+$ curl -d "client_id=consumer" -d "client_secret=<FILL ME WITH CONSUMER_OIDC_CREDENTIALS_SECRET>" -d "username=boss" -d "password=boss-pass" -d "grant_type=password" $RHSSO_URL/realms/camel/protocol/openid-connect/token
+----
+
+Now we can finally try to play with the application which have those endpoints configured:
+
+- not-secured - anyone can access this endpoint
+- secured/authenticated - authenticated users with Bearer token can access this endpoint
+- secured/authorized - only users with role `admin-role` can access this endpoint
+
+Try to access endpoints with various users:
+
+
+- Anonymous accessing not secured endpoint (you should receive `200 OK` + `Not secured endpoint!` message)
+
+[source,shell]
+----
+$ curl -i -X GET  $APP_URL/camel-rest-oidc/not-secured
+----
+
+- Anonymous accessing authenticated endpoint (you should receive `401 Unauthorized`)
+
+[source,shell]
+----
+$ curl -i -X GET $APP_URL/camel-rest-oidc/authenticated
+----
+
+
+- Employee accessing authenticated endpoint (you should receive `200 OK` + `You are authenticated user so you can perform this action.` message):
+
+[source,shell]
+----
+$ curl -i -X GET -H "Authorization: Bearer $EMPLOYEE_TOKEN" $APP_URL/camel-rest-oidc/authenticated
+----
+
+- Employee accessing authorized endpoint (you should receive `403 Forbidden`):
+
+[source,shell]
+----
+$ curl -i -X GET -H "Authorization: Bearer $EMPLOYEE_TOKEN" $APP_URL/camel-rest-oidc/authorized
+----
+
+- Boss accessing authenticated endpoint (you should receive `200 OK` + `You are authenticated user so you can perform this action.` message):
+
+[source,shell]
+----
+$ curl -i -X GET -H "Authorization: Bearer $BOSS_TOKEN" $APP_URL/secured/authenticated
+----
+
+- Boss accessing authorized endpoint (you should receive `200 OK` + `You are authorized to perform sensitive operation.`):
+
+[source,shell]
+----
+$ curl -i -X GET -H "Authorization: Bearer $BOSS_TOKEN" $APP_URL/secured/authorized
+----

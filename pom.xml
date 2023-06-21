@@ -66,6 +66,7 @@
 		<module>reactive-streams</module>
 		<module>resilience4j</module>
 		<module>rest-jpa</module>
+		<module>rest-oidc</module>
 		<module>rest-producer</module>
 		<module>rest-swagger</module>
 		<module>rest-swagger-simple</module>
