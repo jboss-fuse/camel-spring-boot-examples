@@ -67,6 +67,7 @@
 		<module>spring-boot-jta-jpa-xml</module>
 		<module>spring-boot-jta-jpa-autoconfigure</module>
 		<module>saga</module>
+		<module>soap-cxf</module>
 		<module>supervising-route-controller</module>
 		<module>twitter-salesforce</module>
 		<module>type-converter</module>
