@@ -89,7 +89,7 @@
 		<reactor-version>3.2.22.RELEASE</reactor-version>
 		<testcontainers-version>1.16.3</testcontainers-version>
 		<hapi-structures-v24-version>2.3</hapi-structures-v24-version>
-		<jkube.generator.from>registry.access.redhat.com/ubi8/openjdk-11:1.14</jkube.generator.from>
+		<jkube.generator.from>registry.access.redhat.com/ubi8/openjdk-17:1.16</jkube.generator.from>
 	</properties>
 
 	<repositories>
