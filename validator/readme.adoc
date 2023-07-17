@@ -23,6 +23,24 @@ You can run this example using
 
     mvn spring-boot:run
 
+You can run this example with validation failure using
+
+    mvn spring-boot:run -Dspring-boot.run.arguments=Hello_Mars
+
+=== How to run on Openshift
+
+Create your own project
+
+    oc new-project csb-example-validator
+
+So you can deploy and run with the command
+
+    mvn clean package -Popenshift -Dgreeting=Hello_World -DskipTests
+
+You can run this example with validation failure using
+
+    mvn clean package -Popenshift -Dgreeting=Hello_Mars -DskipTests
+
 === Help and contributions
 
 If you hit any problem using Camel or have some feedback, then please
