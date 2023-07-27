@@ -34,6 +34,7 @@ public class SplitterRouter extends RouteBuilder {
 		from("direct:splitter")
 				// body is of type java.lang.Iterable, java.lang.String or Array
 				.split(body())
+				.log("${body}")
 				.to("mock:a");
 
 		// Example 2 : Splitter with subsequent aggregation
@@ -52,8 +53,10 @@ public class SplitterRouter extends RouteBuilder {
 					}))
 				// Transform after aggregation
 				.bean(MyMessageTransformer.class)
+				.log("split ${body}")
 				.to("mock:b")
 				.end()
+			.log("aggregated ${body}")
 			.to("mock:c");
 
 		// Example 3 : Splitter with subsequent aggregation using POJO bean instead of AggregationStrategy implementation
@@ -62,8 +65,10 @@ public class SplitterRouter extends RouteBuilder {
 					.split(body(), AggregationStrategies.bean(AggregationStrategyPojo.class))
 					// Transformation after aggregation
 					.bean(MyMessageTransformer.class)
+					.log("bean split ${body}")
 					.to("mock:d")
 				.end()
+			.log("bean aggregated ${body}")
 			.to("mock:e");
 
 		// Example 4 : Splitter with subsequent aggregation failing on exception
@@ -72,8 +77,10 @@ public class SplitterRouter extends RouteBuilder {
 						// stop processing if exception occurred during process of splitting
 						.stopOnException()
 						.bean(MyMessageTransformer.class)
+					.log("${body}")
 					.to("mock:f")
 				.end()
+			.log("never be there ${body}")
 			.to("mock:g");
 
 		// Example 5: Splitter with subsequent aggregation on failing on aggregation exception
@@ -95,8 +102,10 @@ public class SplitterRouter extends RouteBuilder {
 						return oldExchange;
 					}))
 					.bean(MyMessageTransformer.class)
+				.log("processed even if there are errors: ${body}")
 				.to("mock:h")
 				.end()
+			.log("reply with original body: ${body}")
 			.to("mock:j");
 		// @formatter:on
 

@@ -10,10 +10,70 @@ Examples
  - Example 4 : Splitter with subsequent aggregation failing on exception
  - Example 5 : Splitter with subsequent aggregation on failing on aggregation exception
 
-=== How to run
+=== How to run tests
 
-    mvn clean test
-     
+----
+ mvn test -Dtest=CamelSplitterEIPTests
+----
+
+=== How to run routes using REST API
+
+run the application
+----
+mvn spring-boot:run
+----
+
+==== Simple splitter
+
+====== Example 1
+
+split from string
+----
+curl -X POST http://localhost:8080/api/split-on-log -H "Content-Type: text/plain" --data "A,B,C"
+----
+
+convert to array and then split
+----
+curl -X POST http://localhost:8080/api/split-on-log -H "Content-Type: text/plain" --data "A,B,C" --header "convert-to: array"
+----
+
+in both above request you will se the data split by comma (,), so "A,B,C" will be logged each character on one new line
+
+==== Split and aggregate
+
+====== Example 2
+
+the message is split, transformed and aggregated
+
+----
+curl -X POST http://localhost:8080/api/split-aggregate-on-log -H "Content-Type: text/plain" --data "A,B,C"
+----
+
+====== Example 3
+
+the same but aggregated using POJO
+
+----
+curl -X POST http://localhost:8080/api/split-aggregate-on-log -H "Content-Type: text/plain" --data "A,B,C" --header "use-bean: true"
+----
+
+==== Split and error handling
+
+====== Example 4
+
+the route will stop at first error, the split messages after the error will not be processed
+
+----
+curl -X POST http://localhost:8080/api/handle-error -H "Content-Type: text/plain" --data "A,E,C"
+----
+
+====== Example 5
+
+the route will continue in case of error
+----
+curl -X POST http://localhost:8080/api/handle-error -H "Content-Type: text/plain" --data "A,B,E,C,D" --header "stop-on-error: false"
+----
+
 === Help and contributions
 
 If you hit any problem using Camel or have some feedback, then please

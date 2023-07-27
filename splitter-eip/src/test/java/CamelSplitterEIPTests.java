@@ -110,8 +110,8 @@ public class CamelSplitterEIPTests {
 		MockEndpoint mockJ = camelContext.getEndpoint("mock:j", MockEndpoint.class);
 
 		// without error aggregation is done as usual
-		mockH.expectedBodiesReceived("A", "B", "C");
-		mockJ.expectedBodiesReceived("A+B+C");
+		mockH.expectedBodiesReceived("Alpha", "Beta", "Charlie");
+		mockJ.expectedBodiesReceived("Alpha+Beta+Charlie");
 
 		producerTemplate.sendBody("direct:split-aggregate-stop-on-aggregation-exception", "A,B,C");
 
@@ -122,7 +122,7 @@ public class CamelSplitterEIPTests {
 		mockJ.reset();
 
 		// Received all messages that went into aggregation, including corrupted one
-		mockH.expectedBodiesReceived("A", "B", "E");
+		mockH.expectedBodiesReceived("Alpha", "Beta", "E");
 		// Since aggregation stopped, receiving all original messages
 		mockJ.expectedBodiesReceived("A,B,E,C,D");
 
