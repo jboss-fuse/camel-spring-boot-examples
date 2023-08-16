@@ -164,6 +164,9 @@
     <profiles>
         <profile>
             <id>generate-salesforce-dto</id>
+            <properties>
+                <spring.profiles.active>${spring.profiles.active}</spring.profiles.active>
+            </properties>
             <activation>
                 <property>
                     <name>generate.dto</name>

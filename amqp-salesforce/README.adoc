@@ -111,9 +111,11 @@ To run the example type using _generate.dto_ profile
 mvn -DcamelSalesforce.clientId=<client id> \
     -DcamelSalesforce.clientSecret=<client secret> \
     -DcamelSalesforce.userName=<username> \
-    -DcamelSalesforce.password=<password>
-    -DcamelSalesforce.secureSocketProtocol=TLSv1.3
-    -Dgenerate.dto spring-boot:run
+    -DcamelSalesforce.password=<password> \
+    -DcamelSalesforce.secureSocketProtocol=TLSv1.3 \
+    -Dgenerate.dto \
+    -Dspring.profiles.active=local \
+    spring-boot:run
 ....
 
 To stop the example hit ctrl+c
@@ -168,10 +170,12 @@ To run the example type using _generate.dto_ profile
 mvn clean package -DcamelSalesforce.clientId=<client id> \
     -DcamelSalesforce.clientSecret=<client secret> \
     -DcamelSalesforce.userName=<username> \
-    -DcamelSalesforce.password=<password>
-    -DcamelSalesforce.secureSocketProtocol=TLSv1.3
-    -DcamelSalesforce.namespace=csb-example-amqp-salesforce
-    -Dgenerate.dto spring-boot:repackage -Popenshift
+    -DcamelSalesforce.password=<password> \
+    -DcamelSalesforce.secureSocketProtocol=TLSv1.3 \
+    -DcamelSalesforce.namespace=csb-example-amqp-salesforce \
+    -Dgenerate.dto \
+    -Dspring.profiles.active=openshift \
+    spring-boot:repackage -Popenshift
 ....
 ----
 
