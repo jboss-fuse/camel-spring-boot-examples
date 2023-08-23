@@ -34,6 +34,9 @@
         <property name="transactionManager" ref="jtaTransactionManager"/>
         <property name="propagationBehaviorName" value="PROPAGATION_REQUIRED"/>
     </bean>
+    <bean id="jtaTransactionStrategy" class="org.apache.camel.component.jpa.DefaultTransactionStrategy">
+        <property name="transactionManager" ref="jtaTransactionManager" />
+    </bean>
 
     <bean name="agroalDataSource" class="io.agroal.springframework.boot.AgroalDataSource">
         <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
@@ -71,7 +74,7 @@
     </bean>
 
     <bean id="jpa" class="org.apache.camel.component.jpa.JpaComponent">
-        <property name="transactionManager" ref="jtaTransactionManager"/>
+        <property name="transactionStrategy" ref="jtaTransactionStrategy"/>
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
         <property name="joinTransaction" value="true"/>
         <property name="sharedEntityManager" value="false"/>
