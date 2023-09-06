@@ -87,6 +87,20 @@
             <groupId>org.apache.camel.springboot</groupId>
             <artifactId>camel-xml-io-dsl-starter</artifactId>
         </dependency>
+        
+        <!-- monitoring -->
+        <dependency>
+            <groupId>org.apache.camel.springboot</groupId>
+            <artifactId>camel-management-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel.springboot</groupId>
+            <artifactId>camel-micrometer-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
+        </dependency>
 
         <!-- test -->
         <dependency>

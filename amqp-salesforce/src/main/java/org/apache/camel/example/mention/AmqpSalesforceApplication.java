@@ -24,7 +24,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 @EnableAutoConfiguration
 public class AmqpSalesforceApplication {
-
     /**
      * A main method to start this application.
      */

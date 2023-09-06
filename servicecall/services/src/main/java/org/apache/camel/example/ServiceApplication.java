@@ -28,7 +28,6 @@ import org.springframework.stereotype.Component;
  */
 @SpringBootApplication
 public class ServiceApplication {
-
     @Profile("service-1")
     @Component
     public class Service1Route extends RouteBuilder {

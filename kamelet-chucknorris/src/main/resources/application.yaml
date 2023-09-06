@@ -20,3 +20,11 @@ camel:
     name: ChuckCamel
     # keep the application running
     main-run-controller: true
+
+management:
+  endpoints:
+    health:
+      enabled: true
+    web:
+      exposure:
+        include: "camelroutes,jolokia,metrics,prometheus,health"

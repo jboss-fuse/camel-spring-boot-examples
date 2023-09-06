@@ -22,7 +22,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 // CHECKSTYLE:OFF
 @SpringBootApplication
 public class Application {
-
     /**
      * Main method to start the application.
      */

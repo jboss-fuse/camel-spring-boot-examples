@@ -36,7 +36,6 @@
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <spring.boot-version>${spring-boot-version}</spring.boot-version>
     </properties>
 
     <dependencyManagement>
@@ -110,6 +109,20 @@
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
             <artifactId>camel-yaml-dsl-starter</artifactId>
+        </dependency>
+
+        <!-- monitoring -->
+        <dependency>
+            <groupId>org.apache.camel.springboot</groupId>
+            <artifactId>camel-management-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel.springboot</groupId>
+            <artifactId>camel-micrometer-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
         </dependency>
 
         <!-- test -->

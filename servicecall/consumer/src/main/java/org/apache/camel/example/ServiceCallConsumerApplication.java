@@ -25,7 +25,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 public class ServiceCallConsumerApplication {
-
     /**
      * A main method to start this application.
      */

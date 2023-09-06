@@ -22,3 +22,12 @@ spring:
 camel:
   springboot:
     name: MyCamel
+
+management:
+  endpoint:
+    health:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "camelroutes,jolokia,metrics,prometheus,health"

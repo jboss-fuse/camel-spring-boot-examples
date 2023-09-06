@@ -25,7 +25,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 public class MasterNode {
-
     /**
      * A main method to start this application.
      */

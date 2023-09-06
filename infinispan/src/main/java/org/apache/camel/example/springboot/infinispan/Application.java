@@ -18,7 +18,6 @@ package org.apache.camel.example.springboot.infinispan;
 
 import org.apache.camel.component.infinispan.remote.InfinispanRemoteComponent;
 import org.apache.camel.component.infinispan.remote.InfinispanRemoteConfiguration;
-
 import org.infinispan.client.hotrod.RemoteCacheManager;
 import org.infinispan.client.hotrod.configuration.ConfigurationBuilder;
 import org.slf4j.Logger;
