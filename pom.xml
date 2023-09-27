@@ -17,20 +17,19 @@
     limitations under the License.
 
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
 		<groupId>org.apache.camel.springboot</groupId>
 		<artifactId>spring-boot</artifactId>
-		<version>4.0.0.redhat-00009</version>
+		<version>4.0.0.redhat-00028</version>
 	</parent>
 
 	<groupId>org.apache.camel.springboot.example</groupId>
 	<artifactId>examples</artifactId>
-	<version>4.0.0-SNAPSHOT</version>
+	<version>4.0.0.redhat-00001</version>
 	<name>Camel SB :: Examples</name>
 	<description>Camel Examples</description>
 	<packaging>pom</packaging>
@@ -83,41 +82,22 @@
     </modules>
 
 	<properties>
-		<camel-spring-boot-version>4.0.0.redhat-00009</camel-spring-boot-version>
+		<camel-spring-boot-version>4.0.0.redhat-00028</camel-spring-boot-version>
 		<skip.starting.camel.context>false</skip.starting.camel.context>
 		<javax.servlet.api.version>4.0.1</javax.servlet.api.version>
 		<jkube-maven-plugin-version>1.13.1.redhat-00001</jkube-maven-plugin-version>
 		<kafka-avro-serializer-version>5.2.2</kafka-avro-serializer-version>
-		<reactor-version>3.2.22.RELEASE</reactor-version>
+		<reactor-version>3.2.22.RELEASE-redhat-00001</reactor-version>
 		<testcontainers-version>1.16.3</testcontainers-version>
 		<hapi-structures-v24-version>2.3</hapi-structures-v24-version>
 		<jkube.generator.from>registry.access.redhat.com/ubi8/openjdk-17:1.16</jkube.generator.from>
 	</properties>
 
 	<repositories>
-		<repository>
-			<id>apache.snapshots</id>
-			<url>https://repository.apache.org/snapshots/</url>
-			<name>Apache Snapshot Repo</name>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-		</repository>
+		
 	</repositories>
 	<pluginRepositories>
-		<pluginRepository>
-			<id>apache.snapshots</id>
-			<url>https://repository.apache.org/snapshots/</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-		</pluginRepository>
+		
 	</pluginRepositories>
 
 	<dependencyManagement>
@@ -159,7 +139,7 @@
 				<artifactId>camel-package-maven-plugin</artifactId>
 				<version>${camel-community.version}</version>
 				<configuration>
-					<startingFolder></startingFolder>
+					<startingFolder />
 					<filter>spring-boot</filter>
 				</configuration>
 				<executions>
@@ -196,6 +176,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<pluginManagement />
 	</build>
 
 	<profiles>
@@ -236,3 +217,6 @@
 	</profiles>
 
 </project>
+<!--
+Modified by POM Manipulation Extension for Maven 4.16 ( SHA: 352ae4a7 )
+-->
