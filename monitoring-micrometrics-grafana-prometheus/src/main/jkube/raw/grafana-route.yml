@@ -1,0 +1,12 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: grafana
+spec:
+  to:
+    kind: Service
+    name: grafana
+    weight: 100
+  port:
+    targetPort: grafana
+  wildcardPolicy: None

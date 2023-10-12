@@ -1,0 +1,7 @@
+metadata:
+  labels:
+    app: grafana
+  name: grafana-dashboards
+  annotations:
+    jkube.eclipse.org/cm/dashboard.yml: src/main/common/grafana/dashboard.yml
+    jkube.eclipse.org/cm/dashboard-camel.json: src/main/openshift/grafana/dashboard-camel.json

@@ -25,7 +25,7 @@
 	<parent>
 		<groupId>org.apache.camel.springboot</groupId>
 		<artifactId>spring-boot</artifactId>
-		<version>4.0.0.redhat-00009</version>
+		<version>4.0.0.redhat-00024</version>
 	</parent>
 
 	<groupId>org.apache.camel.springboot.example</groupId>
@@ -80,7 +80,8 @@
 		<module>quartz</module>
 		<module>splitter-eip</module>
 		<module>widget-gadget</module>
-    </modules>
+		<module>monitoring-micrometrics-grafana-prometheus</module>
+	</modules>
 
 	<properties>
 		<camel-spring-boot-version>4.0.0.redhat-00009</camel-spring-boot-version>

@@ -1,0 +1,6 @@
+metadata:
+  labels:
+    app: grafana
+  name: grafana-datasources
+  annotations:
+    jkube.eclipse.org/cm/datasources.yml: src/main/openshift/grafana/datasources-camel.yml

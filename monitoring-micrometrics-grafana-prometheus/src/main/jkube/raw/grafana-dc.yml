@@ -1,0 +1,62 @@
+kind: DeploymentConfig
+apiVersion: apps.openshift.io/v1
+metadata:
+  name: grafana
+  label:
+    app: grafana
+spec:
+  strategy:
+    type: Rolling
+    rollingParams:
+      updatePeriodSeconds: 1
+      intervalSeconds: 1
+      timeoutSeconds: 600
+      maxUnavailable: 25%
+      maxSurge: 25%
+  triggers:
+    - type: ConfigChange
+  replicas: 1
+  selector:
+    app: grafana
+  template:
+    metadata:
+      labels:
+        app: grafana
+    spec:
+      volumes:
+        - name: config
+          configMap:
+            name: grafana-dashboards
+            items:
+              - key: dashboard.yml
+                path: dashboard.yml
+              - key: dashboard-camel.json
+                path: dashboard-camel.json
+        - name: datasource
+          configMap:
+            name: grafana-datasources
+            items:
+              - key: datasources.yml
+                path: datasources.yml
+      containers:
+        - name: container
+          env:
+            - name: 'GF_AUTH_ANONYMOUS_ENABLED'
+              value: 'true'
+            - name: 'GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH'
+              value: '/etc/grafana/provisioning/dashboards/dashboard-camel.json'
+            - name: 'GF_AUTH_DISABLE_LOGIN_FORM'
+              value: 'true'
+            - name: 'GF_AUTH_BASIC_ENABLED'
+              value: 'false'
+          image: grafana/grafana
+          volumeMounts:
+            - mountPath: /etc/grafana/provisioning/dashboards
+              name: config
+            - mountPath: /etc/grafana/provisioning/datasources
+              name: datasource
+          ports:
+            - containerPort: 9090
+              protocol: TCP
+          imagePullPolicy: Always
+      restartPolicy: Always

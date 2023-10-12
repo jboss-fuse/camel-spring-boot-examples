@@ -1,0 +1,48 @@
+kind: DeploymentConfig
+apiVersion: apps.openshift.io/v1
+metadata:
+  name: prometheus
+spec:
+  strategy:
+    type: Rolling
+    rollingParams:
+      updatePeriodSeconds: 1
+      intervalSeconds: 1
+      timeoutSeconds: 600
+      maxUnavailable: 25%
+      maxSurge: 25%
+  triggers:
+    - type: ConfigChange
+  replicas: 1
+  selector:
+    app: prometheus
+  template:
+    metadata:
+      labels:
+        app: prometheus
+    spec:
+      serviceAccountName: monitoring
+      volumes:
+        - name: prometheus-config
+          configMap:
+            name: prometheus-config
+            items:
+              - key: prometheus.yml
+                path: prometheus.yml
+        - name: prometheus-volume
+          persistentVolumeClaim:
+            claimName: prometheus
+      containers:
+        - name: prometheus
+          image: 'prom/prometheus:v2.47.0'
+          ports:
+            - containerPort: 9090
+              protocol: TCP
+          volumeMounts:
+            - name: prometheus-volume
+              mountPath: /prometheus
+            - name: prometheus-config
+              mountPath: /etc/prometheus/
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30

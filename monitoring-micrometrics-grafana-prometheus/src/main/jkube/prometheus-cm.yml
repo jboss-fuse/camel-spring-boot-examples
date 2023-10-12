@@ -1,0 +1,6 @@
+metadata:
+  labels:
+    app: prometheus
+  name: prometheus-config
+  annotations:
+    jkube.eclipse.org/cm/prometheus.yml: src/main/openshift/prometheus/prometheus.yml

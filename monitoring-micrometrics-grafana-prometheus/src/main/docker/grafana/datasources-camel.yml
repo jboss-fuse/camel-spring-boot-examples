@@ -1,0 +1,12 @@
+# config file version
+apiVersion: 1
+datasources:
+  - name: prometheus
+    uid: grafanacloud-prom
+    type: prometheus
+    access: proxy
+    orgId: 1
+    url: http://localhost:9090
+    version: 1
+    isDefault: true
+    editable: false

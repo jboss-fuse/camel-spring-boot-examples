@@ -1,0 +1,10 @@
+# inspired by the prometheus kubernetes helm chart
+global:
+  scrape_interval: 5s
+  external_labels:
+    cluster: local
+scrape_configs:
+  - job_name: integrations/docker/applications
+    metrics_path: /actuator/prometheus
+    static_configs:
+      - targets: ['localhost:8080']

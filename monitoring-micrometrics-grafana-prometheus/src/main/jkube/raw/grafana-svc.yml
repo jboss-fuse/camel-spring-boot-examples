@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: grafana
+  label:
+    expose: true
+spec:
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+      name: grafana
+  internalTrafficPolicy: Cluster
+  selector:
+    app: grafana
