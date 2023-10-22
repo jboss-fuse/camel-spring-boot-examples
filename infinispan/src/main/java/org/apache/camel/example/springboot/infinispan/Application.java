@@ -27,7 +27,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.apache.commons.lang3.SystemUtils;
+import org.testcontainers.shaded.org.apache.commons.lang3.SystemUtils;
 
 import java.util.Properties;
 
