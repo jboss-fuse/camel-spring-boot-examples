@@ -37,9 +37,6 @@ Number of Examples: 47 (0 deprecated)
 
 | link:health-checks/readme.adoc[Health Checks] (health-checks) |  | 
 
-| link:mail-ms-exchange-oauth2/Readme.adoc[Mail Ms Exchange Oauth2] (mail-ms-exchange-oauth2) |  | An example showing how to use Camel on Spring Boot to connect
-        with IMAP protocol and access email data for Office 365 users using OAuth2 authentication
-
 | link:spring-boot-jta-jpa-autoconfigure/readme.adoc[Spring Boot Jta Jpa Autoconfigure] (spring-boot-jta-jpa-autoconfigure) | Advanced | An example showing JTA with Spring Boot Autoconfiguration
 
 | link:spring-boot-jta-jpa-xml/readme.adoc[Spring Boot Jta Jpa Xml] (spring-boot-jta-jpa-xml) | Advanced | An example showing JTA with Spring Boot using Spring XML configuration
@@ -96,6 +93,9 @@ Number of Examples: 47 (0 deprecated)
     
 
 | link:validator/readme.adoc[Validator Spring Boot] (validator) | Input/Output Type Contract | An example showing how to work with declarative validation and Spring Boot
+
+| link:mail-ms-exchange-oauth2/Readme.adoc[Mail Ms Exchange Oauth2] (mail-ms-exchange-oauth2) | Mail | An example showing how to use Camel on Spring Boot to connect
+        with IMAP protocol and access email data for Office 365 users using OAuth2 authentication
 
 | link:actuator-http-metrics/readme.adoc[Actuator Http Metrics] (actuator-http-metrics) | Management and Monitoring | Example on how to use Spring Boot's Actuator endpoints to gather info like mappings or metrics
 
