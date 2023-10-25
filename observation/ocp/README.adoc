@@ -61,9 +61,9 @@ or navigate manually to `Observe -> Metrics` in the web console menu
 you can fill the query field to show data and graph, for example:
 
 ----
-#show the max execution time for the camel-http and camel-jetty components (with and without errors)
+#show the max execution time for the camel-http and camel-platform-http components (with and without errors)
 
-POST_seconds_max{component="camel-jetty"} or POST_seconds_max{component="camel-http"}
+POST_seconds_max{component="camel-platform-http"} or POST_seconds_max{component="camel-http"}
 
 #how many triggered events by the camel-trigger component (with and without errors)
 

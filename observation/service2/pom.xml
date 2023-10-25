@@ -59,15 +59,11 @@
         <!-- camel -->
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
-            <artifactId>camel-jetty-starter</artifactId>
+            <artifactId>camel-platform-http-starter</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
             <artifactId>camel-http-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.camel.springboot</groupId>
-            <artifactId>camel-undertow-starter</artifactId>
         </dependency>
 
         <!-- Reporter -->

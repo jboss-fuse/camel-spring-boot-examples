@@ -24,7 +24,7 @@ public class Service1Route extends RouteBuilder {
 
     @Override
     public void configure() throws Exception {
-        from("jetty:{{endpoint.service1}}").routeId("service1").streamCaching()
+        from("platform-http:{{endpoint.service1}}").routeId("service1").streamCaching()
             .removeHeaders("CamelHttp*")
             .log("Service1 request: ${body}")
             .delay(simple("${random(1000,2000)}"))
