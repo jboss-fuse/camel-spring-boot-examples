@@ -71,11 +71,6 @@
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-mail-microsoft-oauth</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.eclipse.angus</groupId>
-            <artifactId>angus-mail</artifactId>
-            <version>2.0.2</version> <!-- avoid override from spring boot -->
-        </dependency>
 
         <!-- monitoring -->
         <dependency>
