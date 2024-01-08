@@ -66,6 +66,11 @@
             <version>${testcontainers-version}</version>
         </dependency>
 
+	<dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+
         <!-- monitoring -->
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>

@@ -27,7 +27,7 @@ readme's instructions.
 === Examples
 
 // examples: START
-Number of Examples: 44 (0 deprecated)
+Number of Examples: 46 (0 deprecated)
 
 [width="100%",cols="4,2,4",options="header"]
 |===
@@ -100,6 +100,10 @@ Number of Examples: 44 (0 deprecated)
 | link:actuator-http-metrics/readme.adoc[Actuator Http Metrics] (actuator-http-metrics) | Management and Monitoring | Example on how to use Spring Boot's Actuator endpoints to gather info like mappings or metrics
 
 | link:metrics/README.adoc[Metrics] (metrics) | Management and Monitoring | An example showing how to work with Camel and Spring Boot and report metrics to Graphite
+
+| link:monitoring-micrometrics-grafana-prometheus/Readme.adoc[Monitoring Micrometrics Grafana Prometheus] (monitoring-micrometrics-grafana-prometheus) | Management and Monitoring | Example on how to use Spring Boot's Actuator endpoints to
+        gather info like mappings or metrics
+    
 
 | link:observation/README.adoc[Micrometer Observation] (observation) | Management and Monitoring | An example showing how to trace incoming and outgoing messages from Camel with Micrometer Observation
     
