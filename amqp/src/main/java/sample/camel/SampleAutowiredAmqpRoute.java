@@ -18,35 +18,27 @@ package sample.camel;
 
 import org.apache.camel.ExchangePattern;
 import org.apache.camel.builder.RouteBuilder;
-import org.apache.camel.component.amqp.AMQPComponent;
-import org.apache.qpid.jms.JmsConnectionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 @Component
 public class SampleAutowiredAmqpRoute extends RouteBuilder {
-    @Autowired
-    JmsConnectionFactory amqpConnectionFactory;
-
-    @Bean
-    public AMQPComponent amqpConnection() {
-        AMQPComponent amqp = new AMQPComponent();
-        amqp.setConnectionFactory(amqpConnectionFactory);
-        return amqp;
-    }
-
     @Override
     public void configure() throws Exception {
-        restConfiguration().component("servlet");
+        from("file:src/main/data?noop=true")
+            .id("file-consumer-route")
+            .to("amqp:queue:SCIENCEQUEUE");
 
-        rest().post("/").to("direct:send");
-        from("direct:send")
-                .setExchangePattern(ExchangePattern.InOnly)
-                .to("amqp:queue:example")
-                .log("Message sent to AMQP queue");
-
-        from("amqp:queue:example").log("Received message from AMQP queue: ${body}");
+        from("timer:bar")
+            .id("timer-consumer-route")
+            .setBody(constant("Hello from Camel"))
+            .to("amqp:queue:SCIENCEQUEUE")
+            .log("Message sent from route ${routeId} to SCIENCEQUEUE");
+        
+        from("amqp:queue:SCIENCEQUEUE?receiveTimeout=10000")
+            .id("amqp-consumer-route")
+	        .id("consumer-route")
+	        .to("log:MyLogger?showBody=true");
     }
-
 }

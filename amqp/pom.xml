@@ -65,6 +65,11 @@
             <groupId>org.apache.camel.springboot</groupId>
             <artifactId>camel-amqp-starter</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.messaginghub</groupId>
+            <artifactId>pooled-jms</artifactId>
+        </dependency>
+
 
         <!-- monitoring -->
         <dependency>

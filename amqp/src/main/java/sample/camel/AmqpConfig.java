@@ -16,16 +16,21 @@
  */
 package sample.camel;
 
+import org.messaginghub.pooled.jms.JmsPoolConnectionFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class AmqpConfig {
+
+    // configuration of the AMQP connection factory.
     @Value("${AMQP_SERVICE_USERNAME}")
     private String userName;
+   
     @Value("${AMQP_SERVICE_PASSWORD}")
     private String pass;
+
     @Value("${AMQP_REMOTE_URI}")
     private String remoteUri;
 
@@ -48,12 +53,12 @@ public class AmqpConfig {
     public String getRemoteUri() {
         return remoteUri;
     }
-    
+
     public void setRemoteUri(String remoteUri) {
         this.remoteUri = remoteUri;
     }
-
-    @Bean
+    
+    // @Bean
     public org.apache.qpid.jms.JmsConnectionFactory amqpConnectionFactory() {
         org.apache.qpid.jms.JmsConnectionFactory jmsConnectionFactory = new org.apache.qpid.jms.JmsConnectionFactory();
         jmsConnectionFactory.setRemoteURI(remoteUri);
@@ -62,4 +67,16 @@ public class AmqpConfig {
         return jmsConnectionFactory;
     }
 
+    /* Recommendation is to use connection pooling. 
+       By using a named bean we could directly reference the connection factory
+       in camel.component.amqp.connection-factory = #connectionPoolFactory
+       but its technically not needed if there is only one connectionFactory registered in 
+       the Spring Boot registry.
+    */ 
+    @Bean(name = "connectionPoolFactory", initMethod = "start", destroyMethod = "stop")
+    public JmsPoolConnectionFactory jmsPoolConnectionFactory() {
+        JmsPoolConnectionFactory jmsPoolConnectionFactory = new JmsPoolConnectionFactory();
+        jmsPoolConnectionFactory.setConnectionFactory(amqpConnectionFactory());
+        return jmsPoolConnectionFactory;
+    }
 }
