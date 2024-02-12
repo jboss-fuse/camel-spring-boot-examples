@@ -12,13 +12,13 @@ the result should be
 ----
 enableUserWorkload: true
 ----
-granting users permission to configure monitoring for user-defined projects https://access.redhat.com/documentation/en-us/openshift_container_platform/4.13/html-single/monitoring/index#granting-users-permission-to-configure-monitoring-for-user-defined-projects_enabling-monitoring-for-user-defined-projects[docs]
+granting users permission to configure monitoring for user-defined projects https://access.redhat.com/documentation/en-us/openshift_container_platform/4.14/html/monitoring/enabling-monitoring-for-user-defined-projects[docs]
 
 ## Deploy the application
 ----
 oc new-project <name of the project>
 ----
-make sure that the `Red Hat OpenShift distributed tracing platform Operator` is installed before running following command https://docs.openshift.com/container-platform/4.13/distr_tracing/distr_tracing_install/distr-tracing-installing.html#distr-tracing-jaeger-operator-install_install-distributed-tracing[docs]
+make sure that the `Red Hat OpenShift distributed tracing platform` is installed before running following command https://docs.openshift.com/container-platform/latest/distr_tracing/distr_tracing_jaeger/distr-tracing-jaeger-installing.html#distr-tracing-jaeger-operator-install_dist-tracing-jaeger-installing[docs]
 ----
 oc apply -f ocp/jaeger.yaml
 ----
@@ -33,7 +33,7 @@ add targets for metrics
 oc apply -f ocp/service-monitor.yaml
 ----
 
-configuring example alert https://docs.openshift.com/container-platform/4.13/monitoring/managing-alerts.html#creating-alerting-rules-for-user-defined-projects_managing-alerts[docs]
+configuring example alert https://docs.openshift.com/container-platform/latest/monitoring/managing-alerts.html#creating-alerting-rules-for-user-defined-projects_managing-alerts[docs]
 
 ----
 oc apply -f ocp/alert-rule.yaml
