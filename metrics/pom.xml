@@ -35,7 +35,7 @@
         <category>Management and Monitoring</category>
 
         <spring.boot-version>${spring-boot-version}</spring.boot-version>
-        <jolokia-version>1.7.1</jolokia-version>
+        <jolokia-version>2.0.1</jolokia-version>
     </properties>
 
     <dependencyManagement>
@@ -80,7 +80,7 @@
         <!-- operations -->
         <dependency>
             <groupId>org.jolokia</groupId>
-            <artifactId>jolokia-core</artifactId>
+            <artifactId>jolokia-server-core</artifactId>
             <version>${jolokia-version}</version>
         </dependency>
         <dependency>

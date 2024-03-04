@@ -37,7 +37,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <spring.boot-version>${spring-boot-version}</spring.boot-version>
-        <jolokia-version>1.7.1</jolokia-version>
+        <jolokia-version>2.0.1</jolokia-version>
     </properties>
 
     <dependencyManagement>
@@ -56,7 +56,7 @@
 
         <dependency>
             <groupId>org.jolokia</groupId>
-            <artifactId>jolokia-core</artifactId>
+            <artifactId>jolokia-server-core</artifactId>
             <version>${jolokia-version}</version>
         </dependency>
 

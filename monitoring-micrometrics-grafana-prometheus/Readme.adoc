@@ -29,7 +29,7 @@ Next we need to add some starter support to our pom.xml - add the following to t
 
         <dependency>
             <groupId>org.jolokia</groupId>
-            <artifactId>jolokia-core</artifactId>
+            <artifactId>jolokia-server-core</artifactId>
             <version>${jolokia-version}</version>
         </dependency>
 
