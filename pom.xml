@@ -39,6 +39,7 @@
 		<module>spring-boot</module>
 		<module>activemq</module>
 		<module>actuator-http-metrics</module>
+		<module>aot-basic</module>
 		<module>amqp</module>
 		<module>amqp-salesforce</module>
 		<module>arangodb</module>
