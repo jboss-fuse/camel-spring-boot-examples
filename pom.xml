@@ -43,6 +43,7 @@
 		<module>amqp</module>
 		<module>amqp-salesforce</module>
 		<module>arangodb</module>
+		<module>artemis</module>
 		<module>aws2-s3</module>
 		<module>fhir</module>
 		<module>fhir-auth-tx</module>
@@ -95,6 +96,7 @@
 		<testcontainers-version>1.19.3</testcontainers-version>
 		<hapi-structures-v24-version>2.3</hapi-structures-v24-version>
 		<jkube.generator.from>registry.access.redhat.com/ubi8/openjdk-17:1.16</jkube.generator.from>
+		<artemis-jakarta-version>2.31.0</artemis-jakarta-version>
 	</properties>
 
 	<repositories>
