@@ -44,6 +44,7 @@
 		<module>artemis</module>
 		<module>aws2-s3</module>
         <module>azure</module>
+        <module>endpointdsl</module>
         <module>fhir</module>
 		<module>fhir-auth-tx</module>
 		<module>health-checks</module>
