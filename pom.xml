@@ -43,7 +43,8 @@
 		<module>arangodb</module>
 		<module>artemis</module>
 		<module>aws2-s3</module>
-		<module>fhir</module>
+        <module>azure</module>
+        <module>fhir</module>
 		<module>fhir-auth-tx</module>
 		<module>health-checks</module>
 		<module>infinispan</module>
