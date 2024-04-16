@@ -45,6 +45,7 @@
 		<module>arangodb</module>
 		<module>artemis</module>
 		<module>aws2-s3</module>
+		<module>aws-secrets-manager</module>
 		<module>fhir</module>
 		<module>fhir-auth-tx</module>
 		<module>health-checks</module>
