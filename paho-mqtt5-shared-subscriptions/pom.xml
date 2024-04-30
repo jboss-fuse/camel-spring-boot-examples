@@ -132,6 +132,7 @@
                                 <excludes>
                                     <!-- don't create a service, as this quickstart is not using any -->
                                     <exclude>jkube-service</exclude>
+                                    <exclude>jkube-healthcheck-spring-boot</exclude>
                                 </excludes>
                             </enricher>
                         </configuration>

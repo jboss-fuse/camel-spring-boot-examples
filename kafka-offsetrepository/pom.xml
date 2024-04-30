@@ -139,6 +139,7 @@
                         <configuration>
                             <enricher>
                                 <excludes>
+                                    <exclude>jkube-healthcheck-spring-boot</exclude>
                                     <exclude>jkube-openshift-route</exclude>
                                 </excludes>
                             </enricher>

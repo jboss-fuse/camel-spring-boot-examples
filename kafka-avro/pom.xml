@@ -170,6 +170,13 @@
                                 </goals>
                             </execution>
                         </executions>
+                        <configuration>
+                            <enricher>
+                                <excludes>
+                                    <exclude>jkube-healthcheck-spring-boot</exclude>
+                                </excludes>
+                            </enricher>
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>
