@@ -27,7 +27,7 @@ readme's instructions.
 === Examples
 
 // examples: START
-Number of Examples: 55 (0 deprecated)
+Number of Examples: 56 (0 deprecated)
 
 [width="100%",cols="4,2,4",options="header"]
 |===
@@ -151,6 +151,8 @@ Number of Examples: 55 (0 deprecated)
 | link:rest-producer/readme.adoc[Rest Producer] (rest-producer) | Rest | An example showing how to use Camel Rest to call a REST service
 
 | link:rest-swagger/README.adoc[Rest Swagger] (rest-swagger) | Rest | An example showing Camel REST DSL and Swagger with Spring Boot
+
+| link:rest-oidc/README.adoc[Spring Boot REST OIDC] (rest-oidc) | Security | An example demonstrating how to Secure Camel REST endpoints with Spring Security and Red Hat SSO
 |===
 // examples: END
 
