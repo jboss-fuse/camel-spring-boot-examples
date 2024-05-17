@@ -127,7 +127,8 @@ Number of Examples: 46 (0 deprecated)
 | link:widget-gadget/README.adoc[Widget Gadget] (widget-gadget) | Messaging | The widget and gadget example from EIP book, running on Spring Boot
 
 | link:reactive-streams/readme.adoc[Reactive Streams] (reactive-streams) | Reactive | An example that shows how Camel can exchange data using reactive streams with Spring Boot reactor
-    
+
+| link:http-ssl/README.adoc[Http Ssl] (http-ssl) | Rest | An example showing the Camel HTTP component with Spring Boot and SSL
 
 | link:rest-openapi/README.adoc[Rest Openapi] (rest-openapi) | Rest | An example showing Camel REST DSL and OpenApi with Spring Boot
 
