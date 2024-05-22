@@ -54,6 +54,9 @@ Start ssl-client in a separate terminal:
 
 to show the full handshake it is possible to add `-Dspring-boot.run.jvmArguments="-Djavax.net.debug=all"` in the start command line
 
+== Deploy on OpenShift Container Platform
+
+To run example on OpenShift, please go to link:README-OCP.adoc[the dedicated guide]
 
 === Help and contributions
 

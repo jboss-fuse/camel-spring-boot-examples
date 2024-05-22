@@ -1,0 +1,90 @@
+=== Introduction
+
+To configure SSL communication between two peers in OpenShift, the example uses Secret resource to store and protect keystores
+
+The covered scenario here is a mutual authentication using trusted SSL certificates
+
+=== Prerequisites
+
+* oc client installed (https://docs.openshift.com/container-platform/latest/cli_reference/openshift_cli/getting-started-cli.html[guide]) to execute remote operations
+* already logged in into cluster (running oc login)
+* https://docs.openshift.com/container-platform/latest/security/cert_manager_operator/cert-manager-operator-install.html[cert-manager Operator for Red Hat OpenShift] installed
+
+=== Deploy on OCP
+
+Create a project
+
+    $ oc new-project http-ssl-example
+
+==== create certificates
+
+To set up the certificates and keystores, the operator need to be installed, please refer to the official guide linked above.
+
+Once the operator is installed, you can create the issuer running
+
+    $ oc apply -f ocp-resources/01-issuer.yaml
+
+then verify the issuer is ready (optional)
+
+    $ oc get issuers -n http-ssl-example
+
+create secret containing password for the keys
+
+    $ oc create secret generic http-ssl-example-tls-password --from-literal=password=pass123
+
+generate server certificate
+
+    $ oc apply -f ocp-resources/02-certificate-server.yaml
+
+verify server certificate in the managed secret (optional)
+
+    $ oc get secret ocp-ssl-camel-server-tls
+
+generate client certificate
+
+    $ oc apply -f ocp-resources/02-certificate-client.yaml
+
+verify client certificate in the managed secret (optional)
+
+    $ oc get secret ocp-ssl-client-tls
+
+create a role and role binding to access to the secrets, bound to the service account named `secret-reader` used to run applications
+
+    $ oc apply -f ocp-resources/03-role.yaml
+
+==== run application
+
+The application can be executed locally or on the OCP cluster
+
+to deploy server on OCP:
+
+    $ mvn clean package -f ocp-ssl-camel-server/pom.xml -Popenshift
+
+to deploy client on OCP:
+
+    $ mvn clean package -f ocp-ssl-client/pom.xml -Popenshift
+
+to test the application, call the API exposed by the client, to start the handshake between client and server:
+
+    $ curl "http://$(oc get route ocp-ssl-client -o go-template --template='{{.spec.host}}')/ping"
+
+
+if the application is executed locally, we need to provide both `camel.kubernetes-config.client.masterUrl` and `camel.kubernetes-config.client.oauthToken` in the start command, eg:
+
+```
+mvn [start command] -Dcamel.kubernetes-config.client.masterUrl=https://api.xxxx:6443 -Dcamel.kubernetes-config.client.oauthToken=sha256~xxxxx
+```
+
+to run server locally:
+
+    $ mvn spring-boot:run -f ocp-ssl-camel-server/pom.xml -Dcamel.kubernetes-config.client.masterUrl=https://api.xxxx:6443 -Dcamel.kubernetes-config.client.oauthToken=sha256~xxxxx
+
+to run client locally:
+
+    $ mvn spring-boot:run -f ocp-ssl-client/pom.xml -Dcamel.kubernetes-config.client.masterUrl=https://api.xxxx:6443 -Dcamel.kubernetes-config.client.oauthToken=sha256~xxxxx
+
+in both cases, the local application will contact the remote OCP cluster to retrieve certificates
+
+to test the application
+
+    $ curl http://localhost:8080/ping

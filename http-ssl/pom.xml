@@ -51,6 +51,8 @@
 		<module>ssl-server</module>
 		<module>ssl-client</module>
 		<module>ssl-camel-server</module>
+		<module>ocp-ssl-camel-server</module>
+		<module>ocp-ssl-client</module>		
 	</modules>
 
 </project>
