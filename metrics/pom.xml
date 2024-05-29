@@ -24,7 +24,7 @@
     <parent>
         <groupId>org.apache.camel.springboot.example</groupId>
         <artifactId>examples</artifactId>
-        <version>3.20.1-SNAPSHOT</version>
+        <version>3.20.1.redhat-00001</version>
     </parent>
 
     <artifactId>camel-example-spring-boot-metrics</artifactId>
@@ -35,7 +35,7 @@
         <category>Management and Monitoring</category>
 
         <spring.boot-version>${spring-boot-version}</spring.boot-version>
-        <jolokia-version>1.7.1</jolokia-version>
+        <jolokia-version>1.7.1.redhat-00001</jolokia-version>
     </properties>
 
     <dependencyManagement>
