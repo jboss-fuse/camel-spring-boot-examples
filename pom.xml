@@ -91,7 +91,7 @@
 		<jkube-maven-plugin-version>1.16.2.redhat-00002</jkube-maven-plugin-version>
 		<kafka-avro-serializer-version>5.2.2</kafka-avro-serializer-version>
 		<reactor-version>3.2.22.RELEASE</reactor-version>
-		<testcontainers-version>1.19.3</testcontainers-version>
+		<testcontainers-version>1.19.8</testcontainers-version>
 		<hapi-structures-v24-version>2.3</hapi-structures-v24-version>
 		<jkube.generator.from>registry.access.redhat.com/ubi8/openjdk-17:1.16</jkube.generator.from>
 	</properties>
