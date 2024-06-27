@@ -7,34 +7,30 @@ This example shows how to work with a simple Apache Camel application using Spri
 Start the ActiveMQ broker in a docker container:
 
 ----
-docker run --name artemis \
+$ docker run --name amq-broker \
   -e AMQ_USER=admin \
   -e AMQ_PASSWORD=admin \
   -d -p 5672:5672 \
-  quay.io/artemiscloud/activemq-artemis-broker
+  registry.redhat.io/amq7/amq-broker-rhel8:7.12
 ----
 
 === How to run the example
 
 You can run this example using
 
-    mvn spring-boot:run
-
-The application exposes a REST endpoint that you can use to send a message to the ActiveMQ queue through the AMQP procotol. This message is then received in a second route and printed to the application log.
-
-You can send the message with a following command:
-
 ----
-curl -X POST -H "Content-Type: text/plain" -d "Hello AMQP" localhost:8080/amqp/
+$ mvn spring-boot:run
 ----
+
+The application sends messages in `SCIENCEQUEUE` queue using a timer, and consume the messages from the same queue
 
 In the application log, you will see the following lines:
 
 ----
 ...
-[  XNIO-1 task-2] route1                                   : Message sent to AMQP queue
+[3 - timer://bar] timer-consumer-route                     : Message sent from route timer-consumer-route to SCIENCEQUEUE
 ...
-[nsumer[example]] route2                                   : Received message from AMQP queue: Hello AMQP
+[r[SCIENCEQUEUE]] MyLogger                                 : Exchange[ExchangePattern: InOnly, BodyType: String, Body: Hello from Camel]
 ----
 
 == Trying out the example on OpenShift
@@ -42,19 +38,31 @@ In the application log, you will see the following lines:
 First, start with creating a new OpenShift project:
 
 ----
-oc new-project csb-example-amqp
+$ oc new-project csb-example-amqp
 ----
 
-Start a new deployment for Artemis:
+Deploy the AMQ Broker using operator, installing the operator in the current namespace https://docs.redhat.com/en/documentation/red_hat_amq_broker/7.12/html/deploying_amq_broker_on_openshift/deploying-broker-on-ocp-using-operator_broker-ocp#con_br-overview-operator-lifecycle-manager_broker-ocp[doc] and running the following command with the `oc` client https://docs.openshift.com/container-platform/latest/cli_reference/openshift_cli/getting-started-cli.html[doc] :
 
 ----
-oc new-app quay.io/artemiscloud/activemq-artemis-broker -e AMQ_USER=admin -e AMQ_PASSWORD=admin
-----
-
-Patch the default `activemq-artemis-broker` service to serve the `5672` port:
-
-----
-oc patch service/activemq-artemis-broker -p '{"spec":{"ports":[{"name":"5672-tcp", "port": 5672, "protocol": "TCP", "targetPort": 5672}]}}'
+$ cat << EOF| oc apply -f -
+apiVersion: broker.amq.io/v1beta1
+kind: ActiveMQArtemis
+metadata:
+  name: ex-aao
+  namespace: csb-example-amqp
+spec:
+  deploymentPlan:
+    image: placeholder
+    requireLogin: true
+    size: 1
+  adminPassword: admin
+  adminUser: admin
+  acceptors:
+    - name: amqp
+      expose: true
+      protocols: "AMQP"
+      port: 5672
+EOF
 ----
 
 === How to run
@@ -64,16 +72,10 @@ The application is deployed using the `openshift-maven-plugin` that takes care o
 Simply use the following command to deploy the application:
 
 ----
-mvn clean package -Popenshift
+$ mvn clean package -Popenshift
 ----
 
 After the application pod reaches the `Ready` state, you can try the same steps as in the local machine deployment.
-
-To send the message to the application use:
-
-----
-curl -X POST -H "Content-Type: text/plain" -d "Hello AMQP" http://$(oc get route camel-example-spring-boot-amqp -o jsonpath='{.spec.host}')/amqp/
-----
 
 To view the application logs, use `oc logs dc/camel-example-spring-boot-amqp`
 
