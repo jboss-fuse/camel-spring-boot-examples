@@ -127,7 +127,7 @@
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-test-infra-fhir</artifactId>
-            <version>${project.version}</version>
+            <version>${camel-community.version}</version>
             <type>test-jar</type>
             <scope>test</scope>
         </dependency>
