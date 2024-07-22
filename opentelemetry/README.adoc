@@ -8,10 +8,10 @@ image:./adoc/img/example.jpeg?raw=true[example]
 The environment is the following:
 
 * Demo apps:
-** link:TripBooking[Trip booking app]
-** link:FlightBooking[Flight booking app]
-** link:HotelBooking[Hotel booking app]
-** link:CarBooking[Car booking app]
+** link:trip-booking[Trip booking app]
+** link:flight-booking[Flight booking app]
+** link:hotel-booking[Hotel booking app]
+** link:car-booking[Car booking app]
 * OpenTelemetry Collector
 * Jaeger
 * Prometheus
@@ -60,25 +60,25 @@ Please use four different shells for each application:
 ===== CarBooking
 [source,sh]
 ----
-mvn clean spring-boot:run -f CarBooking/pom.xml
+mvn clean spring-boot:run -f car-booking/pom.xml
 ----
 
 ===== HotelBooking
 [source,sh]
 ----
-mvn clean spring-boot:run -f HotelBooking/pom.xml
+mvn clean spring-boot:run -f hotel-booking/pom.xml
 ----
 
 ===== FlightBooking
 [source,sh]
 ----
-mvn clean spring-boot:run -f FlightBooking/pom.xml
+mvn clean spring-boot:run -f flight-booking/pom.xml
 ----
 
 ===== TripBooking
 [source,sh]
 ----
-mvn clean spring-boot:run -f TripBooking/pom.xml
+mvn clean spring-boot:run -f trip-booking/pom.xml
 ----
 
 ==== Testing
@@ -143,6 +143,228 @@ MDC Logging is enabled, and tracing information printing into the logs to be abl
 11:52:18.931 INFO  [d02a363f16e88d9f012a36563b5464f5,9a328d33319645ab] bookTrip-http - Response: [{"bookingId":82,"car":"Volkswagen Jetta","startDate":"12-11-2018","endDate":"15-11-2018","price":152}, {"bookingId":907,"flight":"China Eastern Airlines 2782","startDate":"12-11-2018","endDate":"15-11-2018","price":133}, {"bookingId":926,"hotel":"Sheraton","startDate":"12-11-2018","endDate":"15-11-2018","price":200}]
 ...
 ----
+
+=== Install example on OpenShift
+
+==== Requirements
+
+- `oc` client installed (https://docs.openshift.com/container-platform/latest/cli_reference/openshift_cli/getting-started-cli.html[guide])
+- already logged in into cluster (running `oc login`)
+- destination project already created (running `oc new-project otel-example`)
+
+==== Install operators
+
+ - Red Hat Streams for Apache Kafka https://docs.redhat.com/en/documentation/red_hat_streams_for_apache_kafka/2.7/html/deploying_and_managing_streams_for_apache_kafka_on_openshift/operator-hub-str#proc-deploying-cluster-operator-hub-str[doc]
+ - Red Hat build of OpenTelemetry https://docs.redhat.com/en/documentation/openshift_container_platform/4.16/html/red_hat_build_of_opentelemetry/install-otel#installing-otel-by-using-the-web-console_install-otel[doc]
+ - Tempo Operator https://docs.redhat.com/en/documentation/openshift_container_platform/4.16/html/distributed_tracing/distributed-tracing-platform-tempo#distr-tracing-tempo-install-web-console_dist-tracing-tempo-installing[doc]
+
+==== Create resources
+
+Create kafka cluster named `otel-cluster`:
+
+```
+cat << EOF | oc apply -f -
+kind: Kafka
+apiVersion: kafka.strimzi.io/v1beta2
+metadata:
+  name: otel-cluster
+spec:
+  kafka:
+    version: 3.7.0
+    replicas: 3
+    listeners:
+      - name: plain
+        port: 9092
+        type: internal
+        tls: false
+      - name: tls
+        port: 9093
+        type: internal
+        tls: true
+    config:
+      offsets.topic.replication.factor: 3
+      transaction.state.log.replication.factor: 3
+      transaction.state.log.min.isr: 2
+      default.replication.factor: 3
+      min.insync.replicas: 2
+      inter.broker.protocol.version: '3.7'
+    storage:
+      type: ephemeral
+  zookeeper:
+    replicas: 3
+    storage:
+      type: ephemeral
+  entityOperator:
+    topicOperator: {}
+    userOperator: {}
+EOF
+```
+
+Create tempo monolithic named `monolitic-example` as distributed tracing storage:
+
+```
+cat << EOF | oc apply -f -
+apiVersion: tempo.grafana.com/v1alpha1
+kind: TempoMonolithic
+metadata:
+  name: monolitic-example
+spec:
+  jaegerui:
+    enabled: true
+    resources:
+      limits:
+        cpu: '2'
+        memory: 2Gi
+    route:
+      enabled: true
+  resources:
+    limits:
+      cpu: '2'
+      memory: 2Gi
+  storage:
+    traces:
+      backend: memory
+EOF
+```
+
+Create opentelemetry collector named `otel-example` used to collect everything coming from the agent on the applications and exporting the traces into the tempo storage and the metrics in a prometheus format:
+
+```
+cat << EOF | oc apply -f -
+kind: OpenTelemetryCollector
+apiVersion: opentelemetry.io/v1beta1
+metadata:
+  name: otel-example
+spec:
+  config:
+    exporters:
+      debug: {}
+      otlp/tempo:
+        endpoint: 'http://tempo-monolitic-example:4317'
+        tls:
+          insecure: true
+      prometheus:
+        endpoint: '0.0.0.0:8889'
+        metric_expiration: 180m
+    processors:
+      batch:
+        send_batch_size: 1000
+        timeout: 10s
+    receivers:
+      otlp:
+        protocols:
+          grpc: {}
+          http: {}
+    service:
+      pipelines:
+        traces:
+          exporters:
+            - debug
+            - otlp/tempo
+          processors:
+            - batch
+          receivers:
+            - otlp
+        metrics:
+          exporters:
+            - debug
+            - prometheus
+          processors:
+            - batch
+          receivers:
+            - otlp
+  replicas: 1
+  ports:
+    - name: promexporter
+      port: 8889
+      protocol: TCP
+      targetPort: 8889
+EOF
+```
+
+Create the opentelementry instrumentation to allow to inject the agent parameter into the startup command in the application
+
+```
+cat << EOF | oc apply -f -
+apiVersion: opentelemetry.io/v1alpha1
+kind: Instrumentation
+metadata:
+  name: camel-instrumentation
+spec:
+  exporter:
+    endpoint: 'http://otel-example-collector-headless:4317'
+  java:
+    env:
+      - name: OTEL_SERVICE_NAME
+        valueFrom:
+          fieldRef:
+            fieldPath: 'metadata.labels[''app'']'
+EOF
+```
+
+Create the service monitor to allow the prometheus metrics exposed by the opentelemetry collector be scraped by the OpenShift metrics storage
+
+```
+cat << EOF | oc apply -f -
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: otel-example-collector
+spec:
+  endpoints:
+    - interval: 30s
+      port: promexporter
+      scheme: http
+      path: /metrics
+  selector:
+    matchLabels:
+      app.kubernetes.io/name:  otel-example-collector
+EOF
+```
+
+==== Deploy applications
+
+```
+mvn clean install -Popenshift
+```
+
+now once the pods are ready it is possible to call the Trip Booking entry point
+
+Sync communication (over HTTP):
+
+```
+curl http://$(oc get route trip-booking -o go-template --template='{{.spec.host}}')/camel/bookTrip
+```
+
+Async communication (over Kafka):
+
+```
+curl http://$(oc get route trip-booking -o go-template --template='{{.spec.host}}')/camel/asyncBookTrip
+```
+
+The Jaeger console is available at
+
+```
+echo https://$(oc get route tempo-monolitic-example-jaegerui -o go-template --template='{{.spec.host}}')
+```
+
+To query the metrics it is possible to use the integrated OpenShift monitoring console at
+
+```
+echo $(oc whoami --show-console)/monitoring/query-browser
+```
+
+a query like
+```
+sum(camel_exchanges_total{service="otel-example-collector-headless"}) by(exported_job, routeId)
+```
+will show you the exchanges for each route on each application
+
+==== Undeploy applications
+
+```
+mvn oc:undeploy -Popenshift
+```
 
 === Help and contributions
 

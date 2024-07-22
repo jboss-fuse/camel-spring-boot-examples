@@ -39,10 +39,10 @@
     </properties>
 
     <modules>
-        <module>CarBooking</module>
-        <module>FlightBooking</module>
-        <module>HotelBooking</module>
-        <module>TripBooking</module>
+        <module>car-booking</module>
+        <module>flight-booking</module>
+        <module>hotel-booking</module>
+        <module>trip-booking</module>
     </modules>
 
 </project>
