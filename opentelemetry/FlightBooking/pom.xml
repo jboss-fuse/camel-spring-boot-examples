@@ -23,7 +23,7 @@
 	<parent>
 		<groupId>org.apache.camel.springboot.example</groupId>
 		<artifactId>camel-example-spring-boot-opentelemetry</artifactId>
-		<version>4.0.0-SNAPSHOT</version>
+		<version>4.4.0-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>camel-example-spring-boot-opentelemetry-flightbooking</artifactId>
@@ -38,20 +38,12 @@
 		<opentelemetry-agent.version>1.25.1</opentelemetry-agent.version>
 	</properties>
 
-	<!-- import Spring-Boot and Camel BOM -->
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-dependencies</artifactId>
-				<version>${spring-boot-version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.camel.springboot</groupId>
+				<groupId>com.redhat.camel.springboot.platform</groupId>
 				<artifactId>camel-spring-boot-bom</artifactId>
-				<version>${project.version}</version>
+				<version>${camel-spring-boot-version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -59,10 +51,20 @@
 	</dependencyManagement>
 
 	<dependencies>
-		<!-- Spring Boot dependancies -->
+		<!-- Spring Boot dependencies -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-undertow</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -72,7 +74,7 @@
 			<groupId>io.micrometer</groupId>
 			<artifactId>micrometer-registry-prometheus</artifactId>
 		</dependency>
-		<!-- Apache Camel dependancides-->
+		<!-- Apache Camel dependencies-->
 		<dependency>
 			<groupId>org.apache.camel.springboot</groupId>
 			<artifactId>camel-spring-boot-starter</artifactId>

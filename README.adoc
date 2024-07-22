@@ -108,6 +108,9 @@ Number of Examples: 48 (0 deprecated)
 | link:observation/README.adoc[Micrometer Observation] (observation) | Management and Monitoring | An example showing how to trace incoming and outgoing messages from Camel with Micrometer Observation
     
 
+| link:opentelemetry/README.adoc[OpenTelemetry] (opentelemetry) | Management and Monitoring | An example showing how to use Camel with OpenTelemetry
+    
+
 | link:supervising-route-controller/readme.adoc[Supervising Route Controller] (supervising-route-controller) | Management and Monitoring | An example showing how to work with Camel's Supervising Route Controller and Spring Boot
 
 | link:activemq/readme.adoc[Activemq] (activemq) | Messaging | An example showing how to work with Camel, ActiveMQ openwire and Spring Boot
