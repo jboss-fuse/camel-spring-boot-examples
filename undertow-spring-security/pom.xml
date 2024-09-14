@@ -21,7 +21,7 @@
     <parent>
         <artifactId>examples</artifactId>
         <groupId>org.apache.camel.springboot.example</groupId>
-        <version>3.20.1-SNAPSHOT</version>
+        <version>3.20.1.redhat-00001</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
