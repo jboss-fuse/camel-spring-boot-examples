@@ -19,9 +19,10 @@ package org.apache.camel.example.spring.boot.monitoring;
 import io.micrometer.core.instrument.Clock;
 import io.micrometer.prometheusmetrics.PrometheusConfig;
 import io.micrometer.prometheusmetrics.PrometheusMeterRegistry;
-import io.prometheus.client.CollectorRegistry;
-import io.prometheus.jmx.BuildInfoCollector;
+//import io.prometheus.client.CollectorRegistry;
+//import io.prometheus.jmx.BuildInfoCollector;
 import io.prometheus.jmx.JmxCollector;
+import io.prometheus.metrics.model.registry.PrometheusRegistry;
 import org.apache.camel.CamelContext;
 import org.apache.camel.component.micrometer.MicrometerConstants;
 import org.apache.camel.component.micrometer.eventnotifier.MicrometerExchangeEventNotifier;
@@ -55,13 +56,13 @@ public class Application {
 
     @Bean(name = {MicrometerConstants.METRICS_REGISTRY_NAME, "prometheusMeterRegistry"})
     public PrometheusMeterRegistry prometheusMeterRegistry(
-            PrometheusConfig prometheusConfig, CollectorRegistry collectorRegistry, Clock clock) throws MalformedObjectNameException, IOException {
+            PrometheusConfig prometheusConfig, PrometheusRegistry prometheusRegistry, Clock clock) throws MalformedObjectNameException, IOException {
 
         InputStream resource = new ClassPathResource("config/prometheus_exporter_config.yml").getInputStream();
 
-        new JmxCollector(resource).register(collectorRegistry);
-        new BuildInfoCollector().register(collectorRegistry);
-        return new PrometheusMeterRegistry(prometheusConfig, collectorRegistry, clock);
+        //new JmxCollector(resource).register(prometheusRegistry);
+        //new BuildInfoCollector().register(prometheusRegistry);
+        return new PrometheusMeterRegistry(prometheusConfig, prometheusRegistry, clock);
     }
 
     @Bean
