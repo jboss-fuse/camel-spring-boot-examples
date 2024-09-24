@@ -17,8 +17,8 @@
 package org.apache.camel.example.spring.boot.monitoring;
 
 import io.micrometer.core.instrument.Clock;
-import io.micrometer.prometheus.PrometheusConfig;
-import io.micrometer.prometheus.PrometheusMeterRegistry;
+import io.micrometer.prometheusmetrics.PrometheusConfig;
+import io.micrometer.prometheusmetrics.PrometheusMeterRegistry;
 import io.prometheus.client.CollectorRegistry;
 import io.prometheus.jmx.BuildInfoCollector;
 import io.prometheus.jmx.JmxCollector;

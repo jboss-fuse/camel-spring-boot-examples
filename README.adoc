@@ -37,13 +37,13 @@ Number of Examples: 59 (0 deprecated)
 
 | link:health-checks/readme.adoc[Health Checks] (health-checks) |  | 
 
-| link:endpointdsl/readme.adoc[Endpointdsl] (endpointdsl) | Beginner | Using type-safe Endpoint DSL
-
 | link:spring-boot-jta-jpa-autoconfigure/readme.adoc[Spring Boot Jta Jpa Autoconfigure] (spring-boot-jta-jpa-autoconfigure) | Advanced | An example showing JTA with Spring Boot Autoconfiguration
 
 | link:spring-boot-jta-jpa-xml/readme.adoc[Spring Boot Jta Jpa Xml] (spring-boot-jta-jpa-xml) | Advanced | An example showing JTA with Spring Boot using Spring XML configuration
 
 | link:webhook/readme.adoc[Webhook] (webhook) | Advanced | Example on how to use the Camel Webhook component
+
+| link:endpointdsl/readme.adoc[Endpointdsl] (endpointdsl) | Beginner | Using type-safe Endpoint DSL
 
 | link:jira/README.adoc[Jira] (jira) | Beginner | An example that uses Jira Camel API
 
@@ -80,6 +80,10 @@ Number of Examples: 59 (0 deprecated)
 | link:xml-import/readme.adoc[Spring Boot XML Import] (xml-import) | Beginner | An example showing how to work with Spring XML files imported with embedded CamelContext
 
 | link:aws2-s3/README.adoc[Aws2 S3] (aws2-s3) | Cloud | An example showing the Camel AWS2 S3 component with Spring Boot
+
+| link:azure/camel-example-spring-boot-azure-eventhubs/README.adoc[Spring Boot Azure Eventhubs] (camel-example-spring-boot-azure-eventhubs) | Cloud | An example showing how to work with Camel, Azure Event Hubs and Spring Boot
+
+| link:azure/camel-example-spring-boot-azure-servicebus/README.adoc[Spring Boot Azure Servicebus] (camel-example-spring-boot-azure-servicebus) | Cloud | An example showing how to work with Camel, Azure Service Bus and Spring Boot
 
 | link:infinispan/README.adoc[Infinispan] (infinispan) | Cloud | An example showing the Camel Infinispan component with Spring Boot
 
@@ -129,10 +133,6 @@ Number of Examples: 59 (0 deprecated)
 
 | link:artemis/readme.adoc[Artemis] (artemis) | Messaging | An example showing how to work with Camel, ActiveMQ Artemis and Spring Boot
 
-| link:azure/camel-example-spring-boot-azure-eventhubs/README.adoc[Spring Boot Azure Eventhubs] (camel-example-spring-boot-azure-eventhubs) | Cloud | An example showing how to work with Camel, Azure Event Hubs and Spring Boot
-
-| link:azure/camel-example-spring-boot-azure-servicebus/README.adoc[Spring Boot Azure Servicebus] (camel-example-spring-boot-azure-servicebus) | Cloud | An example showing how to work with Camel, Azure Service Bus and Spring Boot
-
 | link:kafka-avro/README.adoc[Kafka Avro] (kafka-avro) | Messaging | An example for Kafka avro
 
 | link:kafka-offsetrepository/README.adoc[Kafka Offsetrepository] (kafka-offsetrepository) | Messaging | An example for Kafka offsetrepository
@@ -152,13 +152,13 @@ Number of Examples: 59 (0 deprecated)
 
 | link:http-ssl/README.adoc[Http Ssl] (http-ssl) | Rest | An example showing the Camel HTTP component with Spring Boot and SSL
 
-| link:rest-openapi/README.adoc[Rest Openapi] (rest-openapi) | Rest | An example showing Camel REST DSL and OpenApi with Spring Boot
-
-| link:rest-openapi-springdoc/README.adoc[Rest Openapi Springdoc] (rest-openapi-springdoc) | Rest | An example showing Camel REST DSL and OpenApi with a Springdoc UI in a Spring Boot application
-
 | link:openapi-contract-first/readme.adoc[Openapi Contract First] (openapi-contract-first) | Rest | Contract First OpenAPI example
 
 | link:platform-http/README.adoc[Platform Http] (platform-http) | Rest | An example showing Camel REST DSL with platform HTTP
+
+| link:rest-openapi/README.adoc[Rest Openapi] (rest-openapi) | Rest | An example showing Camel REST DSL and OpenApi with Spring Boot
+
+| link:rest-openapi-springdoc/README.adoc[Rest Openapi Springdoc] (rest-openapi-springdoc) | Rest | An example showing Camel REST DSL and OpenApi with a Springdoc UI in a Spring Boot application
 |===
 // examples: END
 
