@@ -29,12 +29,12 @@ import org.springframework.boot.autoconfigure.transaction.jta.JtaAutoConfigurati
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ImportResource;
 
-import me.snowdrop.boot.narayana.autoconfigure.NarayanaConfiguration;
+import dev.snowdrop.boot.narayana.autoconfigure.NarayanaAutoConfiguration;
 
 @SpringBootConfiguration
 @ComponentScan
 @EnableAutoConfiguration(exclude = {
-	NarayanaConfiguration.class,
+	NarayanaAutoConfiguration.class,
 	JtaAutoConfiguration.class,
 	DataSourceAutoConfiguration.class,
 	DataSourceTransactionManagerAutoConfiguration.class,

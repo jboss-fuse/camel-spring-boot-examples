@@ -94,7 +94,7 @@
 	</modules>
 
 	<properties>
-		<camel-spring-boot-version>4.8.0.redhat-00002</camel-spring-boot-version>
+		<camel-spring-boot-version>4.8.0.redhat-00008</camel-spring-boot-version>
 		<skip.starting.camel.context>false</skip.starting.camel.context>
 		<javax.servlet.api.version>4.0.1</javax.servlet.api.version>
 		<jkube-maven-plugin-version>1.17.0.redhat-00001</jkube-maven-plugin-version>

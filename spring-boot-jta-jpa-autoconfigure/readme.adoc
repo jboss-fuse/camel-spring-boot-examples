@@ -203,8 +203,8 @@ After a while the recovery controller will scale the statefulset back to two rep
 You can see in the logs of `spring-boot-jpa-jta-autoconfigure-0` the following messages:
 
 ----
-WARN [scheduling-1] me.snowdrop.boot.narayana.openshift.recovery.StatefulsetRecoveryController Pod spring-boot-jta-jpa-autoconfigure-1 has pending work and must be restored again
-INFO [scheduling-1] me.snowdrop.boot.narayana.openshift.recovery.StatefulsetRecoveryController Statefulset spring-boot-jta-jpa-autoconfigure successfully scaled to 2 replicas
+WARN [scheduling-1] dev.snowdrop.boot.narayana.openshift.recovery.StatefulsetRecoveryController Pod spring-boot-jta-jpa-autoconfigure-1 has pending work and must be restored again
+INFO [scheduling-1] dev.snowdrop.boot.narayana.openshift.recovery.StatefulsetRecoveryController Statefulset spring-boot-jta-jpa-autoconfigure successfully scaled to 2 replicas
 ----
 
 After finishing its pending work the statefulset can be scaled down as usual.
