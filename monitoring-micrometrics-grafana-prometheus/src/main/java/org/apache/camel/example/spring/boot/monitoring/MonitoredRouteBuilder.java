@@ -82,7 +82,7 @@ public class MonitoredRouteBuilder extends RouteBuilder {
                 .process(e->{
                     e.getMessage().setBody(new Random().nextInt(8), Integer.class);
                 }).id("generate-random-delay")
-                .toD("https://hub.dummyapis.com/delay?seconds=${body}").id("to-dummy-api")
+                .toD("https://hub.dummyapis.com/delay?seconds=${body}&sslContextParameters=#dummyapisSslContext").id("to-dummy-api")
                 .to("micrometer:counter:dummy.call.counter").id("to-counter-dummy-api");
     }
 }

@@ -29,6 +29,9 @@ import org.apache.camel.component.micrometer.eventnotifier.MicrometerRouteEventN
 import org.apache.camel.component.micrometer.messagehistory.MicrometerMessageHistoryFactory;
 import org.apache.camel.component.micrometer.routepolicy.MicrometerRoutePolicyFactory;
 import org.apache.camel.spring.boot.CamelContextConfiguration;
+import org.apache.camel.support.jsse.SSLContextParameters;
+import org.apache.camel.support.jsse.TrustManagersParameters;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -36,9 +39,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.ClassPathResource;
 
 import javax.management.MalformedObjectNameException;
+import javax.net.ssl.X509TrustManager;
+
 import java.io.IOException;
 import java.io.InputStream;
-
+import java.security.cert.CertificateException;
 
 /**
  * A sample Spring Boot application that starts the Camel routes.
@@ -65,13 +70,14 @@ public class Application {
     }
 
     @Bean
-    public CamelContextConfiguration camelContextConfiguration(@Autowired PrometheusMeterRegistry registry) {
+    public CamelContextConfiguration camelContextConfiguration(@Autowired PrometheusMeterRegistry registry, @Autowired CamelContext camelContext) {
 
         return new CamelContextConfiguration() {
             @Override
             public void beforeApplicationStart(CamelContext camelContext) {
                 MicrometerRoutePolicyFactory micrometerRoutePolicyFactory = new MicrometerRoutePolicyFactory();
                 micrometerRoutePolicyFactory.setMeterRegistry(registry);
+                micrometerRoutePolicyFactory.setCamelContext(camelContext);
                 camelContext.addRoutePolicyFactory(micrometerRoutePolicyFactory);
 
                 MicrometerMessageHistoryFactory micrometerMessageHistoryFactory = new MicrometerMessageHistoryFactory();
@@ -92,5 +98,39 @@ public class Application {
             public void afterApplicationStart(CamelContext camelContext) {
             }
         };
+    }
+
+    @Bean("dummyapisSslContext")
+    public SSLContextParameters dummyapisSslContext() {
+        final SSLContextParameters sslContextParameters = new SSLContextParameters();
+
+        /*
+        since https://hub.dummyapis.com doesn't have a valid certifcate
+        , and since this is an example, we can simply solve trusting all
+        the certifcates. this is STRONGLY discouraged on production
+        environment
+
+        this SSL context is used only in the specific Camel route, not
+        application wide
+         */
+        final TrustManagersParameters tmp = new TrustManagersParameters();
+        tmp.setTrustManager(new X509TrustManager() {
+            @Override
+            public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {
+            }
+
+            @Override
+            public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {
+            }
+
+            @Override
+            public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+                return new java.security.cert.X509Certificate[] {};
+            }
+        });
+
+        sslContextParameters.setTrustManagers(tmp);
+
+        return sslContextParameters;
     }
 }
