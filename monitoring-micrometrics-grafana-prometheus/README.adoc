@@ -189,6 +189,11 @@ mvn clean package oc:deploy -Popenshift
 
 Pointing your browser to http://<OPENSHIFT_GRAFANA_BASE_URL>/d/apache-camel-dashboard/apache-camel-dashboard you should see this:
 
+[source,console]
+----
+echo "http://$(oc get route grafana -o go-template --template='{{.spec.host}}')/d/apache-camel-dashboard/apache-camel-dashboard"
+----
+
 image::images/dashboard-openshift.png[]
 
 
