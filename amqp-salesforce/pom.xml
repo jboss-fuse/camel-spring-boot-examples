@@ -24,7 +24,7 @@
     <parent>
         <groupId>org.apache.camel.springboot.example</groupId>
         <artifactId>examples</artifactId>
-        <version>4.8.0-SNAPSHOT</version>
+        <version>4.8.2-SNAPSHOT</version>
     </parent>
 
     <artifactId>camel-example-spring-boot-amqp-salesforce</artifactId>
@@ -193,7 +193,7 @@
                     <plugin>
                         <groupId>org.apache.camel.maven</groupId>
                         <artifactId>camel-salesforce-maven-plugin</artifactId>
-                        <version>${camel-community.version}</version>
+                        <version>${camel-community-version}</version>
                         <executions>
                             <execution>
                                 <goals>
