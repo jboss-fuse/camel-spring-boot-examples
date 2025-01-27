@@ -1,0 +1,63 @@
+INSERT INTO APPROVAL (ID, APPROVED, APPROVAL_DATE, EXPENSE_ID, APPROVER)
+VALUES (1, TRUE, TIMESTAMPADD(DAY, -1, CURRENT_TIMESTAMP), 1, 'Approver 1'),
+       (2, FALSE, TIMESTAMPADD(DAY, -2, CURRENT_TIMESTAMP), 2, 'Approver 2'),
+       (3, null, TIMESTAMPADD(DAY, -3, CURRENT_TIMESTAMP), 3, null),
+       (4, FALSE, TIMESTAMPADD(DAY, -4, CURRENT_TIMESTAMP), 4, 'Approver 4'),
+       (5, TRUE, TIMESTAMPADD(DAY, -5, CURRENT_TIMESTAMP), 5, 'Approver 5'),
+       (6, FALSE, TIMESTAMPADD(DAY, -6, CURRENT_TIMESTAMP), 6, 'Approver 6'),
+       (7, TRUE, TIMESTAMPADD(DAY, -7, CURRENT_TIMESTAMP), 7, 'Approver 7'),
+       (8, null, TIMESTAMPADD(DAY, -8, CURRENT_TIMESTAMP), 8, null),
+       (9, TRUE, TIMESTAMPADD(DAY, -9, CURRENT_TIMESTAMP), 9, 'Approver 9'),
+       (10, FALSE, TIMESTAMPADD(DAY, -10, CURRENT_TIMESTAMP), 10, 'Approver 10');
+
+INSERT INTO EXPENSE (ID, APPROVAL_ID, DESCRIPTION, NAME)
+VALUES (1, 1, 'Description for expense 1', 'Expense Name 1'),
+       (2, 2, 'Description for expense 2', 'Expense Name 2'),
+       (3, 3, 'Description for expense 3', 'Expense Name 3'),
+       (4, 4, 'Description for expense 4', 'Expense Name 4'),
+       (5, 5, 'Description for expense 5', 'Expense Name 5'),
+       (6, 6, 'Description for expense 6', 'Expense Name 6'),
+       (7, 7, 'Description for expense 7', 'Expense Name 7'),
+       (8, 8, 'Description for expense 8', 'Expense Name 8'),
+       (9, 9, 'Description for expense 9', 'Expense Name 9'),
+       (10, 10, 'Description for expense 10', 'Expense Name 10');
+
+
+INSERT INTO INVOICE (ID, AMOUNT, DATE, EXPENSE_ID, CURRENCY, DESCRIPTION)
+VALUES (1, 10.50, TIMESTAMPADD(DAY, -1, CURRENT_TIMESTAMP), 1, 'USD', 'Invoice for expense 1'),
+       (2, 21.00, TIMESTAMPADD(DAY, -2, CURRENT_TIMESTAMP), 2, 'EUR', 'Invoice for expense 2'),
+       (3, 31.50, TIMESTAMPADD(DAY, -3, CURRENT_TIMESTAMP), 3, 'USD', 'Invoice for expense 3'),
+       (4, 42.00, TIMESTAMPADD(DAY, -4, CURRENT_TIMESTAMP), 4, 'EUR', 'Invoice for expense 4'),
+       (5, 52.50, TIMESTAMPADD(DAY, -5, CURRENT_TIMESTAMP), 5, 'USD', 'Invoice for expense 5'),
+       (6, 63.00, TIMESTAMPADD(DAY, -6, CURRENT_TIMESTAMP), 6, 'EUR', 'Invoice for expense 6'),
+       (7, 73.50, TIMESTAMPADD(DAY, -7, CURRENT_TIMESTAMP), 7, 'USD', 'Invoice for expense 7'),
+       (8, 84.00, TIMESTAMPADD(DAY, -8, CURRENT_TIMESTAMP), 8, 'EUR', 'Invoice for expense 8'),
+       (9, 94.50, TIMESTAMPADD(DAY, -9, CURRENT_TIMESTAMP), 9, 'USD', 'Invoice for expense 9'),
+       (10, 105.00, TIMESTAMPADD(DAY, -10, CURRENT_TIMESTAMP), 10, 'EUR', 'Invoice for expense 10');
+
+
+ALTER TABLE "APPROVAL"
+    ADD CONSTRAINT FK4M7UNKHEY0LB9OLCW0KNPAWMH FOREIGN KEY ("EXPENSE_ID") REFERENCES "EXPENSE" ("ID") ON UPDATE RESTRICT ON DELETE RESTRICT;
+ALTER TABLE "EXPENSE"
+    ADD CONSTRAINT FK7DBBKTBSXBQ8VJGDU07Y1G5XR FOREIGN KEY ("APPROVAL_ID") REFERENCES "APPROVAL" ("ID") ON UPDATE RESTRICT ON DELETE RESTRICT;
+ALTER TABLE "INVOICE"
+    ADD CONSTRAINT FK2JCKI6XWMIUB5RLWKLCTQF30L FOREIGN KEY ("EXPENSE_ID") REFERENCES "EXPENSE" ("ID") ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+DROP SEQUENCE IF EXISTS EXPENSE_SEQ;
+CREATE SEQUENCE EXPENSE_SEQ
+    START WITH 11
+    INCREMENT BY 1
+    MINVALUE 11;
+
+DROP SEQUENCE IF EXISTS INVOICE_SEQ;
+CREATE SEQUENCE INVOICE_SEQ
+    START WITH 11
+    INCREMENT BY 1
+    MINVALUE 11;
+
+DROP SEQUENCE IF EXISTS APPROVAL_SEQ;
+CREATE SEQUENCE APPROVAL_SEQ
+    START WITH 11
+    INCREMENT BY 1
+    MINVALUE 11;

@@ -1,0 +1,103 @@
+= Camel REST DSL + Spring Security + OpenID Connect + JWT Authorization Example
+
+:autofit-option:
+
+=== Abstract
+
+This example demonstrates how to configure an Apache Camel application that uses *camel-spring-security* for route authorization and integrates with *OpenID Connect (OIDC)* for authentication using *JWT tokens*.
+
+== Features
+
+- *Authentication*: OpenID Connect (OIDC) with Keycloak identity provider.
+- *Authorization*: Spring Security with role-based access control for Camel routes.
+- *JWT Support*: Decode and validate JWT tokens in the application.
+- *Route Protection*: Restrict access to specific Camel routes based on user roles.
+
+== Prerequisites
+
+1. *Java 17+*
+2. *Keycloak OIDC Identity Provider* (but, with some modifications, you can use another OIDC Identity Provider e.g. Okta, Auth0, etc.)
+3. *Maven* for building the project
+
+== Setup
+
+=== 1. Identity Provider Configuration
+
+- Set up a client in your OIDC provider (e.g., Keycloak, Okta).
+- Configure the following settings:
+    - *Client ID*: `expenses-api`
+    - *Client Secret*: `<your-client-secret>`
+    - *Allowed Scopes*: `openid`, `profile`, `roles`
+- Enable JWT token generation and ensure roles are included in the token.
+
+- Alternatively you can import the realm configuration file link:src/test/resources/keycloak/expense-realm.json[expense-realm.json]. The resulting realm after importing the configuration
+contains the following users:
+
+
+|===
+| Name                             | Username  | Password         | Realm Role |  Client Role
+
+| Alejandro Garnacho Ferreyra      | agarnacho | ManchesterUnited | manager    | supervisor
+| James Burns Wesley               | wjburns   | Ipswich          | employee   | consultant
+| Richard Rios Montoya             | rrios     | Palmeiras        | manager    | supervisor
+| Ronald Federico Araújo da Silva  | rfaraujo  | Barcelona        | employee   | consultant
+|===
+
+and the following client:
+
+|===
+|Client id    | Client secret
+|expenses-api | YIQvHh3ny8T7thPu3HKgJXX3VvEhlxY6
+|===
+
+
+=== Run locally on Docker
+
+Is possible to run the entire project with keycloak pre-configured using docker maven plugin.
+In order to do it, you need to have a running docker daemon on your machine, then in a shell
+you can run:
+
+[source,console]
+----
+mvn clean package docker:build  docker:start docker:watch -Ddocker.watchMode=run docker:stop  -P docker
+----
+
+Get the access token (change the username and password is needed):
+
+[source,console]
+----
+TOKEN=$(curl -d 'client_id=expenses-api' -d 'client_secret=YIQvHh3ny8T7thPu3HKgJXX3VvEhlxY6' -d 'username=agarnacho' -d 'password=ManchesterUnited' -d 'grant_type=password' 'http://localhost:8080/realms/expenses/protocol/openid-connect/token' | jq -r '.access_token')
+----
+
+and use it in the requests:
+
+[source,console]
+----
+curl -H 'Accept: application/json' -H "Authorization: Bearer ${TOKEN}" http://localhost:8081/api/v1/expense
+----
+
+==== Use the Swagger UI
+
+There is an embedded Swagger UI provided by springdoc available at link:http://localhost:8081/openapi/swagger-ui/index.html[http://localhost:8081/openapi/swagger-ui/index.html]
+
+image::doc/img/swagger-ui.png[]
+
+For the protected methods, you have to get the JWT token, click on Authorize button
+
+
+image::doc/img/swagger-ui-Authorize.png[]
+
+and paste the token on the input text box of the dialog:
+
+image::doc/img/swagger-ui-dialog.png[]
+
+
+=== Help and contributions
+
+If you hit any problem using Camel or have some feedback, then please
+https://camel.apache.org/support.html[let us know].
+
+We also love contributors, so
+https://camel.apache.org/contributing.html[get involved] :-)
+
+The Camel riders!
