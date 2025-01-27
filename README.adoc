@@ -27,7 +27,7 @@ readme's instructions.
 === Examples
 
 // examples: START
-Number of Examples: 61 (0 deprecated)
+Number of Examples: 62 (0 deprecated)
 
 [width="100%",cols="4,2,4",options="header"]
 |===
@@ -163,6 +163,9 @@ Number of Examples: 61 (0 deprecated)
 | link:rest-openapi/README.adoc[Rest Openapi] (rest-openapi) | Rest | An example showing Camel REST DSL and OpenApi with Spring Boot
 
 | link:rest-openapi-springdoc/README.adoc[Rest Openapi Springdoc] (rest-openapi-springdoc) | Rest | An example showing Camel REST DSL and OpenApi with a Springdoc UI in a Spring Boot application
+
+| link:rest-spring-security/README.adoc[Rest Spring Security] (rest-spring-security) | Rest | An example showing Camel REST DSL secured with Spring Security and JWT token in a Spring Boot application
+    
 |===
 // examples: END
 
