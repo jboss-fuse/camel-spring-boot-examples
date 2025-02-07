@@ -25,11 +25,11 @@ public class SampleJmsRoute extends RouteBuilder {
     @Override
     public void configure() throws Exception {
 
-        from("file:src/main/data?noop=true")
-            .to("jms:queue:{{spring.artemis.embedded.queue}}");
+        from("file:{{input.dir}}?noop=true")
+            .to("jms:queue:{{artemis.queue}}");
 
        
-        from("jms:queue:{{spring.artemis.embedded.queue}}")
+        from("jms:queue:{{artemis.queue}}")
             .log("${body}");
     }
 }

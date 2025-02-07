@@ -6,13 +6,25 @@ This example shows how to work with a simple Apache Camel application using Spri
 
 === Introduction
 
+The example runs both locally using embedded Artemis broker, and it runs on OpenShift using AMQ Broker deployed via operator
 
-
-=== How to run the example
+=== How to run the example locally
 
 You can run this example using
 
     mvn spring-boot:run
+
+=== How to run the example on OpenShift
+
+You need to install the AMQ Broker Operator via OperatorHub as https://docs.redhat.com/en/documentation/red_hat_amq_broker/7.12/html/deploying_amq_broker_on_openshift/deploying-broker-on-ocp-using-operator_broker-ocp#proc-br-installing-operator-to-project-from-operatorhub_broker-ocp[stated in the documentation]
+
+then you can deploy the broker executing:
+
+    oc apply -f ocp-resource/amq-broker.yaml
+
+to deploy the application:
+
+    mvn clean install -P openshift
 
 === Using Camel components
 
