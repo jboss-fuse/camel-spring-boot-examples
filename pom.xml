@@ -38,6 +38,7 @@
 	<modules>
 		<module>activemq</module>
 		<module>actuator-http-metrics</module>
+		<module>amq-cert-manager</module>
 		<module>amqp</module>
 		<module>amqp-salesforce</module>
 		<module>arangodb</module>
