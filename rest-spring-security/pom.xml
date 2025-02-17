@@ -247,7 +247,7 @@
                                         </network>
                                         <volumes>
                                             <bind>
-                                                <volume> ${project.basedir}/src/test/resources:/opt/keycloak/data/import</volume>
+                                                <volume> ${project.basedir}/src/test/resources/keycloak:/opt/keycloak/data/import</volume>
                                             </bind>
                                         </volumes>
                                         <cmd>
