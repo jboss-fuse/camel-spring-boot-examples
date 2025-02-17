@@ -66,7 +66,7 @@ public class ExpenseApiTest {
 
 
     static KeycloakContainer keycloak = new KeycloakContainer()
-            .withRealmImportFile("expenses.json")
+            .withRealmImportFile("keycloak/expense-realm.json")
             .withAdminUsername("admin")
             .withAdminPassword("admin");
 
