@@ -270,5 +270,43 @@
                 </plugins>
             </build>
         </profile>
+		<profile>
+	      	<id>openshift</id>
+	      	<properties>
+				<sbProfile>openshift</sbProfile>
+				<jkube.enricher.jkube-service.name>csb-rest-spring-security</jkube.enricher.jkube-service.name>
+				<jkube.enricher.jkube-controller.name>csb-rest-spring-security</jkube.enricher.jkube-controller.name>
+				<jkube.enricher.jkube-controller.type>Deployment</jkube.enricher.jkube-controller.type>
+			</properties>
+	      	<build>
+				<plugins>
+				  <plugin>
+					<groupId>org.eclipse.jkube</groupId>
+					<artifactId>openshift-maven-plugin</artifactId>
+					<version>${jkube-maven-plugin-version}</version>
+					<configuration>
+					  <resources>
+					<serviceAccount>secret-reader</serviceAccount>
+					<serviceAccounts>
+					  <serviceAccount>
+						<name>secret-reader</name>
+						<deploymentRef>${jkube.enricher.jkube-controller.name}</deploymentRef>
+					  </serviceAccount>
+					</serviceAccounts>
+					  </resources>
+					</configuration>
+					<executions>
+					  <execution>
+					<goals>
+					  <goal>resource</goal>
+					  <goal>build</goal>
+					  <goal>deploy</goal>
+					</goals>
+					  </execution>
+					</executions>
+				  </plugin>
+				</plugins>
+	      </build>
+    	</profile>
     </profiles>
 </project>

@@ -60,6 +60,8 @@ public class SpringSecurityConfiguration {
 
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(
+                                "/actuator",
+                                "/actuator/**",
                                 "/api/v1/company**",
                                 "/api/api-doc**",
                                 "/openapi/**",
