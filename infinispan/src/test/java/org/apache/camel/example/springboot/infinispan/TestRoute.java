@@ -11,5 +11,9 @@ public class TestRoute extends RouteBuilder {
 		from("direct:test")
 				.to("direct:put-cache")
 				.to("mock:result");
+
+		from("direct:test-read")
+				.to("direct:read-cache")
+				.to("mock:result-read");
 	}
 }
