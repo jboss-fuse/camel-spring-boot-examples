@@ -11,7 +11,7 @@ This example starts an Infinispan server with Infinispan Docker Image, so it can
 
 === Build and test
 
-You can build this example using:
+You can build and test this example using:
 
     $ mvn package
 
@@ -19,11 +19,16 @@ You can build this example using:
 
 Start Infinispan container in a separate terminal:
 
-    $ docker run --rm -e USER=admin -e PASS=password -p 11222:11222 -v $PWD/src/test/resources:/user-config/ quay.io/infinispan/server:14.0.29.Final-1 -c /user-config/infinispan.xml
+    $ podman run --rm -e USER=admin -e PASS=password -p 11222:11222 -v $PWD/src/test/resources:/user-config/:Z quay.io/infinispan/server:15.1.5.Final -c /user-config/infinispan.xml
 
 You can run this example using:
 
     $ mvn spring-boot:run
+
+Call the exposed endpoint to save a cache item:
+
+    $ curl -X POST -H "Content-type: text/plain" -d "hello" http://localhost:8080/api/jdg?id=1
+
 
 And you should see output in the console.
 
