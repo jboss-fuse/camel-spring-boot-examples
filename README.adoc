@@ -27,7 +27,7 @@ readme's instructions.
 === Examples
 
 // examples: START
-Number of Examples: 62 (0 deprecated)
+Number of Examples: 63 (0 deprecated)
 
 [width="100%",cols="4,2,4",options="header"]
 |===
@@ -130,6 +130,8 @@ Number of Examples: 62 (0 deprecated)
 | link:supervising-route-controller/README.adoc[Supervising Route Controller] (supervising-route-controller) | Management and Monitoring | An example showing how to work with Camel's Supervising Route Controller and Spring Boot
 
 | link:activemq/README.adoc[Activemq] (activemq) | Messaging | An example showing how to work with Camel, ActiveMQ openwire and Spring Boot
+
+| link:amq-cert-manager/README.adoc[Amq Cert Manager] (amq-cert-manager) | Messaging | An example showing how to work with Camel, ActiveMQ Amqp and Spring Boot
 
 | link:amqp/README.adoc[Amqp] (amqp) | Messaging | An example showing how to work with Camel, ActiveMQ Amqp and Spring Boot
 
