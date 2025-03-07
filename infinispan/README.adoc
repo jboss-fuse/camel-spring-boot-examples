@@ -32,6 +32,87 @@ Call the exposed endpoint to save a cache item:
 
 And you should see output in the console.
 
+=== Run on OpenShift
+
+Make sure to have access to a new project or create a new one like:
+
+    $ oc new-project dg-example
+
+==== Install the operator
+
+Install the operator in the current namespace as stated in the documentation  https://docs.redhat.com/en/documentation/red_hat_data_grid/8.5/html/data_grid_operator_guide/installation#install-olm_install[Installing Data Grid Operator]
+
+==== Create the cluster using custom resources
+
+Create a file for the credentials
+
+```
+cat <<EOF >>identities.yaml
+credentials:
+- username: admin
+  password: password
+EOF
+```
+
+then create the secret using the created file
+
+    $ oc create secret generic --from-file=identities.yaml infinispan-identities
+
+once the secret has been created, create the cluster CR
+
+```
+cat <<EOF | oc apply -f -
+apiVersion: infinispan.org/v1
+kind: Infinispan
+metadata:
+  name: example-infinispan
+spec:
+  expose:
+    type: Route
+  security:
+    endpointEncryption:
+      type: None
+    endpointAuthentication: true
+    endpointSecretName: infinispan-identities
+  replicas: 1
+EOF
+```
+
+since the caches are managed by the custom resources, create the example cache
+
+```
+cat <<EOF | oc apply -f -
+apiVersion: infinispan.org/v2alpha1
+kind: Cache
+metadata:
+  name: default-cache
+spec:
+  clusterName: example-infinispan
+  name: default
+  template: |
+    distributedCache:
+      mode: "SYNC"
+      statistics: "true"
+      encoding:
+        key:
+          mediaType: "text/plain"
+        value:
+          mediaType: "text/plain"
+  updates:
+    strategy: retain
+EOF
+```
+
+==== Deploy the application
+
+deploy using OpenShift Maven Plugin
+
+    $ mvn clean install -P openshift -DskipTests
+
+call the endpoint
+
+    $ curl -X POST -H "Content-type: text/plain" -d "hello" "http://$(oc get route camel-example-spring-boot-infinispan -o go-template --template='{{.spec.host}}')/api/jdg?id=1"
+
 === Help and contributions
 
 If you hit any problem using Camel or have some feedback, then please
