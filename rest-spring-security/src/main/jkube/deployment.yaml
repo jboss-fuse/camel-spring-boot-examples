@@ -1,0 +1,39 @@
+metadata:
+  annotations:
+    configmap.jkube.io/update-on-change: ${project.artifactId}
+spec:
+  replicas: 1
+  template:
+    spec:
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 1
+              preference:
+                matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - ""
+      volumes:
+        - name: config
+          configMap:
+            name: ${project.artifactId}
+            items:
+              - key: application.properties
+                path: application.properties
+        - name: app-ssl-tls-volume
+          secret:
+            secretName: keycloak-tls
+            defaultMode: 420
+      containers:
+        - env:
+            - name: JAVA_OPTS_APPEND
+              value: "-Djavax.net.ssl.trustStore=/etc/app-ssl-tls-volume/truststore.jks"
+          volumeMounts:
+            - name: config
+              mountPath: /deployments/config
+            - name: app-ssl-tls-volume
+              readOnly: true
+              mountPath: /etc/app-ssl-tls-volume
+
