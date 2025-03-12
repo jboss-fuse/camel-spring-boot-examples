@@ -106,7 +106,7 @@
         <skip.starting.camel.context>false</skip.starting.camel.context>
 		<javax.servlet.api.version>4.0.1</javax.servlet.api.version>
 		<jkube-maven-plugin-version>1.18.1.redhat-00002</jkube-maven-plugin-version>
-        <jkube.generator.from>registry.access.redhat.com/ubi9/openjdk-17:1.20</jkube.generator.from>
+        <jkube.generator.from>registry.access.redhat.com/ubi9/openjdk-17:1.21</jkube.generator.from>
         <jkube.build.switchToDeployment>true</jkube.build.switchToDeployment>
         <kafka-avro-serializer-version>5.2.2</kafka-avro-serializer-version>
 		<reactor-version>3.2.22.RELEASE</reactor-version>

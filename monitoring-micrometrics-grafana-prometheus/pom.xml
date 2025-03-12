@@ -28,7 +28,7 @@
         <prometheus-version>1.0.1</prometheus-version>
         <docker.containerNamePattern>%a</docker.containerNamePattern>
         <jkube.replicas>3</jkube.replicas>
-        <jkube.namespace>csb-monitoring-example</jkube.namespace>
+        <jkube.namespace>csb-monitoring</jkube.namespace>
     </properties>
 
     <dependencyManagement>
