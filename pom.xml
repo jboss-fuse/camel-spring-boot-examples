@@ -105,11 +105,12 @@
 		<skip.starting.camel.context>false</skip.starting.camel.context>
 		<javax.servlet.api.version>4.0.1</javax.servlet.api.version>
 		<jkube-maven-plugin-version>1.17.0.redhat-00012</jkube-maven-plugin-version>
+		<jkube.generator.from>registry.access.redhat.com/ubi9/openjdk-17:1.21</jkube.generator.from>
+		<jkube.build.switchToDeployment>true</jkube.build.switchToDeployment>
 		<kafka-avro-serializer-version>5.2.2</kafka-avro-serializer-version>
 		<reactor-version>3.2.22.RELEASE</reactor-version>
 		<testcontainers-version>1.19.8</testcontainers-version>
 		<hapi-structures-v24-version>2.3</hapi-structures-v24-version>
-		<jkube.generator.from>registry.access.redhat.com/ubi9/openjdk-17:1.20</jkube.generator.from>
 		<lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
 		<docker-maven-plugin.version>0.45.1</docker-maven-plugin.version>
 		<testcontainers-keycloak.version>3.6.0</testcontainers-keycloak.version>
