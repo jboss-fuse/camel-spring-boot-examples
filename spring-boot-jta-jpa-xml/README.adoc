@@ -81,7 +81,7 @@ You should not find any trace of the message when querying the messages.
 == Trying out the example on OpenShift
 
 Everything mentioned in previous chapter is also applicable when running the example on OpenShift.
-On OpenShift the application is deployed as a `DeploymentConfig` using the `openshift-maven-plugin` that takes care of creating all the necessary OpenShift resources.
+On OpenShift the application is deployed as a `Deployment` using the `openshift-maven-plugin` that takes care of creating all the necessary OpenShift resources.
 
 First, start with creating a new OpenShift project:
 
@@ -141,7 +141,7 @@ After the application pod reaches the `Ready` state, you can try the same steps 
 To get the address of the application use:
 
 ----
-ADDRESS="http://$(oc get route spring-boot-jta-jpa -o jsonpath='{.spec.host}')/api"
+ADDRESS="http://$(oc get route spring-boot-jta-jpa-xml -o jsonpath='{.spec.host}')/api"
 ----
 
 === Next steps
