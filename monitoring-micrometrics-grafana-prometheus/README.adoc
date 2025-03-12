@@ -158,11 +158,11 @@ image::images/dashboard-docker.png[]
 
 === Run on Openshift
 
-To deploy on Openshift, you have to create a project with name +csb-monitoring-example+:
+To deploy on Openshift, you have to create a project with name +csb-monitoring+:
 
 [source, console]
 ----
-oc new-project csb-monitoring-example
+oc new-project csb-monitoring
 ----
 
 you can customize the project name setting the +jkube.namespace+ in the link:pom.xml[pom.xml] :
@@ -173,11 +173,11 @@ you can customize the project name setting the +jkube.namespace+ in the link:pom
         <category>Management and Monitoring</category>
         ....
         <jkube.replicas>3</jkube.replicas>
-        <jkube.namespace>csb-monitoring-example</jkube.namespace>
+        <jkube.namespace>csb-monitoring</jkube.namespace>
     </properties>
 ----
 
-or passing it as argument on command line +-Djkube.namespace=..."
+or passing it as argument on command line -Djkube.namespace=..."
 
 When the project  is created, is possible to deploy everything, running the following command:
 
