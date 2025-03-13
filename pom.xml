@@ -25,7 +25,7 @@
 	<parent>
 		<groupId>org.apache.camel.springboot</groupId>
 		<artifactId>spring-boot</artifactId>
-		<version>4.8.5.redhat-00001</version>
+		<version>4.8.5.redhat-00004</version>
 	</parent>
 
 	<groupId>org.apache.camel.springboot.example</groupId>
@@ -100,11 +100,11 @@
 	</modules>
 
 	<properties>
-		<camel-spring-boot-version>4.8.5.redhat-00001</camel-spring-boot-version>
+		<camel-spring-boot-version>4.8.5.redhat-00004</camel-spring-boot-version>
 		<maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
 		<skip.starting.camel.context>false</skip.starting.camel.context>
 		<javax.servlet.api.version>4.0.1</javax.servlet.api.version>
-		<jkube-maven-plugin-version>1.17.0.redhat-00012</jkube-maven-plugin-version>
+		<jkube-maven-plugin-version>1.17.0.redhat-00035</jkube-maven-plugin-version>
 		<jkube.generator.from>registry.access.redhat.com/ubi9/openjdk-17:1.21</jkube.generator.from>
 		<jkube.build.switchToDeployment>true</jkube.build.switchToDeployment>
 		<kafka-avro-serializer-version>5.2.2</kafka-avro-serializer-version>
