@@ -24,7 +24,7 @@
     <parent>
         <groupId>org.apache.camel.springboot.example</groupId>
         <artifactId>camel-example-spring-boot-servicecall</artifactId>
-        <version>4.8.5-SNAPSHOT</version>
+        <version>4.8.5.redhat-00001</version>
     </parent>
 
     <artifactId>camel-example-spring-boot-servicecall-services</artifactId>
@@ -76,14 +76,10 @@
         <!-- xml dsl -->
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
-            <artifactId>camel-xml-io-dsl-starter</artifactId>
+            <artifactId>camel-management-starter</artifactId>
         </dependency>
 
         <!-- monitoring -->
-        <dependency>
-            <groupId>org.apache.camel.springboot</groupId>
-            <artifactId>camel-management-starter</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
             <artifactId>camel-micrometer-starter</artifactId>
@@ -92,19 +88,20 @@
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-registry-prometheus</artifactId>
         </dependency>
-
-        <!-- test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!-- test -->
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-test-spring-junit5</artifactId>
-            <version>${camel-version}</version>
             <scope>test</scope>
+            <version>${camel-version}</version>
         </dependency>
+        
 
     </dependencies>
 
