@@ -78,6 +78,7 @@
         <module>routetemplate</module>
         <module>routetemplate-xml</module>
         <module>saga</module>
+        <module>salesforce</module>
         <module>soap-cxf</module>
         <module>splitter-eip</module>
         <module>spring-boot</module>
