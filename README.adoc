@@ -27,7 +27,7 @@ readme's instructions.
 === Examples
 
 // examples: START
-Number of Examples: 62 (0 deprecated)
+Number of Examples: 63 (0 deprecated)
 
 [width="100%",cols="4,2,4",options="header"]
 |===
@@ -138,6 +138,8 @@ Number of Examples: 62 (0 deprecated)
 | link:artemis/README.adoc[Artemis] (artemis) | Messaging | An example showing how to work with Camel, ActiveMQ Artemis and Spring Boot
 
 | link:kafka-avro/README.adoc[Kafka Avro] (kafka-avro) | Messaging | An example for Kafka avro
+
+| link:kafka-oauth-ocp/README.adoc[Kafka OAuth on OCP] (kafka-oauth-ocp) | Messaging | An example for Kafka on OCP using integrated OAuth
 
 | link:kafka-offsetrepository/README.adoc[Kafka Offsetrepository] (kafka-offsetrepository) | Messaging | An example for Kafka offsetrepository
 
