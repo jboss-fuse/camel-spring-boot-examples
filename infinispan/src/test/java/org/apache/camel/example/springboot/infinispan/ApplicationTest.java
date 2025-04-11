@@ -39,7 +39,7 @@ final class ApplicationTest {
 
 	private static final Logger LOG = LoggerFactory.getLogger(ApplicationTest.class);
 
-	private static final String CONTAINER_IMAGE = "quay.io/infinispan/server:15.1.5.Final";
+	private static final String CONTAINER_IMAGE = "registry.redhat.io/datagrid/datagrid-8-rhel9:1.5";
 
 	private static GenericContainer<?> container;
 
@@ -86,7 +86,7 @@ final class ApplicationTest {
 						BindMode.READ_ONLY)
 				.withCommand("-c", "/user-config/infinispan.xml").withExposedPorts(port)
 				.withCreateContainerCmdModifier(cmd).waitingFor(Wait.forListeningPort())
-				.waitingFor(Wait.forLogMessage(".*Infinispan.*Server.*started.*", 1));
+				.waitingFor(Wait.forLogMessage(".*Red Hat Data Grid.*Server.*started.*", 1));
 		container.start();
 	}
 
