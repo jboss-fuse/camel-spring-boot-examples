@@ -125,7 +125,7 @@
             <properties>
                 <jkube.generator.from>registry.access.redhat.com/ubi9/openjdk-17:latest</jkube.generator.from>
                 <jkube.build.switchToDeployment>true</jkube.build.switchToDeployment>
-                <jkube-maven-plugin-version>1.18.1.redhat-00010</jkube-maven-plugin-version>
+                <jkube-maven-plugin-version>1.18.1.redhat-00014</jkube-maven-plugin-version>
             </properties>
             <build>
                 <defaultGoal>install</defaultGoal>
