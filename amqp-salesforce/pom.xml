@@ -39,6 +39,7 @@
         <camelSalesforce.loginUrl>https://login.salesforce.com</camelSalesforce.loginUrl>
         <camel-spring-boot-version>4.10.3.redhat-00008</camel-spring-boot-version>
         <spring-boot-version>3.4.4</spring-boot-version>
+        <camel-community-version>4.10.3</camel-community-version>
     </properties>
 
     <dependencyManagement>
