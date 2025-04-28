@@ -15,7 +15,7 @@ See the link:src/main/resources/application.properties[configuration file] and t
 Start the apicurio registry in a docker container:
 
 ----
-docker run -d -p 8080:8080 apicurio/apicurio-registry-mem:2.4.3.Final
+docker run -d -p 8080:8080 apicurio/apicurio-registry:3.0.7
 ----
 
 Start the kafka broker:
