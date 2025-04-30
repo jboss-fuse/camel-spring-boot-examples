@@ -1,0 +1,113 @@
+= Spring Boot CXF JAX-WS Example
+
+== Overview
+
+This project demonstrates how to create a simple JAX-WS SOAP web service using Apache CXF with Spring Boot.
+
+It exposes a basic `Hello` service with a single operation, `sayHello`, which takes a name as input and returns a greeting string. The project includes configuration for the CXF endpoint, service implementation, unit tests, and an integration test.
+
+== Prerequisites
+
+*   Java Development Kit (JDK) 17 or later
+*   Apache Maven 3.6.0 or later
+
+== Building the Project
+
+To build the project, compile the code, run tests, and package it into an executable JAR, navigate to the project's root directory and run:
+
+[source,bash]
+----
+mvn clean install
+----
+
+This will create the JAR file in the `target/` directory (e.g., `target/spring-boot-cxf-jaxws-*.jar`).
+
+== Running the Application
+
+You can run the application directly using the generated JAR file:
+
+[source,bash]
+----
+java -jar target/spring-boot-cxf-jaxws-*.jar
+----
+
+or via Spring Boot maven plugin:
+
+[source,bash]
+----
+mvn spring-boot:run
+----
+
+The application will start, and the Spring Boot server will listen on port `8080` by default (unless overridden). The management endpoints listen on port `8081`.
+
+== Accessing the Service
+
+=== Service Endpoint
+
+The SOAP web service endpoint is published at:
+
+`http://localhost:8080/service/hello`
+
+The base path `/service` is configured via `cxf.path` in `application.properties`, and the specific endpoint path `/hello` is set in `WebServiceConfig.java`.
+
+=== WSDL
+
+The WSDL (Web Services Description Language) document for the service can be accessed in your browser or using tools like `curl` or SoapUI at:
+
+`http://localhost:8080/service/hello?wsdl`
+
+=== Example Request (using curl)
+
+You can test the service using `curl` by sending a SOAP request:
+
+[source,bash]
+----
+curl -X POST \
+     -H "Content-Type: text/xml;charset=UTF-8" \
+     -H "SOAPAction: urn:SayHello" \
+     --data @- \
+     http://localhost:8080/service/hello <<EOF
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.ws.sample/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:sayHello>
+         <myname>Luigi</myname>
+      </ser:sayHello>
+   </soapenv:Body>
+</soapenv:Envelope>
+EOF
+----
+
+=== Expected Response
+
+The service should return a SOAP response similar to this:
+
+[source,xml]
+----
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Body>
+        <ns2:sayHelloResponse xmlns:ns2="http://service.ws.sample/">
+            <return>Hello, Welcome to CXF Spring boot Luigi!!!</return>
+        </ns2:sayHelloResponse>
+    </soap:Body>
+</soap:Envelope>
+----
+
+*Note:* The `WebServiceConfig.java` enables CXF's logging feature, so you will see the incoming SOAP request and outgoing response logged to the console when the application is running and the service is invoked.
+
+== Testing
+
+The project includes both unit and integration tests.
+
+*   **Unit Tests:** `HelloPortImplTest.java` tests the `HelloPortImpl` class in isolation without starting the server.
+*   **Integration Tests:** `HelloServiceIT.java` starts the full Spring Boot application on a random port and uses a JAX-WS client to invoke the deployed web service.
+
+You can run all tests using Maven:
+
+[source,bash]
+----
+mvn test
+----
+
+Integration tests (those ending with `IT` by convention) are typically executed during the `verify` or `install`
+phase of the Maven lifecycle. Running `mvn install` (as shown in the build step) will execute both unit and integration tests.

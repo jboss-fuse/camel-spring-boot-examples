@@ -87,6 +87,8 @@
 		<module>soap-cxf</module>
 		<module>splitter-eip</module>
 		<module>spring-boot</module>
+		<module>spring-boot-cxf-jaxws</module>
+		<module>spring-boot-cxf-jaxws-xml</module>
 		<module>spring-boot-jta-jpa-autoconfigure</module>
 		<module>spring-boot-jta-jpa-xml</module>
 		<module>spring-jdbc</module>
@@ -99,7 +101,7 @@
 		<module>widget-gadget</module>
 		<module>xml</module>
 		<module>xml-import</module>
-	</modules>
+    </modules>
 
 	<repositories>
 		<repository>

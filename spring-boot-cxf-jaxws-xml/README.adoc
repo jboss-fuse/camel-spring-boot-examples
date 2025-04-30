@@ -1,0 +1,78 @@
+= Spring Boot CXF JAX-WS Example
+
+== Overview
+
+This project demonstrates how to create a SOAP web service using Spring Boot and Apache CXF using contract-first approach.
+It provides a simple "Hello" service that accepts a name parameter and returns a greeting message.
+
+== Features
+
+* Spring Boot 3.4.4 application with Apache CXF integration
+* JAX-WS SOAP web service implementation
+* Code generation from WSDL using CXF's wsdl2java tool
+* Request/response logging using CXF logging interceptors
+* Undertow as the embedded web server
+* Spring Boot Actuator for health monitoring
+
+== Technical Stack
+
+[cols="1,3"]
+== Building the Application
+
+To build the application, use Maven:
+
+[source,bash]
+----
+mvn clean package
+----
+
+This will:
+
+1. Generate Java classes from the WSDL definition
+2. Compile the code
+3. Run tests
+4. Package the application into an executable JAR
+
+== Running the Application
+
+You can run the application using the following command:
+
+[source,bash]
+----
+java -jar target/spring-boot-cxf-jaxws-xml-1.0-SNAPSHOT.jar
+----
+
+Or using Maven:
+
+[source,bash]
+----
+mvn spring-boot:run
+----
+
+== Service Endpoints
+
+Once started, the service endpoints will be available at:
+
+* SOAP Web Service: http://localhost:8080/service/hello
+* WSDL Definition: http://localhost:8080/service/hello?wsdl
+* Health Endpoint: http://localhost:8081/actuator/health
+
+== Testing the Service
+
+You can test the service using a SOAP client like SoapUI or using curl:
+
+[source,bash]
+----
+curl -X POST \
+  -H "Content-Type: text/xml;charset=UTF-8" \
+  -H "SOAPAction: urn:SayHello" \
+  -d '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.ws.sample/">
+       <soapenv:Header/>
+       <soapenv:Body>
+          <ser:sayHello>
+             <myname>Luigi</myname>
+          </ser:sayHello>
+       </soapenv:Body>
+    </soapenv:Envelope>' \
+  http://localhost:8080/service/hello
+----
