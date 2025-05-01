@@ -33,7 +33,6 @@
         <title>Spring Boot ServiceCall</title>
         <camel-spring-boot-version>4.10.3.redhat-00010</camel-spring-boot-version>
         <spring-boot-version>3.4.5</spring-boot-version>
-        <camel-version>4.10.3.redhat-00015</camel-version>
     </properties>
 
     <modules>
