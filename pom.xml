@@ -203,22 +203,6 @@
 						</configuration>
 					</execution>
 					<execution>
-						<id>update-camel</id>
-						<phase>pre-clean</phase>
-						<goals>
-							<goal>exec</goal>
-						</goals>
-						<configuration>
-							<executable>mvn</executable>
-							<arguments>
-								<argument>versions:set-property</argument>
-								<argument>-Dproperty=camel-version</argument>
-								<argument>-DnewVersion=${camel-version}</argument>
-								<argument>-DgenerateBackupPoms=false</argument>
-							</arguments>
-						</configuration>
-					</execution>
-					<execution>
 						<id>update-camel-spring-boot</id>
 						<phase>pre-clean</phase>
 						<goals>

@@ -3,7 +3,6 @@
 # Default values (empty)
 SB_VERSION=""
 CSB_VERSION=""
-CAMEL_VERSION=""
 CXF_VERSION=""
 CAMEL_COMMUNITY_VERSION=""
 JKUBE_VERSION=""
@@ -17,10 +16,6 @@ while [[ $# -gt 0 ]]; do
       ;;
     -csb)
       CSB_VERSION="$2"
-      shift 2
-      ;;
-    -c)
-      CAMEL_VERSION="$2"
       shift 2
       ;;
     -cxf)
@@ -73,11 +68,9 @@ mvn versions:update-property -Dproperty=$PROPERTIES -DgenerateBackupPoms=false -
 
 echo "Spring Boot Version: $SB_VERSION"
 echo "CSB Version: $CSB_VERSION"
-echo "Camel Version: $CAMEL_VERSION"
 echo "CXF Version: $CXF_VERSION"
 echo "Camel Community Version: $CAMEL_COMMUNITY_VERSION"
 echo "JKube Version: $JKUBE_VERSION"
-mvn versions:set-property -Dproperty=camel-version -DnewVersion=$CAMEL_VERSION -DgenerateBackupPoms=false
 mvn versions:set-property -Dproperty=camel-spring-boot-version -DnewVersion=$CSB_VERSION -DgenerateBackupPoms=false
 mvn versions:set-property -Dproperty=camel-community-version -DnewVersion=$CAMEL_COMMUNITY_VERSION -DgenerateBackupPoms=false
 mvn versions:set-property -Dproperty=spring-boot-version -DnewVersion=$SB_VERSION -DgenerateBackupPoms=false
