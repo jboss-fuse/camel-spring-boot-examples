@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>org.apache.camel.springboot.example</groupId>
     <artifactId>spring-boot-cxf-jaxws-xml</artifactId>
     <version>4.10.3-SNAPSHOT</version>
-
     <name>Camel SB Examples :: Spring Boot :: CXF JAXWS XML</name>
     <description>Spring Boot example running a CXF JAXWS XML Endpoint</description>
-
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
@@ -21,7 +16,6 @@
         <cxf-version>4.1.1.rhbac-redhat-00011</cxf-version>
         <category>CXF</category>
     </properties>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -33,7 +27,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
     <dependencies>
         <dependency>
             <groupId>org.apache.cxf</groupId>
@@ -45,22 +38,18 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-undertow</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-features-logging</artifactId>
         </dependency>
-
         <!-- testing -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -68,7 +57,6 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
@@ -87,7 +75,6 @@
                 <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-codegen-plugin</artifactId>
                 <version>${cxf-version}</version>
-
                 <executions>
                     <execution>
                         <id>generate-sources</id>

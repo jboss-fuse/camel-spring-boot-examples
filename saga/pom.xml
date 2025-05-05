@@ -18,16 +18,13 @@
 
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>camel-example-spring-boot-saga</artifactId>
     <groupId>org.apache.camel.springboot.example</groupId>
-    <version>4.10.3-SNAPSHOT</version>    
+    <version>4.10.3-SNAPSHOT</version>
     <name>Camel SB Examples :: Saga</name>
     <description>This example shows how to work with a simple Apache Camel application using Spring Boot and Narayana LRA Coordinator to manage distributed actions implementing SAGA pattern</description>
     <packaging>pom</packaging>
-
     <properties>
         <category>EIP</category>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -35,14 +32,12 @@
         <camel-spring-boot-version>4.10.3.redhat-00010</camel-spring-boot-version>
         <spring-boot-version>3.4.5</spring-boot-version>
     </properties>
-
     <modules>
         <module>saga-app</module>
         <module>saga-flight-service</module>
         <module>saga-payment-service</module>
         <module>saga-train-service</module>
     </modules>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -54,9 +49,7 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
     <dependencies>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -71,33 +64,27 @@
             <groupId>org.apache.camel.springboot</groupId>
             <artifactId>camel-undertow-starter</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
             <artifactId>camel-servlet-starter</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
             <artifactId>camel-jms-starter</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
             <artifactId>camel-lra-starter</artifactId>
         </dependency>
-
         <!-- Camel -->
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
             <artifactId>camel-spring-boot-starter</artifactId>
         </dependency>
-
         <!-- artemis jms pooled connections-->
         <dependency>
             <groupId>org.apache.activemq</groupId>
@@ -107,7 +94,6 @@
             <groupId>org.messaginghub</groupId>
             <artifactId>pooled-jms</artifactId>
         </dependency>
-
         <!-- test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

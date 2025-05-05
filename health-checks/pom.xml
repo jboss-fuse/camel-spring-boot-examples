@@ -18,12 +18,10 @@
 
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>camel-example-spring-boot-health-checks</artifactId>
     <groupId>org.apache.camel.springboot.example</groupId>
-    <version>4.10.3-SNAPSHOT</version>    
+    <version>4.10.3-SNAPSHOT</version>
     <name>Camel SB Examples :: Health Checks</name>
     <description>An example on how to work with health checks ib a simple Apache Camel application using Spring Boot.</description>
     <properties>
@@ -33,7 +31,6 @@
         <camel-spring-boot-version>4.10.3.redhat-00010</camel-spring-boot-version>
         <spring-boot-version>3.4.5</spring-boot-version>
     </properties>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -45,7 +42,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
     <dependencies>
         <!-- Spring Boot -->
         <dependency>
@@ -75,7 +71,6 @@
             <groupId>org.apache.camel.springboot</groupId>
             <artifactId>camel-platform-http-starter</artifactId>
         </dependency>
-
         <!-- monitoring -->
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
@@ -90,7 +85,6 @@
             <artifactId>micrometer-registry-prometheus</artifactId>
         </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>

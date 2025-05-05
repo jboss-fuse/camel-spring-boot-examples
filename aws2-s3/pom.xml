@@ -19,19 +19,16 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>camel-example-spring-boot-aws2-s3</artifactId>
     <groupId>org.apache.camel.springboot.example</groupId>
-    <version>4.10.3-SNAPSHOT</version>    
+    <version>4.10.3-SNAPSHOT</version>
     <name>Camel SB Examples :: AWS2 S3</name>
     <description>An example showing the Camel AWS2 S3 component with Spring Boot</description>
-
     <properties>
         <category>Cloud</category>
         <camel-spring-boot-version>4.10.3.redhat-00010</camel-spring-boot-version>
         <spring-boot-version>3.4.5</spring-boot-version>
     </properties>
-
     <!-- Spring-Boot and Camel BOM -->
     <dependencyManagement>
         <dependencies>
@@ -44,7 +41,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
     <dependencies>
         <!-- Camel -->
         <dependency>
@@ -55,7 +51,6 @@
             <groupId>org.apache.camel.springboot</groupId>
             <artifactId>camel-aws2-s3-starter</artifactId>
         </dependency>
-
         <!-- monitoring -->
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
@@ -80,7 +75,6 @@
             <artifactId>micrometer-registry-prometheus</artifactId>
         </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
@@ -97,6 +91,4 @@
             </plugin>
         </plugins>
     </build>
-
-
 </project>

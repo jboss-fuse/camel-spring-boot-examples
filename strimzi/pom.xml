@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
 
     Licensed to the Apache Software Foundation (ASF) under one or more
@@ -17,19 +17,15 @@
     limitations under the License.
 
 -->
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-        xmlns="http://maven.apache.org/POM/4.0.0"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>camel-example-spring-boot-strimzi</artifactId>
     <groupId>org.apache.camel.springboot.example</groupId>
-    <version>4.10.3-SNAPSHOT</version>    
+    <version>4.10.3-SNAPSHOT</version>
     <name>Camel SB Examples :: Strimzi</name>
     <description>Camel example which a route is defined in XML for Strimzi
         integration on Openshift/Kubernetes
     </description>
-
     <properties>
         <category>Messaging</category>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -38,8 +34,6 @@
         <camel-spring-boot-version>4.10.3.redhat-00010</camel-spring-boot-version>
         <spring-boot-version>3.4.5</spring-boot-version>
     </properties>
-
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -51,10 +45,7 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-
     <dependencies>
-
         <!-- Spring Boot -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -70,12 +61,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-undertow</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-
         <!-- Camel -->
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
@@ -85,7 +74,6 @@
             <groupId>org.apache.camel.springboot</groupId>
             <artifactId>camel-kafka-starter</artifactId>
         </dependency>
-
         <!-- monitoring -->
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
@@ -100,7 +88,6 @@
             <artifactId>micrometer-registry-prometheus</artifactId>
         </dependency>
     </dependencies>
-
     <build>
         <defaultGoal>spring-boot:run</defaultGoal>
         <plugins>
@@ -118,7 +105,6 @@
             </plugin>
         </plugins>
     </build>
-
     <profiles>
         <profile>
             <id>openshift</id>

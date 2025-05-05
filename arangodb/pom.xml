@@ -19,19 +19,16 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>camel-example-spring-boot-arangodb</artifactId>
     <groupId>org.apache.camel.springboot.example</groupId>
-    <version>4.10.3-SNAPSHOT</version>    
+    <version>4.10.3-SNAPSHOT</version>
     <name>Camel SB Examples :: ArangoDB</name>
     <description>An example showing the Camel ArangoDb component with Spring Boot</description>
-
     <properties>
         <category>Database</category>
         <camel-spring-boot-version>4.10.3.redhat-00010</camel-spring-boot-version>
         <spring-boot-version>3.4.5</spring-boot-version>
     </properties>
-
     <!-- Spring-Boot and Camel BOM -->
     <dependencyManagement>
         <dependencies>
@@ -44,7 +41,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
     <dependencies>
         <!-- Camel -->
         <dependency>
@@ -55,7 +51,6 @@
             <groupId>org.apache.camel.springboot</groupId>
             <artifactId>camel-arangodb-starter</artifactId>
         </dependency>
-
         <!-- monitoring -->
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
@@ -79,9 +74,7 @@
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-registry-prometheus</artifactId>
         </dependency>
-
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
@@ -98,6 +91,4 @@
             </plugin>
         </plugins>
     </build>
-
-
 </project>

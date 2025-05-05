@@ -18,39 +18,34 @@
 
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-
-	<groupId>org.apache.camel.springboot.example</groupId>
-	<artifactId>camel-example-spring-boot-http-ssl</artifactId>
-	<name>Camel SB Examples :: HTTP SSL</name>
-	<version>4.10.3-SNAPSHOT</version>
-	<description>An example showing the Camel HTTP component with Spring Boot and SSL</description>
-	<packaging>pom</packaging>
-
-	<properties>
-		<category>Rest</category>
-		<camel-spring-boot-version>4.10.3.redhat-00010</camel-spring-boot-version>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.apache.camel.springboot.example</groupId>
+    <artifactId>camel-example-spring-boot-http-ssl</artifactId>
+    <name>Camel SB Examples :: HTTP SSL</name>
+    <version>4.10.3-SNAPSHOT</version>
+    <description>An example showing the Camel HTTP component with Spring Boot and SSL</description>
+    <packaging>pom</packaging>
+    <properties>
+        <category>Rest</category>
+        <camel-spring-boot-version>4.10.3.redhat-00010</camel-spring-boot-version>
         <spring-boot-version>3.4.5</spring-boot-version>
-	</properties>
-
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>com.redhat.camel.springboot.platform</groupId>
-				<artifactId>camel-spring-boot-bom</artifactId>
-				<version>${camel-spring-boot-version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-
-	<modules>
-		<module>ssl-server</module>
-		<module>ssl-client</module>
-		<module>ssl-camel-server</module>
-		<module>ocp-ssl-camel-server</module>
-		<module>ocp-ssl-client</module>		
-	</modules>
-
+    </properties>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.redhat.camel.springboot.platform</groupId>
+                <artifactId>camel-spring-boot-bom</artifactId>
+                <version>${camel-spring-boot-version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <modules>
+        <module>ssl-server</module>
+        <module>ssl-client</module>
+        <module>ssl-camel-server</module>
+        <module>ocp-ssl-camel-server</module>
+        <module>ocp-ssl-client</module>
+    </modules>
 </project>

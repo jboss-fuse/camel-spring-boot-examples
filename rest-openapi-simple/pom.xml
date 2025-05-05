@@ -19,24 +19,20 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>camel-example-spring-boot-rest-openapi-simple</artifactId>
     <groupId>org.apache.camel.springboot.example</groupId>
-    <version>4.10.3-SNAPSHOT</version>    
+    <version>4.10.3-SNAPSHOT</version>
     <name>Camel SB Examples :: Rest :: OpenApi Simple</name>
     <description>This example shows how to call a Rest service defined using OpenApi specification</description>
-
     <properties>
         <category>Beginner</category>
         <title>REST OpenApi</title>
-
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <camel-spring-boot-version>4.10.3.redhat-00010</camel-spring-boot-version>
         <spring-boot-version>3.4.5</spring-boot-version>
         <maven-resources-plugin-version>3.3.1</maven-resources-plugin-version>
     </properties>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -48,24 +44,19 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
     <dependencies>
-
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
             <artifactId>camel-http-starter</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
             <artifactId>camel-rest-openapi-starter</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
             <artifactId>camel-timer-starter</artifactId>
         </dependency>
-
         <!-- monitoring -->
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
@@ -75,11 +66,8 @@
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-registry-prometheus</artifactId>
         </dependency>
-
     </dependencies>
-
     <build>
-
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -103,5 +91,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

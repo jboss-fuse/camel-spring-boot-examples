@@ -18,25 +18,20 @@
 
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>camel-example-tomcat-jdbc</artifactId>
     <groupId>org.apache.camel.springboot.example</groupId>
-    <version>4.10.3-SNAPSHOT</version>    
+    <version>4.10.3-SNAPSHOT</version>
     <name>Camel SB Examples :: Tomcat JDBC</name>
     <description>An example showing how to deploy a Camel Spring Boot application in Tomcat using its JDBC Data Source</description>
     <packaging>war</packaging>
-
     <properties>
         <category>Beginner</category>
-
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <camel-spring-boot-version>4.10.3.redhat-00010</camel-spring-boot-version>
         <spring-boot-version>3.4.5</spring-boot-version>
     </properties>
-
     <dependencyManagement>
         <dependencies>
             <!-- Camel BOM -->
@@ -49,9 +44,7 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
     <dependencies>
-
         <!-- Spring Boot -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -72,7 +65,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
         <!-- Tomcat -->
         <!-- Those dependencies will be provided by the tomcat server and therefore must be flagged as 'provided' -->
         <dependency>
@@ -85,13 +77,11 @@
             <artifactId>tomcat-jdbc</artifactId>
             <scope>provided</scope>
         </dependency>
-
         <!-- db driver -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
         </dependency>
-
         <!-- Camel -->
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
@@ -101,7 +91,6 @@
             <groupId>org.apache.camel.springboot</groupId>
             <artifactId>camel-spring-jdbc-starter</artifactId>
         </dependency>
-
         <!-- test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -119,7 +108,6 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
     <build>
         <finalName>${artifactId}</finalName>
         <plugins>

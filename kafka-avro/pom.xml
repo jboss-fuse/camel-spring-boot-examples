@@ -18,15 +18,12 @@
 
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
-  <modelVersion>4.0.0</modelVersion>
-
+    <modelVersion>4.0.0</modelVersion>
     <groupId>org.apache.camel.springboot.example</groupId>
     <version>4.10.3-SNAPSHOT</version>
-  <artifactId>camel-example-spring-boot-kafka-avro</artifactId>
-  <name>Camel SB Examples :: Kafka :: Avro</name>
-  <description>An example for Kafka avro</description>
-
+    <artifactId>camel-example-spring-boot-kafka-avro</artifactId>
+    <name>Camel SB Examples :: Kafka :: Avro</name>
+    <description>An example for Kafka avro</description>
     <properties>
         <category>Messaging</category>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -37,9 +34,8 @@
         <apicurio-version>3.0.0.redhat-00001</apicurio-version>
         <javafaker-version>1.0.2</javafaker-version>
     </properties>
-
     <dependencyManagement>
-         <dependencies>
+        <dependencies>
             <dependency>
                 <groupId>com.redhat.camel.springboot.platform</groupId>
                 <artifactId>camel-spring-boot-bom</artifactId>
@@ -49,7 +45,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
     <dependencies>
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
@@ -69,7 +64,6 @@
             <artifactId>apicurio-registry-serdes-avro-serde</artifactId>
             <version>${apicurio-version}</version>
         </dependency>
-
         <!-- monitoring -->
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
@@ -94,7 +88,6 @@
             <artifactId>micrometer-registry-prometheus</artifactId>
         </dependency>
     </dependencies>
-
     <build>
         <resources>
             <resource>
@@ -140,7 +133,6 @@
             </plugin>
         </plugins>
     </build>
-
     <profiles>
         <profile>
             <id>local</id>

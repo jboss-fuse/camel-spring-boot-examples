@@ -18,21 +18,17 @@
 
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <groupId>org.apache.camel.springboot.example</groupId>
         <artifactId>camel-example-spring-boot-observation</artifactId>
         <version>4.10.3-SNAPSHOT</version>
     </parent>
-
     <artifactId>camel-example-spring-boot-observation-service1</artifactId>
     <groupId>org.apache.camel.springboot.example</groupId>
-    <version>4.10.3-SNAPSHOT</version>    
+    <version>4.10.3-SNAPSHOT</version>
     <name>Camel SB Examples :: Observation :: Service 1</name>
     <description>An example showing how to trace incoming and outgoing messages from Camel with Micrometer Observation</description>
-
     <dependencies>
         <!-- spring-boot -->
         <dependency>
@@ -57,7 +53,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-
         <!-- camel -->
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
@@ -67,7 +62,6 @@
             <groupId>org.apache.camel.springboot</groupId>
             <artifactId>camel-http-starter</artifactId>
         </dependency>
-
         <!-- Reporter -->
         <dependency>
             <groupId>org.apache.camel.springboot.example</groupId>
@@ -75,7 +69,6 @@
             <version>${project.version}</version>
         </dependency>
     </dependencies>
-
     <build>
         <resources>
             <resource>

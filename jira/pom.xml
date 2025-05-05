@@ -19,14 +19,12 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>camel-example-spring-boot-jira</artifactId>
     <groupId>org.apache.camel.springboot.example</groupId>
-    <version>4.10.3-SNAPSHOT</version>    
+    <version>4.10.3-SNAPSHOT</version>
     <name>Camel SB Examples :: Jira</name>
     <description>An example that uses Jira Camel API</description>
     <packaging>jar</packaging>
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <category>Beginner</category>
@@ -35,7 +33,6 @@
         <guava-version>33.4.8-jre</guava-version>
         <exec-maven-plugin-version>3.5.0</exec-maven-plugin-version>
     </properties>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -47,8 +44,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-
     <dependencies>
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
@@ -63,7 +58,6 @@
             <artifactId>guava</artifactId>
             <version>${guava-version}</version>
         </dependency>
-
         <!-- Spring Boot -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -83,7 +77,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-
         <!-- monitoring -->
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
@@ -98,14 +91,12 @@
             <artifactId>micrometer-registry-prometheus</artifactId>
         </dependency>
     </dependencies>
-
     <repositories>
         <repository>
             <id>atlassian-public</id>
             <url>https://packages.atlassian.com/maven-external</url>
         </repository>
     </repositories>
-
     <build>
         <plugins>
             <plugin>
@@ -120,7 +111,6 @@
                     </execution>
                 </executions>
             </plugin>
-
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>

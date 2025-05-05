@@ -18,24 +18,20 @@
 
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>camel-example-spring-boot-observation</artifactId>
     <packaging>pom</packaging>
     <groupId>org.apache.camel.springboot.example</groupId>
-    <version>4.10.3-SNAPSHOT</version>    
+    <version>4.10.3-SNAPSHOT</version>
     <name>Camel SB Examples :: Observation</name>
     <description>An example showing how to trace incoming and outgoing messages from Camel with Micrometer Observation
     </description>
-
     <properties>
         <category>Management and Monitoring</category>
         <title>Micrometer Observation</title>
         <camel-spring-boot-version>4.10.3.redhat-00010</camel-spring-boot-version>
         <spring-boot-version>3.4.5</spring-boot-version>
     </properties>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -47,7 +43,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
     <modules>
         <module>loggingtracer</module>
         <module>service2</module>

@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>camel-example-spring-boot-monitoring</artifactId>
     <groupId>org.apache.camel.springboot.example</groupId>
-    <version>4.10.3-SNAPSHOT</version>    
+    <version>4.10.3-SNAPSHOT</version>
     <name>Camel SB Examples :: Monitoring</name>
     <description>Example on how to use Spring Boot's Actuator endpoints to
         gather info like mappings or metrics
     </description>
-
     <properties>
         <category>Management and Monitoring</category>
         <maven.compiler.source>17</maven.compiler.source>
@@ -27,7 +23,6 @@
         <jkube.replicas>3</jkube.replicas>
         <jkube.namespace>csb-monitoring</jkube.namespace>
     </properties>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -39,7 +34,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
     <dependencies>
         <!-- Spring Boot -->
         <dependency>
@@ -56,34 +50,28 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-undertow</artifactId>
         </dependency>
-
         <dependency>
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-registry-prometheus</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.jolokia</groupId>
             <artifactId>jolokia-server-core</artifactId>
             <version>${jolokia-version}</version>
         </dependency>
-
         <dependency>
             <groupId>io.prometheus.jmx</groupId>
             <artifactId>collector</artifactId>
             <version>${prometheus-version}</version>
         </dependency>
-
         <dependency>
             <groupId>io.prometheus</groupId>
             <artifactId>prometheus-metrics-tracer-initializer</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
             <artifactId>camel-metrics-starter</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-actuator-autoconfigure</artifactId>
@@ -109,10 +97,7 @@
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-management</artifactId>
         </dependency>
-
-
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
@@ -129,7 +114,6 @@
             </plugin>
         </plugins>
     </build>
-
     <profiles>
         <profile>
             <id>docker</id>
@@ -175,7 +159,6 @@
                                         </network>
                                     </run>
                                 </image>
-
                                 <image>
                                     <alias>grafana</alias>
                                     <name>csb-grafana</name>
@@ -236,7 +219,6 @@
                                         </network>
                                     </run>
                                 </image>
-
                                 <image>
                                     <alias>app</alias>
                                     <name>csb-app</name>
@@ -272,7 +254,6 @@
                 </plugins>
             </build>
         </profile>
-
         <profile>
             <id>openshift</id>
             <properties>

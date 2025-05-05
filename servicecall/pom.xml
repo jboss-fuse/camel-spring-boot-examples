@@ -18,26 +18,21 @@
 
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>camel-example-spring-boot-servicecall</artifactId>
     <groupId>org.apache.camel.springboot.example</groupId>
-    <version>4.10.3-SNAPSHOT</version>    
+    <version>4.10.3-SNAPSHOT</version>
     <name>Camel SB Examples :: ServiceCall</name>
     <description>An example showing how to work with Camel ServiceCall EIP and Spring Boot</description>
     <packaging>pom</packaging>
-
     <properties>
         <category>Cloud</category>
         <title>Spring Boot ServiceCall</title>
         <camel-spring-boot-version>4.10.3.redhat-00010</camel-spring-boot-version>
         <spring-boot-version>3.4.5</spring-boot-version>
     </properties>
-
     <modules>
         <module>consumer</module>
         <module>services</module>
     </modules>
-
 </project>

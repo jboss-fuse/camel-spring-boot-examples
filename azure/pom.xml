@@ -17,43 +17,36 @@
     limitations under the License.
 
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-
-  <groupId>org.apache.camel.springboot.example</groupId>
-  <artifactId>camel-example-spring-boot-azure</artifactId>
-  <version>4.10.3-SNAPSHOT</version>
-  <packaging>pom</packaging>
-  <name>Camel SB Examples :: Azure</name>
-  <description>An example showing the Camel Azure component with Spring Boot</description>
-
-  <properties>
-    <maven.compiler.source>17</maven.compiler.source>
-    <maven.compiler.target>17</maven.compiler.target>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <camel-spring-boot-version>4.10.3.redhat-00010</camel-spring-boot-version>
-    <spring-boot-version>3.4.5</spring-boot-version>
-  </properties>
-
-  <!-- Spring-Boot and Camel BOM -->
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-          <groupId>com.redhat.camel.springboot.platform</groupId>
-          <artifactId>camel-spring-boot-bom</artifactId>
-          <version>${camel-spring-boot-version}</version>
-          <type>pom</type>
-          <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
-
-  <modules>
-    <module>camel-example-spring-boot-azure-servicebus</module>
-    <module>camel-example-spring-boot-azure-eventhubs</module>
-  </modules>
-
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.apache.camel.springboot.example</groupId>
+    <artifactId>camel-example-spring-boot-azure</artifactId>
+    <version>4.10.3-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>Camel SB Examples :: Azure</name>
+    <description>An example showing the Camel Azure component with Spring Boot</description>
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <camel-spring-boot-version>4.10.3.redhat-00010</camel-spring-boot-version>
+        <spring-boot-version>3.4.5</spring-boot-version>
+    </properties>
+    <!-- Spring-Boot and Camel BOM -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.redhat.camel.springboot.platform</groupId>
+                <artifactId>camel-spring-boot-bom</artifactId>
+                <version>${camel-spring-boot-version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <modules>
+        <module>camel-example-spring-boot-azure-servicebus</module>
+        <module>camel-example-spring-boot-azure-eventhubs</module>
+    </modules>
 </project>

@@ -18,30 +18,26 @@
 
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>camel-example-spring-boot-amqp-salesforce</artifactId>
     <packaging>jar</packaging>
     <groupId>org.apache.camel.springboot.example</groupId>
-    <version>4.10.3-SNAPSHOT</version>    
+    <version>4.10.3-SNAPSHOT</version>
     <name>Camel SB Examples :: AMQP Salesforce</name>
     <description>AMQP message sending is created as contacts in Salesforce</description>
-
     <properties>
         <category>Messaging</category>
-        <camelSalesforce.clientId></camelSalesforce.clientId>
-        <camelSalesforce.clientSecret></camelSalesforce.clientSecret>
-        <camelSalesforce.userName></camelSalesforce.userName>
-        <camelSalesforce.password></camelSalesforce.password>
-        <camelSalesforce.namespace></camelSalesforce.namespace>
+        <camelSalesforce.clientId/>
+        <camelSalesforce.clientSecret/>
+        <camelSalesforce.userName/>
+        <camelSalesforce.password/>
+        <camelSalesforce.namespace/>
         <camelSalesforce.sslContextParameters.secureSocketProtocol>TLSv1.3</camelSalesforce.sslContextParameters.secureSocketProtocol>
         <camelSalesforce.loginUrl>https://login.salesforce.com</camelSalesforce.loginUrl>
         <camel-spring-boot-version>4.10.3.redhat-00010</camel-spring-boot-version>
         <spring-boot-version>3.4.5</spring-boot-version>
         <camel-community-version>4.10.3</camel-community-version>
     </properties>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -53,9 +49,7 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
     <dependencies>
-
         <!-- Camel -->
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
@@ -77,7 +71,6 @@
             <groupId>org.apache.camel.springboot</groupId>
             <artifactId>camel-jackson-starter</artifactId>
         </dependency>
-
         <!-- Spring Boot -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -97,7 +90,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-
         <!-- monitoring -->
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
@@ -111,7 +103,6 @@
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-registry-prometheus</artifactId>
         </dependency>
-
         <!-- testing -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -119,19 +110,15 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
     <build>
-
         <!-- we do not want version in the JAR name -->
         <finalName>${project.artifactId}</finalName>
-
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
             </resource>
         </resources>
-
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -174,7 +161,6 @@
             </plugin>
         </plugins>
     </build>
-
     <profiles>
         <profile>
             <id>generate-salesforce-dto</id>
@@ -248,9 +234,8 @@
                         <version>${jkube-maven-plugin-version}</version>
                         <configuration>
                             <namespace>${camelSalesforce.namespace}</namespace>
-                            <environment></environment>
+                            <environment/>
                         </configuration>
-
                         <executions>
                             <execution>
                                 <goals>
@@ -258,7 +243,6 @@
                                     <goal>build</goal>
                                     <goal>deploy</goal>
                                 </goals>
-
                             </execution>
                         </executions>
                     </plugin>
@@ -266,5 +250,4 @@
             </build>
         </profile>
     </profiles>
-
 </project>

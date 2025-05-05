@@ -18,15 +18,12 @@
 
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
-  <modelVersion>4.0.0</modelVersion>
-
-  <groupId>org.apache.camel.springboot.example</groupId>
-  <artifactId>camel-example-spring-boot-kafka-oauth-ocp</artifactId>
-  <version>4.10.3-SNAPSHOT</version>
-  <name>Camel SB Examples :: Kafka :: OAuth on OCP</name>
-  <description>An example for Kafka on OCP using integrated OAuth</description>
-
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.apache.camel.springboot.example</groupId>
+    <artifactId>camel-example-spring-boot-kafka-oauth-ocp</artifactId>
+    <version>4.10.3-SNAPSHOT</version>
+    <name>Camel SB Examples :: Kafka :: OAuth on OCP</name>
+    <description>An example for Kafka on OCP using integrated OAuth</description>
     <properties>
         <category>Messaging</category>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -34,9 +31,8 @@
         <camel-spring-boot-version>4.10.3.redhat-00010</camel-spring-boot-version>
         <spring-boot-version>3.4.5</spring-boot-version>
     </properties>
-
     <dependencyManagement>
-         <dependencies>
+        <dependencies>
             <dependency>
                 <groupId>com.redhat.camel.springboot.platform</groupId>
                 <artifactId>camel-spring-boot-bom</artifactId>
@@ -46,124 +42,115 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-  <dependencies>
-
-    <!-- Spring Boot -->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
-      <exclusions>
-        <exclusion>
-          <groupId>org.springframework.boot</groupId>
-          <artifactId>spring-boot-starter-tomcat</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-undertow</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-actuator</artifactId>
-    </dependency>
-
-    <!-- Camel -->
-    <dependency>
-      <groupId>org.apache.camel.springboot</groupId>
-      <artifactId>camel-spring-boot-starter</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.camel.springboot</groupId>
-      <artifactId>camel-kafka-starter</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>io.strimzi</groupId>
-      <artifactId>kafka-oauth-client</artifactId>
-      <version>0.15.0.redhat-00012</version>
-    </dependency>
-
-  </dependencies>
-
-  <repositories>
-    <repository>
-      <id>redhat-ga</id>
-      <url>https://maven.repository.redhat.com/ga/</url>
-      <name>Red Hat GA repository</name>
-      <snapshots>
-          <enabled>false</enabled>
-      </snapshots>
-      <releases>
-          <enabled>true</enabled>
-      </releases>
-    </repository>
-  </repositories>
-  <pluginRepositories>
-    <pluginRepository>
-      <id>redhat-ga</id>
-      <url>https://maven.repository.redhat.com/ga/</url>
-      <name>Red Hat GA repository</name>
-      <snapshots>
-          <enabled>false</enabled>
-      </snapshots>
-      <releases>
-          <enabled>true</enabled>
-      </releases>
-    </pluginRepository>
-  </pluginRepositories>
-
-
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-        <version>${spring-boot-version}</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>repackage</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-  </build>
-
-  <profiles>
-    <profile>
-      <id>openshift</id>
-      <properties>
-        <jkube.generator.from>registry.access.redhat.com/ubi9/openjdk-17:latest</jkube.generator.from>
-        <jkube.build.switchToDeployment>true</jkube.build.switchToDeployment>
-        <jkube-maven-plugin-version>1.18.1.redhat-00014</jkube-maven-plugin-version>
-      </properties>
-      <build>
-        <defaultGoal>install</defaultGoal>
+    <dependencies>
+        <!-- Spring Boot -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-undertow</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <!-- Camel -->
+        <dependency>
+            <groupId>org.apache.camel.springboot</groupId>
+            <artifactId>camel-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel.springboot</groupId>
+            <artifactId>camel-kafka-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.strimzi</groupId>
+            <artifactId>kafka-oauth-client</artifactId>
+            <version>0.15.0.redhat-00012</version>
+        </dependency>
+    </dependencies>
+    <repositories>
+        <repository>
+            <id>redhat-ga</id>
+            <url>https://maven.repository.redhat.com/ga/</url>
+            <name>Red Hat GA repository</name>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>redhat-ga</id>
+            <url>https://maven.repository.redhat.com/ga/</url>
+            <name>Red Hat GA repository</name>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </pluginRepository>
+    </pluginRepositories>
+    <build>
         <plugins>
-          <plugin>
-            <groupId>org.eclipse.jkube</groupId>
-            <artifactId>openshift-maven-plugin</artifactId>
-            <version>${jkube-maven-plugin-version}</version>
-            <executions>
-              <execution>
-                <goals>
-                  <goal>resource</goal>
-                  <goal>build</goal>
-                  <goal>apply</goal>
-                </goals>
-              </execution>
-            </executions>
-            <configuration>
-              <resources>
-                <serviceAccount>kafka-client-sa</serviceAccount>
-              </resources>
-            </configuration>
-          </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot-version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
-      </build>
-    </profile>
-  </profiles>
+    </build>
+    <profiles>
+        <profile>
+            <id>openshift</id>
+            <properties>
+                <jkube.generator.from>registry.access.redhat.com/ubi9/openjdk-17:latest</jkube.generator.from>
+                <jkube.build.switchToDeployment>true</jkube.build.switchToDeployment>
+                <jkube-maven-plugin-version>1.18.1.redhat-00014</jkube-maven-plugin-version>
+            </properties>
+            <build>
+                <defaultGoal>install</defaultGoal>
+                <plugins>
+                    <plugin>
+                        <groupId>org.eclipse.jkube</groupId>
+                        <artifactId>openshift-maven-plugin</artifactId>
+                        <version>${jkube-maven-plugin-version}</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>resource</goal>
+                                    <goal>build</goal>
+                                    <goal>apply</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <resources>
+                                <serviceAccount>kafka-client-sa</serviceAccount>
+                            </resources>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
