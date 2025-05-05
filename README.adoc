@@ -27,7 +27,7 @@ readme's instructions.
 === Examples
 
 // examples: START
-Number of Examples: 64 (0 deprecated)
+Number of Examples: 66 (0 deprecated)
 
 [width="100%",cols="4,2,4",options="header"]
 |===
@@ -90,6 +90,10 @@ Number of Examples: 64 (0 deprecated)
 | link:rest-cxf-opentelemetry/README.adoc[Rest Cxf Opentelemetry] (rest-cxf-opentelemetry) | CXF | An example showing Camel REST using CXF and OpenTelemetry with Spring Boot
 
 | link:soap-cxf/README.adoc[Soap Cxf] (soap-cxf) | CXF | An example showing the Camel SOAP CXF
+
+| link:spring-boot-cxf-jaxws/README.adoc[Spring Boot Cxf Jaxws] (spring-boot-cxf-jaxws) | CXF | Spring Boot example running a CXF JAXWS Endpoint
+
+| link:spring-boot-cxf-jaxws-xml/README.adoc[Spring Boot Cxf Jaxws Xml] (spring-boot-cxf-jaxws-xml) | CXF | Spring Boot example running a CXF JAXWS XML Endpoint
 
 | link:arangodb/README.adoc[Arangodb] (arangodb) | Database | An example showing the Camel ArangoDb component with Spring Boot
 
