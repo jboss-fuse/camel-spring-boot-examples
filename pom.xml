@@ -22,7 +22,7 @@
     <parent>
         <groupId>org.apache.camel.springboot</groupId>
         <artifactId>spring-boot</artifactId>
-        <version>4.10.3.redhat-00010</version>
+        <version>4.10.3.redhat-00013</version>
     </parent>
     <groupId>org.apache.camel.springboot.example</groupId>
     <artifactId>examples</artifactId>
