@@ -33,7 +33,6 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<camel-spring-boot-version>4.10.3.redhat-00010</camel-spring-boot-version>
         <spring-boot-version>3.4.5</spring-boot-version>
-		<awaitility-version>4.3.0.redhat-00001</awaitility-version>
 		<cxf-version>4.1.1.rhbac-redhat-00011</cxf-version>
 	</properties>
 
@@ -117,12 +116,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.awaitility</groupId>
-			<artifactId>awaitility</artifactId>
-			<version>${awaitility-version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
