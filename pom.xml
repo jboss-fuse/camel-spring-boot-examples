@@ -186,7 +186,7 @@
                             <executable>mvn</executable>
                             <arguments>
                                 <argument>versions:update-property</argument>
-                                <argument>-Dproperty=hapi-version,guava-version,exec-maven-plugin-version,jolokia-version,metrics-version,lombok-mapstruct-binding.version,mapstruct-version,activemq-version,testcontainers-version,javafaker-version,apicurio-version,avro.maven.plugin-version,prometheus-version,reactor-version,build-helper-maven-plugin-version,maven-resources-plugin-version,awaitility-version</argument>
+                                <argument>-Dproperty=hapi-version,guava-version,exec-maven-plugin-version,metrics-version,lombok-mapstruct-binding.version,mapstruct-version,activemq-version,testcontainers-version,javafaker-version,apicurio-version,avro.maven.plugin-version,prometheus-version,reactor-version,build-helper-maven-plugin-version,maven-resources-plugin-version,awaitility-version</argument>
                                 <argument>-DgenerateBackupPoms=false</argument>
                                 <argument>-Dmaven.version.ignore=(?i).*-(alpha|beta|m|rc)([-.]?\d+)?</argument>
                             </arguments>
@@ -286,6 +286,22 @@
                                 <argument>-DnewVersion=${openshift-maven-plugin-version}</argument>
                                 <argument>-DgenerateBackupPoms=false</argument>
                                 <argument>-DprofileId=openshift</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>update-jolokia</id>
+                        <phase>pre-clean</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>mvn</executable>
+                            <arguments>
+                                <argument>versions:set-property</argument>
+                                <argument>-Dproperty=jolokia-version</argument>
+                                <argument>-DnewVersion=${jolokia-version}</argument>
+                                <argument>-DgenerateBackupPoms=false</argument>
                             </arguments>
                         </configuration>
                     </execution>

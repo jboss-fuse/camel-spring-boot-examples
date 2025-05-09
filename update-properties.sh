@@ -6,6 +6,7 @@ CSB_VERSION=""
 CXF_VERSION=""
 CAMEL_COMMUNITY_VERSION=""
 JKUBE_VERSION=""
+JOLOKIA_VERSION=""
 
 # Parse command-line arguments
 while [[ $# -gt 0 ]]; do
@@ -28,6 +29,10 @@ while [[ $# -gt 0 ]]; do
       ;;
     -j)
       JKUBE_VERSION="$2"
+      shift 2
+      ;;
+    -jol)
+      JOLOKIA_VERSION="$2"
       shift 2
       ;;
     *)
@@ -62,7 +67,11 @@ if [ -z "$JKUBE_VERSION" ]; then
   read -p "Enter the JKube (Openshift Maven Plugin) version (ex. 1.18.1.redhat-00014): " JKUBE_VERSION
 fi
 
-PROPERTIES="hapi-version,guava-version,exec-maven-plugin-version,jolokia-version,metrics-version,lombok-mapstruct-binding.version,mapstruct-version,activemq-version,testcontainers-version,javafaker-version,apicurio-version,avro.maven.plugin-version,prometheus-version,reactor-version,build-helper-maven-plugin-version,maven-resources-plugin-version,awaitility-version"
+if [ -z "$JOLOKIA_VERSION" ]; then
+  read -p "Enter the Jolokia version (ex. 2.2.5.redhat-00001): " JOLOKIA_VERSION
+fi
+
+PROPERTIES="hapi-version,guava-version,exec-maven-plugin-version,metrics-version,lombok-mapstruct-binding.version,mapstruct-version,activemq-version,testcontainers-version,javafaker-version,apicurio-version,avro.maven.plugin-version,prometheus-version,reactor-version,build-helper-maven-plugin-version,maven-resources-plugin-version,awaitility-version"
 echo "Automatically updating the following properties $PROPERTIES"
 mvn versions:update-property -Dproperty=$PROPERTIES -DgenerateBackupPoms=false -DallowMajorUpdates=false -maven.version.ignore='(?i).*-(alpha|beta|m|rc)([-.]?\d+)?'
 
@@ -76,3 +85,4 @@ mvn versions:set-property -Dproperty=camel-community-version -DnewVersion=$CAMEL
 mvn versions:set-property -Dproperty=spring-boot-version -DnewVersion=$SB_VERSION -DgenerateBackupPoms=false
 mvn versions:set-property -Dproperty=cxf-version -DnewVersion=$CXF_VERSION -DgenerateBackupPoms=false
 mvn versions:set-property -Dproperty=jkube-maven-plugin-version -DnewVersion=$JKUBE_VERSION -DgenerateBackupPoms=false -DprofileId=openshift
+mvn versions:set-property -Dproperty=jolokia-version -DnewVersion=$JOLOKIA_VERSION -DgenerateBackupPoms=false
