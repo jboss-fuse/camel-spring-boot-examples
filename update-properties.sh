@@ -44,7 +44,7 @@ done
 
 # Prompt for any missing values
 if [ -z "$SB_VERSION" ]; then
-  read -p "Enter the Spring Boot version (ex. 3.4.5): " SB_VERSION
+  read -p "Enter the Spring Boot version (ex. 3.4.6): " SB_VERSION
 fi
 
 if [ -z "$CSB_VERSION" ]; then
@@ -64,7 +64,7 @@ if [ -z "$CAMEL_COMMUNITY_VERSION" ]; then
 fi
 
 if [ -z "$JKUBE_VERSION" ]; then
-  read -p "Enter the JKube (Openshift Maven Plugin) version (ex. 1.18.1.redhat-00014): " JKUBE_VERSION
+  read -p "Enter the JKube (Openshift Maven Plugin) version (ex. 1.18.1.redhat-00023): " JKUBE_VERSION
 fi
 
 if [ -z "$JOLOKIA_VERSION" ]; then

@@ -29,7 +29,7 @@
         <category>Clustering</category>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <camel-spring-boot-version>4.10.3.redhat-00013</camel-spring-boot-version>
+        <camel-spring-boot-version>4.10.3.redhat-00019</camel-spring-boot-version>
         <spring-boot-version>3.4.6</spring-boot-version>
     </properties>
     <dependencyManagement>
@@ -124,7 +124,7 @@
                 <sbProfile>openshift</sbProfile>
                 <jkube.generator.from>registry.access.redhat.com/ubi9/openjdk-17:latest</jkube.generator.from>
                 <jkube.build.switchToDeployment>true</jkube.build.switchToDeployment>
-                <jkube-maven-plugin-version>1.18.1.redhat-00014</jkube-maven-plugin-version>
+                <jkube-maven-plugin-version>1.18.1.redhat-00023</jkube-maven-plugin-version>
             </properties>
             <activation>
                 <property>
