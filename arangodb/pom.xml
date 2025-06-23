@@ -21,12 +21,12 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>camel-example-spring-boot-arangodb</artifactId>
     <groupId>org.apache.camel.springboot.example</groupId>
-    <version>4.10.3-SNAPSHOT</version>
+    <version>4.10.3.redhat-00016</version>
     <name>Camel SB Examples :: ArangoDB</name>
     <description>An example showing the Camel ArangoDb component with Spring Boot</description>
     <properties>
         <category>Database</category>
-        <camel-spring-boot-version>4.10.3.redhat-00019</camel-spring-boot-version>
+        <camel-spring-boot-version>4.10.3.redhat-00023</camel-spring-boot-version>
         <spring-boot-version>3.4.7</spring-boot-version>
     </properties>
     <!-- Spring-Boot and Camel BOM -->
@@ -90,5 +90,6 @@
                 </executions>
             </plugin>
         </plugins>
+        <pluginManagement />
     </build>
 </project>

@@ -22,14 +22,14 @@
     <artifactId>camel-example-spring-boot-opentelemetry</artifactId>
     <packaging>pom</packaging>
     <groupId>org.apache.camel.springboot.example</groupId>
-    <version>4.10.3-SNAPSHOT</version>
+    <version>4.10.3.redhat-00016</version>
     <name>Camel SB Examples :: OpenTelemetry</name>
     <description>An example showing how to use Camel with OpenTelemetry
     </description>
     <properties>
         <category>Management and Monitoring</category>
         <title>OpenTelemetry</title>
-        <camel-spring-boot-version>4.10.3.redhat-00019</camel-spring-boot-version>
+        <camel-spring-boot-version>4.10.3.redhat-00023</camel-spring-boot-version>
         <spring-boot-version>3.4.7</spring-boot-version>
     </properties>
     <modules>
@@ -38,4 +38,7 @@
         <module>hotel-booking</module>
         <module>trip-booking</module>
     </modules>
+    <build>
+    <pluginManagement />
+  </build>
 </project>

@@ -22,13 +22,13 @@
     <artifactId>camel-example-spring-boot-reactive-streams</artifactId>
     <packaging>jar</packaging>
     <groupId>org.apache.camel.springboot.example</groupId>
-    <version>4.10.3-SNAPSHOT</version>
+    <version>4.10.3.redhat-00016</version>
     <name>Camel SB Examples :: Reactive Streams</name>
     <description>An example that shows how Camel can exchange data using reactive streams with Spring Boot reactor
     </description>
     <properties>
         <category>Reactive</category>
-        <camel-spring-boot-version>4.10.3.redhat-00019</camel-spring-boot-version>
+        <camel-spring-boot-version>4.10.3.redhat-00023</camel-spring-boot-version>
         <spring-boot-version>3.4.7</spring-boot-version>
         <reactor-version>3.7.5</reactor-version>
     </properties>
@@ -116,6 +116,7 @@
                 </executions>
             </plugin>
         </plugins>
+        <pluginManagement />
     </build>
     <profiles>
         <profile>
@@ -129,7 +130,7 @@
                 <spring.profiles.active>openshift</spring.profiles.active>
                 <jkube.generator.from>registry.access.redhat.com/ubi9/openjdk-17:latest</jkube.generator.from>
                 <jkube.build.switchToDeployment>true</jkube.build.switchToDeployment>
-                <jkube-maven-plugin-version>1.18.1.redhat-00014</jkube-maven-plugin-version>
+                <jkube-maven-plugin-version>1.18.1.redhat-00028</jkube-maven-plugin-version>
             </properties>
             <build>
                 <plugins>

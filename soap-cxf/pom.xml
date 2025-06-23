@@ -21,16 +21,16 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.apache.camel.springboot.example</groupId>
   <artifactId>camel-example-spring-boot-soap-cxf</artifactId>
-  <version>4.10.3-SNAPSHOT</version>
+  <version>4.10.3.redhat-00016</version>
   <name>Camel SB Examples :: SOAP CXF</name>
   <description>An example showing the Camel SOAP CXF</description>
   <properties>
     <category>CXF</category>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <camel-spring-boot-version>4.10.3.redhat-00019</camel-spring-boot-version>
+    <camel-spring-boot-version>4.10.3.redhat-00023</camel-spring-boot-version>
     <spring-boot-version>3.4.7</spring-boot-version>
-    <cxf-version>4.1.1.rhbac-redhat-00016</cxf-version>
+    <cxf-version>4.1.1.rhbac-redhat-00021</cxf-version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -152,5 +152,6 @@
         </executions>
       </plugin>
     </plugins>
+    <pluginManagement />
   </build>
 </project>
