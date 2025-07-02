@@ -15,10 +15,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8
         </project.reporting.outputEncoding>
-        <camel-spring-boot-version>4.10.3.redhat-00019</camel-spring-boot-version>
+        <camel-spring-boot-version>4.10.3.redhat-00023</camel-spring-boot-version>
         <spring-boot-version>3.4.7</spring-boot-version>
         <jolokia-version>2.2.5.redhat-00001</jolokia-version>
         <prometheus-version>1.2.0.redhat-00001</prometheus-version>
+        <docker-maven-plugin.version>0.42.0</docker-maven-plugin.version>
         <docker.containerNamePattern>%a</docker.containerNamePattern>
         <jkube.replicas>3</jkube.replicas>
         <jkube.namespace>csb-monitoring</jkube.namespace>
@@ -67,10 +68,6 @@
         <dependency>
             <groupId>io.prometheus</groupId>
             <artifactId>prometheus-metrics-tracer-initializer</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.camel.springboot</groupId>
-            <artifactId>camel-metrics-starter</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -223,7 +220,7 @@
                                     <alias>app</alias>
                                     <name>csb-app</name>
                                     <build>
-                                        <from>eclipse-temurin:17.0.8.1_1-jre-alpine</from>
+                                        <from>eclipse-temurin:17-jre</from>
                                         <assemblies>
                                             <assembly>
                                                 <descriptorRef>artifact</descriptorRef>

@@ -143,7 +143,7 @@ dummy_call_counter_total{camelContext="Camel-Monitoring-Example",} 2.0
 === Run locally on Docker
 
 Is possible to run the entire project with prometheus and grafana using docker maven plugin.
-In order to run it , you need to have a running docker daemon on your machine, then in a shell
+In order to run it, you need to have a running docker daemon on your machine and you need to enable the "Enable Host Networking" setting within Docker Settings -> Resources -> Network (if applicable).  Then in a shell
 you can run:
 
 [source,console]
