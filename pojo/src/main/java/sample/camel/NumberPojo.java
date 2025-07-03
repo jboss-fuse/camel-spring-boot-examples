@@ -28,10 +28,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class NumberPojo {
 
-    // sends the message to the stream:out endpoint but hidden behind this interface
+    // sends the message to the log:out endpoint but hidden behind this interface
     // so the client java code below can use the interface method instead of Camel's
     // FluentProducerTemplate or ProducerTemplate APIs
-    @Produce("stream:out")
+    @Produce("log:out")
     private MagicNumber magic;
 
     // only consume when the predicate matches, e.g. when the message body is lower than 100

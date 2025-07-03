@@ -38,8 +38,8 @@ public class MyCamelRouter extends RouteBuilder {
         from("timer:hello?period={{myPeriod}}").routeId("hello")
                 // and call the bean
                 .bean(myBean, "saySomething")
-                // and print it to system out via stream component
-                .to("stream:out");
+                // and print it to system out via log component
+                .to("log:out");
     }
 
 }
