@@ -31,7 +31,7 @@
         <simple>${body} contains 'foo'</simple>
         <to uri="log:foo?showHeaders=true"/>
       </filter>
-      <to uri="stream:out"/>
+      <to uri="log:out"/>
     </route>
 
 </routes>
