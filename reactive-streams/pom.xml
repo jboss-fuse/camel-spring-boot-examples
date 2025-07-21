@@ -28,7 +28,7 @@
     </description>
     <properties>
         <category>Reactive</category>
-        <camel-spring-boot-version>4.10.6.redhat-00001</camel-spring-boot-version>
+        <camel-spring-boot-version>4.10.6.redhat-00002</camel-spring-boot-version>
         <spring-boot-version>3.4.7</spring-boot-version>
         <reactor-version>3.7.5</reactor-version>
     </properties>
