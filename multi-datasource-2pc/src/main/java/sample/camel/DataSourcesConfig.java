@@ -1,6 +1,5 @@
 package sample.camel;
 
-import io.agroal.api.security.AgroalSecurityProvider;
 import io.agroal.springframework.boot.AgroalDataSource;
 import io.agroal.springframework.boot.AgroalDataSourceAutoConfiguration;
 import io.agroal.springframework.boot.jndi.AgroalDataSourceJndiBinder;
@@ -21,8 +20,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.jta.JtaTransactionManager;
 
-import java.util.ArrayList;
-
 import javax.sql.DataSource;
 
 @Configuration
@@ -40,13 +37,12 @@ public class DataSourcesConfig {
     @ConfigurationProperties("app.datasource.ds1.agroal")
     public AgroalDataSource firstDataSource(
         @Qualifier("ds1properties") DataSourceProperties properties,
-        ObjectProvider<JtaTransactionManager> jtaPlatform,
-        ObjectProvider<XAResourceRecoveryRegistry> xaResourceRecoveryRegistry,
-        ObjectProvider<AgroalDataSourceJndiBinder> jndiBinder,
-        ObjectProvider<AgroalSecurityProvider> securityProvider) {
+        JtaTransactionManager jtaPlatform,
+        XAResourceRecoveryRegistry xaResourceRecoveryRegistry,
+        ObjectProvider<AgroalDataSourceJndiBinder> jndiBinder) {
 
-        return new AgroalDataSourceAutoConfiguration(jtaPlatform, xaResourceRecoveryRegistry, jndiBinder, securityProvider)
-            .dataSource(properties, true, false, false, new ArrayList<Object>(), new ArrayList<Object>());
+        return new AgroalDataSourceAutoConfiguration(jtaPlatform, xaResourceRecoveryRegistry)
+            .dataSource(properties, false, false, jndiBinder);
     }
 
     @Bean("ds1jdbc")
@@ -72,13 +68,12 @@ public class DataSourcesConfig {
     @ConfigurationProperties("app.datasource.ds2.agroal")
     public AgroalDataSource secondDataSource(
         @Qualifier("ds2properties") DataSourceProperties properties,
-        ObjectProvider<JtaTransactionManager> jtaPlatform,
-        ObjectProvider<XAResourceRecoveryRegistry> xaResourceRecoveryRegistry,
-        ObjectProvider<AgroalDataSourceJndiBinder> jndiBinder,
-        ObjectProvider<AgroalSecurityProvider> securityProvider) {
+        JtaTransactionManager jtaPlatform,
+        XAResourceRecoveryRegistry xaResourceRecoveryRegistry,
+        ObjectProvider<AgroalDataSourceJndiBinder> jndiBinder) {
 
-        return new AgroalDataSourceAutoConfiguration(jtaPlatform, xaResourceRecoveryRegistry, jndiBinder, securityProvider)
-            .dataSource(properties, true, false, false, new ArrayList<Object>(), new ArrayList<Object>());
+        return new AgroalDataSourceAutoConfiguration(jtaPlatform, xaResourceRecoveryRegistry)
+            .dataSource(properties, false, false, jndiBinder);
     }
 
     @Bean("ds2jdbc")
