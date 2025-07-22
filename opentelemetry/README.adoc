@@ -157,9 +157,10 @@ MDC Logging is enabled, and tracing information printing into the logs to be abl
 
 ==== Install operators
 
- - Red Hat Streams for Apache Kafka https://docs.redhat.com/en/documentation/red_hat_streams_for_apache_kafka/2.7/html/deploying_and_managing_streams_for_apache_kafka_on_openshift/operator-hub-str#proc-deploying-cluster-operator-hub-str[doc]
- - Red Hat build of OpenTelemetry https://docs.redhat.com/en/documentation/openshift_container_platform/4.16/html/red_hat_build_of_opentelemetry/install-otel#installing-otel-by-using-the-web-console_install-otel[doc]
- - Tempo Operator https://docs.redhat.com/en/documentation/openshift_container_platform/4.16/html/distributed_tracing/distributed-tracing-platform-tempo#distr-tracing-tempo-install-web-console_dist-tracing-tempo-installing[doc]
+ - Red Hat Streams for Apache Kafka https://docs.redhat.com/en/documentation/red_hat_streams_for_apache_kafka/latest/html/deploying_and_managing_streams_for_apache_kafka_on_openshift/deploying-streams-from-operator-hub-str[doc]
+ - Red Hat build of OpenTelemetry https://docs.redhat.com/en/documentation/openshift_container_platform/latest/html/red_hat_build_of_opentelemetry/install-otel#installing-otel-by-using-the-web-console_install-otel[doc]
+ - Tempo Operator https://docs.redhat.com/en/documentation/openshift_container_platform/latest/html/distributed_tracing/distr-tracing-tempo-installing#distr-tracing-tempo-install-web-console_distr-tracing-tempo-installing[doc]
+- Cluster Observability Operator https://docs.redhat.com/en/documentation/openshift_container_platform/latest/html/cluster_observability_operator/installing-cluster-observability-operators#installing-the-cluster-observability-operator-in-the-web-console-_installing_the_cluster_observability_operator[doc]
 
 ==== Create resources
 
@@ -167,14 +168,38 @@ Create kafka cluster named `otel-cluster`:
 
 ```
 cat << EOF | oc apply -f -
-kind: Kafka
 apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaNodePool
+metadata:
+  name: multirole
+  labels:
+    strimzi.io/cluster: otel-cluster
+spec:
+  roles:
+    - controller
+    - broker
+  storage:
+    type: ephemeral
+    kraftMetadata: shared
+  replicas: 1
+---
+apiVersion: kafka.strimzi.io/v1beta2
+kind: Kafka
 metadata:
   name: otel-cluster
+  annotations:
+    strimzi.io/kraft: enabled
+    strimzi.io/node-pools: enabled
 spec:
   kafka:
-    version: 3.7.0
-    replicas: 3
+    logging:
+      type: inline
+    config:
+      offsets.topic.replication.factor: 1
+      transaction.state.log.replication.factor: 1
+      default.replication.factor: 1
+      min.insync.replicas: 1
+      transaction.state.log.min.isr: 1
     listeners:
       - name: plain
         port: 9092
@@ -184,22 +209,7 @@ spec:
         port: 9093
         type: internal
         tls: true
-    config:
-      offsets.topic.replication.factor: 3
-      transaction.state.log.replication.factor: 3
-      transaction.state.log.min.isr: 2
-      default.replication.factor: 3
-      min.insync.replicas: 2
-      inter.broker.protocol.version: '3.7'
-    storage:
-      type: ephemeral
-  zookeeper:
-    replicas: 3
-    storage:
-      type: ephemeral
-  entityOperator:
-    topicOperator: {}
-    userOperator: {}
+    version: 3.9.0
 EOF
 ```
 
@@ -212,14 +222,17 @@ kind: TempoMonolithic
 metadata:
   name: monolitic-example
 spec:
-  jaegerui:
+  multitenancy:
+    authentication:
+      - tenantId: application
+        tenantName: application
     enabled: true
-    resources:
-      limits:
-        cpu: '2'
-        memory: 2Gi
-    route:
-      enabled: true
+    mode: openshift
+  tenants:
+    mode: openshift
+    authentication:
+      - tenantId: application
+        tenantName: application
   resources:
     limits:
       cpu: '2'
@@ -227,6 +240,71 @@ spec:
   storage:
     traces:
       backend: memory
+EOF
+```
+
+Create roles to send traces via Collector, to the Tempo
+
+```
+cat << EOF | oc apply -f -
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: tempo-traces-reader
+rules:
+  - apiGroups:
+      - 'tempo.grafana.com'
+    resources:
+      - application
+    resourceNames:
+      - traces
+    verbs:
+      - 'get'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: tempo-traces-reader
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: tempo-traces-reader
+subjects:
+  - kind: Group
+    apiGroup: rbac.authorization.k8s.io
+    name: system:authenticated
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: tempo-traces-write
+rules:
+  - apiGroups:
+      - 'tempo.grafana.com'
+    resources:
+      - application
+    resourceNames:
+      - traces
+    verbs:
+      - 'create'
+---
+kind: ServiceAccount
+apiVersion: v1
+metadata:
+  name: otel-collector
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: tempo-traces-from-otel
+subjects:
+  - kind: ServiceAccount
+    name: otel-collector
+    namespace: otel-example
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: tempo-traces-write
 EOF
 ```
 
@@ -239,13 +317,21 @@ apiVersion: opentelemetry.io/v1beta1
 metadata:
   name: otel-example
 spec:
+  serviceAccount: otel-collector
   config:
+    extensions:
+      bearertokenauth:
+        filename: /var/run/secrets/kubernetes.io/serviceaccount/token
     exporters:
       debug: {}
       otlp/tempo:
-        endpoint: 'http://tempo-monolitic-example:4317'
+        auth:
+          authenticator: bearertokenauth
+        endpoint: 'tempo-monolitic-example-gateway:4317'
+        headers:
+          X-Scope-OrgID: application
         tls:
-          insecure: true
+          insecure_skip_verify: true
       prometheus:
         endpoint: '0.0.0.0:8889'
         metric_expiration: 180m
@@ -259,6 +345,8 @@ spec:
           grpc: {}
           http: {}
     service:
+      extensions:
+        - bearertokenauth
       pipelines:
         traces:
           exporters:
@@ -305,6 +393,19 @@ spec:
 EOF
 ```
 
+Install the distributed tracing UI plugin to show the traces on the OCP console https://docs.redhat.com/en/documentation/openshift_container_platform/latest/html/cluster_observability_operator/observability-ui-plugins#coo-distributed-tracing-ui-plugin-install_distributed-tracing-ui-plugin[doc]
+
+```
+cat << EOF | oc apply -f -
+apiVersion: observability.openshift.io/v1alpha1
+kind: UIPlugin
+metadata:
+  name: distributed-tracing
+spec:
+  type: DistributedTracing
+EOF
+```
+
 Create the service monitor to allow the prometheus metrics exposed by the opentelemetry collector be scraped by the OpenShift metrics storage
 
 ```
@@ -328,7 +429,7 @@ EOF
 ==== Deploy applications
 
 ```
-mvn clean install -Popenshift
+mvn clean install -Popenshift -DskipTests
 ```
 
 now once the pods are ready it is possible to call the Trip Booking entry point
@@ -345,13 +446,13 @@ Async communication (over Kafka):
 curl http://$(oc get route trip-booking -o go-template --template='{{.spec.host}}')/camel/asyncBookTrip
 ```
 
-The Jaeger console is available at
+The Distributed Tracing console is available on the OpenShift console in the `Observe -> Traces` item
 
 ```
-echo https://$(oc get route tempo-monolitic-example-jaegerui -o go-template --template='{{.spec.host}}')
+echo $(oc whoami --show-console)/observe/traces
 ```
 
-To query the metrics it is possible to use the integrated OpenShift monitoring console at
+To query the metrics it is possible to use the integrated OpenShift monitoring console in the `Observe -> Metrics` item
 
 ```
 echo $(oc whoami --show-console)/monitoring/query-browser
