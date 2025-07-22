@@ -6,7 +6,7 @@ This example shows how to set up multiple pooled datasources with Camel Spring B
 
 === Introduction
 
-One of the databases has a non-unique `name` column, while the other has a unique one. When trying to insert repeated names in both databases at the same time, the second `prepare` should fail making the transaction rollback for both databases.
+The first database has a non-unique `name` column, while the second has a unique one.  When trying to insert repeated names in both databases at the same time, the second `prepare` should fail making the transaction rollback for both databases.
 
 === Classes and resources
 
