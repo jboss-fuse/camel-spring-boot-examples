@@ -31,12 +31,10 @@
     <description>Camel Examples</description>
     <packaging>pom</packaging>
     <modules>
-        <module>activemq</module>
         <module>actuator-http-metrics</module>
         <module>amq-cert-manager</module>
         <module>amqp</module>
         <module>amqp-salesforce</module>
-        <module>arangodb</module>
         <module>artemis</module>
         <module>aws2-s3</module>
         <module>azure</module>
@@ -55,7 +53,6 @@
         <module>load-balancer-eip</module>
         <module>mail-ms-exchange-oauth2</module>
         <module>master</module>
-        <module>metrics</module>
         <module>monitoring-micrometrics-grafana-prometheus</module>
         <module>multi-datasource-2pc</module>
         <module>observation</module>
@@ -66,7 +63,6 @@
         <module>pojo</module>
         <module>quartz</module>
         <module>rabbitmq</module>
-        <module>reactive-streams</module>
         <module>resilience4j</module>
         <module>rest-cxf-opentelemetry</module>
         <module>rest-openapi</module>

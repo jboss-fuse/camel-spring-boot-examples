@@ -30,7 +30,7 @@
         <opentelemetry-javaagent.version>2.7.0</opentelemetry-javaagent.version>
         <camel-spring-boot-version>4.10.6.redhat-00004</camel-spring-boot-version>
         <spring-boot-version>3.4.8</spring-boot-version>
-        <cxf-version>4.1.1.rhbac-redhat-00016</cxf-version>
+        <cxf-version>4.1.2.rhbac-redhat-00002</cxf-version>
         <camel-community-version>4.10.6</camel-community-version>
         <build-helper-maven-plugin-version>3.6.0</build-helper-maven-plugin-version>
     </properties>
