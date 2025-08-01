@@ -63,20 +63,20 @@ The application will start on port 8080.
 1. Fetch all contacts:
 [source,bash]
 ----
-curl -X GET http://localhost:8080/camel/contacts | jq
+curl -X GET http://localhost:8080/contacts | jq
 ----
 
 2. Fetch a specific contact:
 [source,bash]
 ----
-curl -X GET http://localhost:8080/camel/contacts/003XXXXXXXXXXXXXXX | jq
+curl -X GET http://localhost:8080/contacts/003XXXXXXXXXXXXXXX | jq
 ----
 Replace `003XXXXXXXXXXXXXXX` with an actual Salesforce Contact ID.
 
 3. Update a specific contact:
 [source,bash]
 ----
-curl --location --request PUT 'http://localhost:8080/camel/contacts/003XXXXXXXXXXXXXXX' \
+curl --location --request PUT 'http://localhost:8080/contacts/003XXXXXXXXXXXXXXX' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "LastName": "Smith",

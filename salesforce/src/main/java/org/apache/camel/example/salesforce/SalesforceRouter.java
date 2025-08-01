@@ -55,9 +55,8 @@ public class SalesforceRouter extends RouteBuilder {
 
     @Override
     public void configure() throws Exception {
-        // Configure REST endpoint using servlet component and JSON binding
+        // Configure REST endpoint using platform-http component and JSON binding
         restConfiguration()
-            .component("servlet")        // Use servlet as the HTTP server
             .bindingMode(RestBindingMode.json);      // Enable automatic JSON data binding
 
         // Define REST endpoint that responds to GET requests
@@ -76,7 +75,7 @@ public class SalesforceRouter extends RouteBuilder {
         from("direct:getContacts")
             .id("getContacts")
             // Execute SOQL query to get Contact objects from Salesforce
-            .to("salesforce:queryAll?sObjectQuery=SELECT Id, Name, Email FROM Contact")
+            .to("salesforce:queryAll?sObjectQuery=SELECT Id, Name, Email FROM Contact&rawPayload=true")
             // Uncommented debug logging line
             // .to("log:debug?showAll=true&multiline=true")
             // Convert Salesforce response to JSON using Jackson library
@@ -86,7 +85,7 @@ public class SalesforceRouter extends RouteBuilder {
         from("direct:getContactById")
             .id("getContactById")
             // Execute SOQL query to get Contact objects from Salesforce
-            .toD("salesforce:getSObject?sObjectName=Contact&sObjectId=${header.id}")
+            .toD("salesforce:getSObject?sObjectName=Contact&sObjectId=${header.id}&rawPayload=true")
             // Uncommented debug logging line
             // .to("log:debug?showAll=true&multiline=true");
             // Convert Salesforce response to JSON using Jackson library
