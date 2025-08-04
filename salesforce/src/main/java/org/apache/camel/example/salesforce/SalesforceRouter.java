@@ -104,7 +104,7 @@ public class SalesforceRouter extends RouteBuilder {
             .toD("salesforce:updateSObject?sObjectName=Contact&sObjectId=${header.id}");
 
         // Define route that listens for Salesforce CDC events for Contact objects
-        from("salesforce:subscribe:data/ContactChangeEvent")
+        from("salesforce:subscribe:data/ContactChangeEvent?rawPayload=true")
             .id("Listener Salesforce CDC events") // Set route ID for monitoring
             // Uncommented debug logging line
             // .to("log:debug?showAll=true&multiline=true");
