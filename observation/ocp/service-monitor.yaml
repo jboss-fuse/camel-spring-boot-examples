@@ -1,48 +1,17 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
+  name: otel-example-collector
   labels:
-    k8s-app: camel-example-spring-boot-observation-service1
-  name: camel-example-spring-boot-observation-service1
+    k8s-app: otel-example-collector
 spec:
   endpoints:
     - interval: 30s
-      port: web
+      port: promexporter
       scheme: http
-      path: /actuator/prometheus
+      path: /metrics
   selector:
     matchLabels:
-      app: camel-example-spring-boot-observation-service1
----
-apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
-metadata:
-  labels:
-    k8s-app: camel-example-spring-boot-observation-service2
-  name: camel-example-spring-boot-observation-service2
-spec:
-  endpoints:
-    - interval: 30s
-      port: web
-      scheme: http
-      path: /actuator/prometheus
-  selector:
-    matchLabels:
-      app: camel-example-spring-boot-observation-service2
----
-apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
-metadata:
-  labels:
-    k8s-app: camel-example-spring-boot-observation-client
-  name: camel-example-spring-boot-observation-client
-spec:
-  endpoints:
-    - interval: 30s
-      port: web
-      scheme: http
-      path: /actuator/prometheus
-  selector:
-    matchLabels:
-      app: camel-example-spring-boot-observation-client
----
+      app.kubernetes.io/component: opentelemetry-collector
+      app.kubernetes.io/name: otel-example-collector
+

@@ -8,8 +8,9 @@ spec:
       rules:
         - alert: ObservationClientError
           annotations:
-            summary: Check client error within latest 30 seconds.
-          expr: avg_over_time(trigger_seconds_max{error="RuntimeException"}[30s]) > 0
+            summary: Check client error within latest 60 seconds.
+            message: There are some errors on the client!
+          expr: changes(camel_exchanges_failed_total{service="otel-example-collector-headless",eventType="route", camelContext="client"}[60s]) > 0
           for: 10s
           labels:
             severity: critical

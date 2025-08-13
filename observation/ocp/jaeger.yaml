@@ -1,6 +1,0 @@
-kind: Jaeger
-apiVersion: jaegertracing.io/v1
-metadata:
-  name: jaeger-all-in-one-inmemory
-spec:
-  strategy: allInOne

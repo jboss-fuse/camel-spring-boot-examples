@@ -1,10 +1,10 @@
 ## Requirements
 
-install oc client https://docs.openshift.com/container-platform/4.13/cli_reference/openshift_cli/getting-started-cli.html[docs]
+install oc client https://docs.redhat.com/en/documentation/openshift_container_platform/latest/html/cli_tools/openshift-cli-oc#cli-getting-started[docs]
 
-prepare monitor stack on OCP https://access.redhat.com/documentation/en-us/openshift_container_platform/4.13/html-single/monitoring/index#configuring-the-monitoring-stack[docs]
+prepare monitor stack on OCP https://docs.redhat.com/en/documentation/openshift_container_platform/latest/html-single/monitoring/index#preparing-to-configure-the-monitoring-stack[docs]
 
-check if user project monitoring is enabled https://access.redhat.com/documentation/en-us/openshift_container_platform/4.13/html-single/monitoring/index#enabling-monitoring-for-user-defined-projects[docs]
+check if user project monitoring is enabled https://docs.redhat.com/en/documentation/openshift_container_platform/latest/html-single/monitoring/index#enabling-monitoring-for-user-defined-projects-uwm_preparing-to-configure-the-monitoring-stack-uwm[docs]
 ----
 oc -n openshift-monitoring describe configmap cluster-monitoring-config | grep enableUserWorkload
 ----
@@ -12,15 +12,24 @@ the result should be
 ----
 enableUserWorkload: true
 ----
-granting users permission to configure monitoring for user-defined projects https://access.redhat.com/documentation/en-us/openshift_container_platform/4.14/html/monitoring/enabling-monitoring-for-user-defined-projects[docs]
+granting users permission to configure monitoring for user-defined projects https://docs.redhat.com/en/documentation/openshift_container_platform/latest/html-single/monitoring/index#granting-users-permission-to-monitor-user-defined-projects_preparing-to-configure-the-monitoring-stack-uwm[docs]
+
+install Red Hat build of OpenTelemetry https://docs.redhat.com/en/documentation/openshift_container_platform/latest/html/red_hat_build_of_opentelemetry/install-otel#installing-otel-by-using-the-web-console_install-otel[doc]
+
+install Tempo Operator https://docs.redhat.com/en/documentation/openshift_container_platform/latest/html/distributed_tracing/distr-tracing-tempo-installing#distr-tracing-tempo-install-web-console_distr-tracing-tempo-installing[doc]
+
+install Cluster Observability Operator https://docs.redhat.com/en/documentation/openshift_container_platform/latest/html/cluster_observability_operator/installing-cluster-observability-operators#installing-the-cluster-observability-operator-in-the-web-console-_installing_the_cluster_observability_operator[doc]
 
 ## Deploy the application
 ----
-oc new-project <name of the project>
+oc new-project observation-example
 ----
-make sure that the `Red Hat OpenShift distributed tracing platform` is installed before running following command https://docs.openshift.com/container-platform/latest/distr_tracing/distr_tracing_jaeger/distr-tracing-jaeger-installing.html#distr-tracing-jaeger-operator-install_dist-tracing-jaeger-installing[docs]
+create all the managed resources
 ----
-oc apply -f ocp/jaeger.yaml
+oc apply -f ocp/tempo.yaml
+oc apply -f ocp/otel-roles.yaml
+oc apply -f ocp/otel-collector.yaml
+oc apply -f ocp/ui-plugin.yaml
 ----
 build the application and deploy the services in the namespace
 ----
@@ -43,12 +52,15 @@ oc apply -f ocp/alert-rule.yaml
 
 ### Distributed tracing using Jaeger
 
-To see traces connect to the Jaeger UI at:
+To see traces go to the `Observe -> Traces` menu item in the console at:
 ----
-echo "https://$(oc get route jaeger-all-in-one-inmemory -o go-template --template='{{.spec.host}}')"
+echo "$(oc whoami --show-console)/observe/traces/"
 ----
-Select `client` as a `Service` parameter and `trigger` as `Operation` parameter.
-If you want to filter only errors fill in the `Tags` parameter the value `error=true`
+Select `Tempo instance` with the one we are using (`observation-example/monolitic-example`) and all the traces should be shown
+
+image::resources/traces.png[]
+
+If you want to filter only errors filter by `Status` selecting `error`
 
 ### Inspect collected Metrics with OCP integrated UI
 
@@ -61,13 +73,14 @@ or navigate manually to `Observe -> Metrics` in the web console menu
 you can fill the query field to show data and graph, for example:
 
 ----
-#show the max execution time for the camel-http and camel-platform-http components (with and without errors)
+#show the number of the exchanges for an application (service1)
+camel_exchanges_total{job="otel-example-collector",exported_job="service1",eventType="route"}
 
-POST_seconds_max{component="camel-platform-http"} or POST_seconds_max{component="camel-http"}
+#show the number of the failed exchanges
+camel_exchanges_failed_total{job="otel-example-collector",exported_job="service1",eventType="route"}
 
-#how many triggered events by the camel-trigger component (with and without errors)
-
-trigger_seconds_count{component="camel-timer"}
+#how many routes are running for each Camel context
+sum(camel_routes_running{service="otel-example-collector-headless"}) by (camelContext)
 ----
 
 moreover the alert example is fired if an error is faced within the latest 30 seconds
@@ -76,6 +89,6 @@ echo "$(oc whoami --show-console)/monitoring/alerts?rowFilter-alert-source=user"
 ----
 or navigate manually to `Observe -> Alerting` in the web console menu, filtering results by `Source=User`
 
-Once fired the alert it is also visible in the Status panel of the project's Overview panel
+Once fired the alert will be visible
 
 image::resources/status.png[]
