@@ -184,7 +184,7 @@ When the project  is created, is possible to deploy everything, running the foll
 
 [source,console]
 ----
-mvn clean package oc:deploy -Popenshift
+mvn clean package -Popenshift
 ----
 
 Pointing your browser to http://<OPENSHIFT_GRAFANA_BASE_URL>/d/apache-camel-dashboard/apache-camel-dashboard you should see this:
