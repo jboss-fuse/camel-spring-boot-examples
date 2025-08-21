@@ -29,7 +29,7 @@
 	<properties>
 		<category>Rest</category>
 		<camel-spring-boot-version>4.10.6.redhat-00005</camel-spring-boot-version>
-		<spring-boot-version>3.4.8</spring-boot-version>
+		<spring-boot-version>3.4.9</spring-boot-version>
 	</properties>
 
 	<dependencyManagement>

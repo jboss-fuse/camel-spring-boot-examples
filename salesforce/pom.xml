@@ -31,7 +31,7 @@
         <category>SaaS</category>
 
         <camel-spring-boot-version>4.10.6.redhat-00004</camel-spring-boot-version>
-        <spring-boot-version>3.4.8</spring-boot-version>
+        <spring-boot-version>3.4.9</spring-boot-version>
         <camel-community-version>4.10.6</camel-community-version>
 		<camelSalesforce.clientId></camelSalesforce.clientId>
 		<camelSalesforce.clientSecret></camelSalesforce.clientSecret>
