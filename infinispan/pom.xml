@@ -21,14 +21,14 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>camel-example-spring-boot-infinispan</artifactId>
     <groupId>org.apache.camel.springboot.example</groupId>
-    <version>4.10.6-SNAPSHOT</version>
+    <version>4.14.0-SNAPSHOT</version>
     <name>Camel SB Examples :: Infinispan</name>
     <description>An example showing the Camel Infinispan component with Spring Boot</description>
     <properties>
         <category>Cloud</category>
         <camel-spring-boot-version>4.10.6.redhat-00004</camel-spring-boot-version>
-        <spring-boot-version>3.4.8</spring-boot-version>
-        <testcontainers-version>1.21.0</testcontainers-version>
+        <spring-boot-version>3.5.5</spring-boot-version>
+        <testcontainers-version>1.21.3</testcontainers-version>
     </properties>
     <!-- Spring-Boot and Camel BOM -->
     <dependencyManagement>

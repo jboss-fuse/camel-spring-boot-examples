@@ -4,14 +4,14 @@
     <artifactId>camel-example-spring-boot-paho-mqtt5-shared-subscriptions</artifactId>
     <packaging>jar</packaging>
     <groupId>org.apache.camel.springboot.example</groupId>
-    <version>4.10.6-SNAPSHOT</version>
+    <version>4.14.0-SNAPSHOT</version>
     <name>Camel SB Examples :: Paho MQTT5 Shared Subscriptions</name>
     <description>An example showing  how to set up multiple mqtt5 consumers that use shared subscription feature of MQTT5</description>
     <properties>
         <category>Messaging</category>
         <spring.boot-version>${spring-boot-version}</spring.boot-version>
         <camel-spring-boot-version>4.10.6.redhat-00004</camel-spring-boot-version>
-        <spring-boot-version>3.4.8</spring-boot-version>
+        <spring-boot-version>3.5.5</spring-boot-version>
     </properties>
     <dependencyManagement>
         <dependencies>

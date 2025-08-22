@@ -21,7 +21,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.apache.camel.springboot.example</groupId>
     <artifactId>camel-example-spring-boot-azure</artifactId>
-    <version>4.10.6-SNAPSHOT</version>
+    <version>4.14.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Camel SB Examples :: Azure</name>
     <description>An example showing the Camel Azure component with Spring Boot</description>
@@ -31,7 +31,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <camel-spring-boot-version>4.10.6.redhat-00004</camel-spring-boot-version>
-        <spring-boot-version>3.4.8</spring-boot-version>
+        <spring-boot-version>3.5.5</spring-boot-version>
     </properties>
     <!-- Spring-Boot and Camel BOM -->
     <dependencyManagement>
