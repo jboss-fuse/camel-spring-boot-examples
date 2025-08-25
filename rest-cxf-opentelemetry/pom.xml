@@ -21,16 +21,16 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>camel-example-spring-boot-rest-cxf-opentelemetry</artifactId>
     <groupId>org.apache.camel.springboot.example</groupId>
-    <version>4.10.6-SNAPSHOT</version>
+    <version>4.10.6.redhat-00001</version>
     <name>Camel SB Examples :: REST using CXF and OpenTelemetry</name>
     <description>An example showing Camel REST using CXF and OpenTelemetry with Spring Boot</description>
     <packaging>pom</packaging>
     <properties>
         <category>CXF</category>
         <opentelemetry-javaagent.version>2.7.0</opentelemetry-javaagent.version>
-        <camel-spring-boot-version>4.10.6.redhat-00004</camel-spring-boot-version>
+        <camel-spring-boot-version>4.10.6.redhat-00008</camel-spring-boot-version>
         <spring-boot-version>3.4.9</spring-boot-version>
-        <cxf-version>4.1.2.rhbac-redhat-00002</cxf-version>
+        <cxf-version>4.1.2.rhbac-redhat-00007</cxf-version>
         <camel-community-version>4.10.6</camel-community-version>
         <build-helper-maven-plugin-version>3.6.0</build-helper-maven-plugin-version>
     </properties>
@@ -116,11 +116,13 @@
             <version>${cxf-version}</version>
         </dependency>
     </dependencies>
+    <build>
+    <pluginManagement />
+  </build>
     <profiles>
         <profile>
             <id>otel-agent</id>
             <activation>
-                <activeByDefault>false</activeByDefault>
             </activation>
             <build>
                 <plugins>
