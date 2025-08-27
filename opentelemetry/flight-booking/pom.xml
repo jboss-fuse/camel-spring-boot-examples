@@ -27,13 +27,6 @@
     <artifactId>camel-example-spring-boot-opentelemetry-flightbooking</artifactId>
     <name>Camel SB Examples :: OpenTelemetry :: FlightBooking</name>
     <description>An example showing how to use Camel with OpenTelemetry</description>
-    <properties>
-        <java.version>11</java.version>
-        <camel.version>3.14.1</camel.version>
-        <jaeger.version>1.6.0</jaeger.version>
-        <io.opentracing.contrib.version>3.3.1</io.opentracing.contrib.version>
-        <opentelemetry-agent.version>1.25.1</opentelemetry-agent.version>
-    </properties>
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -184,6 +177,10 @@
                             <agents>
                                 <agent>${project.build.directory}/javaagents/javaagent.jar</agent>
                             </agents>
+                            <environmentVariables>
+                                <OTEL_TRACER_SAMPLER>${otel.traces.sampler}</OTEL_TRACER_SAMPLER>
+                                <OTEL_LOGS_EXPORTER>${otel.logs.exporter}</OTEL_LOGS_EXPORTER>
+                            </environmentVariables>
                         </configuration>
                     </plugin>
                 </plugins>

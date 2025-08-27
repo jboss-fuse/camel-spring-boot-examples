@@ -27,10 +27,6 @@
     <artifactId>camel-example-spring-boot-opentelemetry-tripbooking</artifactId>
     <name>Camel SB Examples :: OpenTelemetry :: TripBooking</name>
     <description>An example showing how to use Camel with OpenTelemetry</description>
-    <properties>
-        <io.opentracing.contrib.version>3.3.1</io.opentracing.contrib.version>
-        <opentelemetry-agent.version>1.25.1</opentelemetry-agent.version>
-    </properties>
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -181,6 +177,10 @@
                             <agents>
                                 <agent>${project.build.directory}/javaagents/javaagent.jar</agent>
                             </agents>
+                            <environmentVariables>
+                                <OTEL_TRACER_SAMPLER>${otel.traces.sampler}</OTEL_TRACER_SAMPLER>
+                                <OTEL_LOGS_EXPORTER>${otel.logs.exporter}</OTEL_LOGS_EXPORTER>
+                            </environmentVariables>
                         </configuration>
                     </plugin>
                 </plugins>

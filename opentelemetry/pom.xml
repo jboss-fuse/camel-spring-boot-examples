@@ -31,6 +31,10 @@
         <title>OpenTelemetry</title>
         <camel-spring-boot-version>4.14.0.redhat-00001</camel-spring-boot-version>
         <spring-boot-version>3.5.5</spring-boot-version>
+        <opentelemetry-agent.version>2.5.0.redhat-00003</opentelemetry-agent.version>
+        <!-- otel agent configuration variables -->
+        <otel.traces.sampler>always_on</otel.traces.sampler>
+        <otel.logs.exporter>none</otel.logs.exporter>
     </properties>
     <modules>
         <module>car-booking</module>
