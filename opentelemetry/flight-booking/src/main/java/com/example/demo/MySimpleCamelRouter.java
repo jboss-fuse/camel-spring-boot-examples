@@ -27,8 +27,7 @@ public class MySimpleCamelRouter extends RouteBuilder {
     @Override
     public void configure() throws Exception {
         restConfiguration()
-                .component("servlet")
-                .port(8080).host("localhost")
+                .contextPath("/camel")
                 .bindingMode(RestBindingMode.json);
 
         rest().get("/bookFlight")
