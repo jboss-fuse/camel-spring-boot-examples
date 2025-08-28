@@ -116,18 +116,10 @@ You should get a trace view similar to this one:
 
 image::adoc/img/trace-sync.png[]
 
-DAG is the following:
-
-image::adoc/img/trace-sync-dag.png[]
-
 ===== Async case
 You should get a trace view similar to this one:
 
 image::adoc/img/trace-async.png[]
-
-DAG is the following:
-
-image::adoc/img/trace-async-dag.png[]
 
 ==== Metrics
 
@@ -166,270 +158,52 @@ MDC Logging is enabled, and tracing information printing into the logs to be abl
 
 Create kafka cluster named `otel-cluster`:
 
-```
-cat << EOF | oc apply -f -
-apiVersion: kafka.strimzi.io/v1beta2
-kind: KafkaNodePool
-metadata:
-  name: multirole
-  labels:
-    strimzi.io/cluster: otel-cluster
-spec:
-  roles:
-    - controller
-    - broker
-  storage:
-    type: ephemeral
-    kraftMetadata: shared
-  replicas: 1
----
-apiVersion: kafka.strimzi.io/v1beta2
-kind: Kafka
-metadata:
-  name: otel-cluster
-  annotations:
-    strimzi.io/kraft: enabled
-    strimzi.io/node-pools: enabled
-spec:
-  kafka:
-    logging:
-      type: inline
-    config:
-      offsets.topic.replication.factor: 1
-      transaction.state.log.replication.factor: 1
-      default.replication.factor: 1
-      min.insync.replicas: 1
-      transaction.state.log.min.isr: 1
-    listeners:
-      - name: plain
-        port: 9092
-        type: internal
-        tls: false
-      - name: tls
-        port: 9093
-        type: internal
-        tls: true
-    version: 3.9.0
-EOF
-```
+[source,sh]
+----
+oc apply -f ocp/kafka.yaml
+----
 
 Create tempo monolithic named `monolitic-example` as distributed tracing storage:
 
-```
-cat << EOF | oc apply -f -
-apiVersion: tempo.grafana.com/v1alpha1
-kind: TempoMonolithic
-metadata:
-  name: monolitic-example
-spec:
-  multitenancy:
-    authentication:
-      - tenantId: application
-        tenantName: application
-    enabled: true
-    mode: openshift
-  tenants:
-    mode: openshift
-    authentication:
-      - tenantId: application
-        tenantName: application
-  resources:
-    limits:
-      cpu: '2'
-      memory: 2Gi
-  storage:
-    traces:
-      backend: memory
-EOF
-```
+[source,sh]
+----
+oc apply -f ocp/tempo.yaml
+----
 
 Create roles to send traces via Collector, to the Tempo
 
-```
-cat << EOF | oc apply -f -
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  name: tempo-traces-reader
-rules:
-  - apiGroups:
-      - 'tempo.grafana.com'
-    resources:
-      - application
-    resourceNames:
-      - traces
-    verbs:
-      - 'get'
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: tempo-traces-reader
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: tempo-traces-reader
-subjects:
-  - kind: Group
-    apiGroup: rbac.authorization.k8s.io
-    name: system:authenticated
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  name: tempo-traces-write
-rules:
-  - apiGroups:
-      - 'tempo.grafana.com'
-    resources:
-      - application
-    resourceNames:
-      - traces
-    verbs:
-      - 'create'
----
-kind: ServiceAccount
-apiVersion: v1
-metadata:
-  name: otel-collector
----
-kind: ClusterRoleBinding
-apiVersion: rbac.authorization.k8s.io/v1
-metadata:
-  name: tempo-traces-from-otel
-subjects:
-  - kind: ServiceAccount
-    name: otel-collector
-    namespace: otel-example
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: tempo-traces-write
-EOF
-```
+[source,sh]
+----
+oc apply -f ocp/roles.yaml
+----
 
 Create opentelemetry collector named `otel-example` used to collect everything coming from the agent on the applications and exporting the traces into the tempo storage and the metrics in a prometheus format:
 
-```
-cat << EOF | oc apply -f -
-kind: OpenTelemetryCollector
-apiVersion: opentelemetry.io/v1beta1
-metadata:
-  name: otel-example
-spec:
-  serviceAccount: otel-collector
-  config:
-    extensions:
-      bearertokenauth:
-        filename: /var/run/secrets/kubernetes.io/serviceaccount/token
-    exporters:
-      debug: {}
-      otlp/tempo:
-        auth:
-          authenticator: bearertokenauth
-        endpoint: 'tempo-monolitic-example-gateway:4317'
-        headers:
-          X-Scope-OrgID: application
-        tls:
-          insecure_skip_verify: true
-      prometheus:
-        endpoint: '0.0.0.0:8889'
-        metric_expiration: 180m
-    processors:
-      batch:
-        send_batch_size: 1000
-        timeout: 10s
-    receivers:
-      otlp:
-        protocols:
-          grpc: {}
-          http: {}
-    service:
-      extensions:
-        - bearertokenauth
-      pipelines:
-        traces:
-          exporters:
-            - debug
-            - otlp/tempo
-          processors:
-            - batch
-          receivers:
-            - otlp
-        metrics:
-          exporters:
-            - debug
-            - prometheus
-          processors:
-            - batch
-          receivers:
-            - otlp
-  replicas: 1
-  ports:
-    - name: promexporter
-      port: 8889
-      protocol: TCP
-      targetPort: 8889
-EOF
-```
+[source,sh]
+----
+oc apply -f ocp/otel-collector.yaml
+----
 
 Create the opentelementry instrumentation to allow to inject the agent parameter into the startup command in the application
 
-```
-cat << EOF | oc apply -f -
-apiVersion: opentelemetry.io/v1alpha1
-kind: Instrumentation
-metadata:
-  name: camel-instrumentation
-spec:
-  exporter:
-    endpoint: 'http://otel-example-collector-headless:4318'
-  java:
-    image: 'ghcr.io/open-telemetry/opentelemetry-operator/autoinstrumentation-java:2.5.0'
-    env:
-      - name: OTEL_SERVICE_NAME
-        valueFrom:
-          fieldRef:
-            fieldPath: 'metadata.labels[''app'']'
-      - name: OTEL_TRACER_SAMPLER
-        value: always_on
-      - name: OTEL_LOGS_EXPORTER
-        value: none
-EOF
-```
+[source,sh]
+----
+oc apply -f ocp/otel-instrumentation.yaml
+----
 
 Install the distributed tracing UI plugin to show the traces on the OCP console https://docs.redhat.com/en/documentation/openshift_container_platform/latest/html/cluster_observability_operator/observability-ui-plugins#coo-distributed-tracing-ui-plugin-install_distributed-tracing-ui-plugin[doc]
 
-```
-cat << EOF | oc apply -f -
-apiVersion: observability.openshift.io/v1alpha1
-kind: UIPlugin
-metadata:
-  name: distributed-tracing
-spec:
-  type: DistributedTracing
-EOF
-```
+[source,sh]
+----
+oc apply -f ocp/ui-plugin.yaml
+----
 
 Create the service monitor to allow the prometheus metrics exposed by the opentelemetry collector be scraped by the OpenShift metrics storage
 
-```
-cat << EOF | oc apply -f -
-apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
-metadata:
-  name: otel-example-collector
-spec:
-  endpoints:
-    - interval: 30s
-      port: promexporter
-      scheme: http
-      path: /metrics
-  selector:
-    matchLabels:
-      app.kubernetes.io/name:  otel-example-collector
-EOF
-```
+[source,sh]
+----
+oc apply -f ocp/service-monitor.yaml
+----
 
 ==== Deploy applications
 
@@ -457,6 +231,14 @@ The Distributed Tracing console is available on the OpenShift console in the `Ob
 echo $(oc whoami --show-console)/observe/traces
 ```
 
+===== Sync case
+
+image::adoc/img/ocp-trace-sync.png[]
+
+===== Async case
+
+image::adoc/img/ocp-trace-async.png[]
+
 To query the metrics it is possible to use the integrated OpenShift monitoring console in the `Observe -> Metrics` item
 
 ```
@@ -465,11 +247,22 @@ echo $(oc whoami --show-console)/monitoring/query-browser
 
 a query like
 ```
-sum(camel_exchanges_total{service="otel-example-collector-headless"}) by(exported_job, routeId)
+sum(camel_route_exchange_completed_total{service="otel-example-collector-headless"}) by(exported_job)
+```
+
+to see the total exchanges for each service or just the mean time for each route
+```
+camel_route_exchange_processing_mean_time_milliseconds{service="otel-example-collector-headless"}
 ```
 will show you the exchanges for each route on each application
 
+image::adoc/img/ocp-metrics.png[]
+
+All the metrics for Camel JMX rules are available at https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/camel.md[Camel Metrics]
+
 ==== Undeploy applications
+
+run this command for each application
 
 ```
 mvn oc:undeploy -Popenshift

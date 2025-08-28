@@ -58,10 +58,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-        <dependency>
-            <groupId>io.micrometer</groupId>
-            <artifactId>micrometer-registry-prometheus</artifactId>
-        </dependency>
         <!-- Apache Camel dependencies-->
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
@@ -78,10 +74,6 @@
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
             <artifactId>camel-jackson-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.camel.springboot</groupId>
-            <artifactId>camel-micrometer-starter</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
@@ -103,6 +95,11 @@
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
             <artifactId>camel-opentelemetry-starter</artifactId>
+        </dependency>
+        <!-- to generate jmx beans for metrics -->
+        <dependency>
+            <groupId>org.apache.camel.springboot</groupId>
+            <artifactId>camel-management-starter</artifactId>
         </dependency>
         <!-- Testing -->
         <dependency>
@@ -180,6 +177,10 @@
                             <environmentVariables>
                                 <OTEL_TRACER_SAMPLER>${otel.traces.sampler}</OTEL_TRACER_SAMPLER>
                                 <OTEL_LOGS_EXPORTER>${otel.logs.exporter}</OTEL_LOGS_EXPORTER>
+                                <OTEL_JMX_TARGET_SYSTEM>camel</OTEL_JMX_TARGET_SYSTEM>
+                                <OTEL_INSTRUMENTATION_APACHE_HTTPCLIENT_ENABLED>${otel.instrumentation.apache-httpclient.enabled}</OTEL_INSTRUMENTATION_APACHE_HTTPCLIENT_ENABLED>
+                                <OTEL_INSTRUMENTATION_UNDERTOW_ENABLED>${otel.instrumentation.undertow.enabled}</OTEL_INSTRUMENTATION_UNDERTOW_ENABLED>
+                                <OTEL_INSTRUMENTATION_SERVLET_ENABLED>${otel.instrumentation.servlet.enabled}</OTEL_INSTRUMENTATION_SERVLET_ENABLED>
                             </environmentVariables>
                         </configuration>
                     </plugin>

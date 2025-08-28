@@ -1,0 +1,23 @@
+apiVersion: tempo.grafana.com/v1alpha1
+kind: TempoMonolithic
+metadata:
+  name: monolitic-example
+spec:
+  multitenancy:
+    authentication:
+      - tenantId: application
+        tenantName: application
+    enabled: true
+    mode: openshift
+  tenants:
+    mode: openshift
+    authentication:
+      - tenantId: application
+        tenantName: application
+  resources:
+    limits:
+      cpu: '2'
+      memory: 2Gi
+  storage:
+    traces:
+      backend: memory
