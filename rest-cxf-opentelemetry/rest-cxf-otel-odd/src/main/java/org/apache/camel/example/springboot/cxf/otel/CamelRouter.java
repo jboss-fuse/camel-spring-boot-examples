@@ -47,7 +47,8 @@ public class CamelRouter extends RouteBuilder {
                     "&providers=jaxrsProvider,openTelemetryProvider" +
                     "&loggingFeatureEnabled=true")
                 .to("log:camel-cxf-log?showAll=true")
-                .toD("bean:org.apache.camel.example.springboot.cxf.otel.OddServiceImpl?method=${header.operationName}");
+                .toD("bean:org.apache.camel.example.springboot.cxf.otel.OddServiceImpl" +
+                        "?method=${header.operationName}");
 
 
         from("direct:register").routeId("odd-register")
