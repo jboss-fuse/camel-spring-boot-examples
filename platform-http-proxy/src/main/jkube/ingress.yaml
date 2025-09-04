@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: camel-example-spring-boot-platform-http-proxy
+spec:
+  rules:
+    - host: httpbin.org
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: camel-example-spring-boot-platform-http-proxy
+                port:
+                  number: 8080
