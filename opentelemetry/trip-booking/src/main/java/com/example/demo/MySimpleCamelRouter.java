@@ -16,6 +16,7 @@
  */
 package com.example.demo;
 
+import org.apache.camel.Exchange;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.dataformat.JsonLibrary;
@@ -38,6 +39,7 @@ public class MySimpleCamelRouter extends RouteBuilder {
                 .routeId("bookTrip-http")
                 .routeDescription("This is demo service for demonstration telemetry aspects")
                 .log(LoggingLevel.INFO, "New book trip request with trace=${header.traceparent}")
+                .removeHeader(Exchange.HTTP_PATH)
                 .multicast(new MergeAggregationStrategy()).parallelProcessing()
                          .to("{{service.car}}/camel/bookCar?bridgeEndpoint=true")
                          .to("{{service.flight}}/camel/bookFlight?bridgeEndpoint=true")
