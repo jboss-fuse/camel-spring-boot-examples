@@ -27,7 +27,7 @@ readme's instructions.
 === Examples
 
 // examples: START
-Number of Examples: 64 (0 deprecated)
+Number of Examples: 65 (0 deprecated)
 
 [width="100%",cols="4,2,4",options="header"]
 |===
@@ -102,7 +102,7 @@ Number of Examples: 64 (0 deprecated)
 | link:fhir/README.adoc[Fhir] (fhir) | Health Care | An example showing how to work with Camel, FHIR and Spring Boot
 
 | link:fhir-auth-tx/README.adoc[Fhir Auth Tx] (fhir-auth-tx) | Health Care | An example showing how to work with Camel, FHIR Authorization, FHIR Transaction and Spring Boot
-    
+
 
 | link:health-checks/README.adoc[Health Checks] (health-checks) | Health Care | An example on how to work with health checks ib a simple Apache Camel application using Spring Boot.
 
@@ -117,13 +117,14 @@ Number of Examples: 64 (0 deprecated)
 
 | link:monitoring-micrometrics-grafana-prometheus/README.adoc[Monitoring Micrometrics Grafana Prometheus] (monitoring-micrometrics-grafana-prometheus) | Management and Monitoring | Example on how to use Spring Boot's Actuator endpoints to
         gather info like mappings or metrics
-    
+
+| link:observability-services/README.adoc[Observability Services] | Management and Monitoring | An example showing how to use Camel with Observability Services
 
 | link:observation/README.adoc[Micrometer Observation] (observation) | Management and Monitoring | An example showing how to trace incoming and outgoing messages from Camel with Micrometer Observation
     
 
 | link:opentelemetry/README.adoc[OpenTelemetry] (opentelemetry) | Management and Monitoring | An example showing how to use Camel with OpenTelemetry
-    
+
 
 | link:supervising-route-controller/README.adoc[Supervising Route Controller] (supervising-route-controller) | Management and Monitoring | An example showing how to work with Camel's Supervising Route Controller and Spring Boot
 
@@ -147,7 +148,7 @@ Number of Examples: 64 (0 deprecated)
 
 | link:strimzi/README.adoc[Strimzi] (strimzi) | Messaging | Camel example which a route is defined in XML for Strimzi
         integration on Openshift/Kubernetes
-    
+
 
 | link:widget-gadget/README.adoc[Widget Gadget] (widget-gadget) | Messaging | The widget and gadget example from EIP book, running on Spring Boot
 
@@ -166,7 +167,7 @@ Number of Examples: 64 (0 deprecated)
 | link:rest-openapi-springdoc/README.adoc[Rest Openapi Springdoc] (rest-openapi-springdoc) | Rest | An example showing Camel REST DSL and OpenApi with a Springdoc UI in a Spring Boot application
 
 | link:rest-spring-security/README.adoc[Rest Spring Security] (rest-spring-security) | Rest | An example showing Camel REST DSL secured with Spring Security and JWT token in a Spring Boot application
-    
+
 
 | link:salesforce/README.adoc[Salesforce] (salesforce) | SaaS | How to work with Salesforce contacts using REST endpoints and Streaming API
 |===

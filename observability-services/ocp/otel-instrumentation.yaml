@@ -1,0 +1,20 @@
+apiVersion: opentelemetry.io/v1alpha1
+kind: Instrumentation
+metadata:
+  name: camel-instrumentation
+spec:
+  exporter:
+    endpoint: 'http://obs-example-collector-headless:4318'
+  sampler:
+    type: always_on
+  java:
+    image: 'ghcr.io/open-telemetry/opentelemetry-operator/autoinstrumentation-java:2.19.0'
+    env:
+      - name: OTEL_SERVICE_NAME
+        valueFrom:
+          fieldRef:
+            fieldPath: 'metadata.labels[''app'']'
+      - name: OTEL_LOGS_EXPORTER
+        value: none
+      - name: OTEL_JMX_TARGET_SYSTEM
+        value: camel
