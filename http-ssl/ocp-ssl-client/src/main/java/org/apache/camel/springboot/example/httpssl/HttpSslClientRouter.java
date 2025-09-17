@@ -16,6 +16,7 @@
  */
 package org.apache.camel.springboot.example.httpssl;
 
+import org.apache.camel.Exchange;
 import org.apache.camel.builder.RouteBuilder;
 
 import org.springframework.http.MediaType;
@@ -31,6 +32,7 @@ public class HttpSslClientRouter extends RouteBuilder {
 				.to("direct:call-ssl-server");
 
 		from("direct:call-ssl-server")
+                .removeHeader(Exchange.HTTP_PATH)
 				.to("{{ssl-server.url}}/ping?bridgeEndpoint=true&sslContextParameters=#clientConfig");
 	}
 }
