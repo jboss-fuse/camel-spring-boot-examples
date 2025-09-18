@@ -31,6 +31,8 @@
         <title>Micrometer Observation</title>
         <camel-spring-boot-version>4.14.0.redhat-00005</camel-spring-boot-version>
         <spring-boot-version>3.5.5</spring-boot-version>
+        <!-- to manage compatibility with io.micrometer:micrometer-registry-otlp -->
+        <protobuf-java.version>4.31.1</protobuf-java.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -40,6 +42,11 @@
                 <version>${camel-spring-boot-version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.google.protobuf</groupId>
+                <artifactId>protobuf-java</artifactId>
+                <version>${protobuf-java.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
