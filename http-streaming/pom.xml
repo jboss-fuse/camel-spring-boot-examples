@@ -21,15 +21,15 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.apache.camel.springboot.example</groupId>
 	<artifactId>camel-example-spring-boot-http-streaming</artifactId>
-	<version>4.10.6-SNAPSHOT</version>
+	<version>4.10.7-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Camel SB Examples :: HTTP Streaming</name>
 	<description>An example showing large data stream scenario using Camel Platform HTTP component</description>
 
 	<properties>
 		<category>Rest</category>
-		<camel-spring-boot-version>4.10.6.redhat-00005</camel-spring-boot-version>
-		<spring-boot-version>3.4.9</spring-boot-version>
+		<camel-spring-boot-version>4.10.7.redhat-00001</camel-spring-boot-version>
+		<spring-boot-version>3.4.10</spring-boot-version>
 	</properties>
 
 	<dependencyManagement>

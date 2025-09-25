@@ -21,15 +21,15 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>camel-example-spring-boot-jolokia</artifactId>
     <groupId>org.apache.camel.springboot.example</groupId>
-    <version>4.10.6-SNAPSHOT</version>
+    <version>4.10.7-SNAPSHOT</version>
     <name>Camel SB Examples :: Jolokia</name>
     <description>An example that uses Jolokia to monitor and to manage Camel Routes</description>
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <category>Management and Monitoring</category>
-        <camel-spring-boot-version>4.10.6.redhat-00004</camel-spring-boot-version>
-        <spring-boot-version>3.4.9</spring-boot-version>
+        <camel-spring-boot-version>4.10.7.redhat-00001</camel-spring-boot-version>
+        <spring-boot-version>3.4.10</spring-boot-version>
     </properties>
     <dependencyManagement>
         <dependencies>
