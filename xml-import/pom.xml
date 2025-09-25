@@ -29,7 +29,7 @@
         <title>Spring Boot XML Import</title>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <camel-spring-boot-version>4.10.7.redhat-00001</camel-spring-boot-version>
+        <camel-spring-boot-version>4.10.7.redhat-00003</camel-spring-boot-version>
         <spring-boot-version>3.4.10</spring-boot-version>
         <camel-community-version>4.10.7</camel-community-version>
     </properties>
