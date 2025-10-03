@@ -44,6 +44,9 @@ import javax.net.ssl.X509TrustManager;
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.cert.CertificateException;
+import java.util.logging.Handler;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 /**
  * A sample Spring Boot application that starts the Camel routes.
@@ -63,6 +66,13 @@ public class Application {
             PrometheusConfig prometheusConfig, PrometheusRegistry prometheusRegistry, Clock clock) throws MalformedObjectNameException, IOException {
 
         InputStream resource = new ClassPathResource("config/prometheus_exporter_config.yml").getInputStream();
+
+        //to initialize handler's formatter on java.util.logging so that to avoid error on JmxCollector instance
+        for (Handler handler : Logger.getLogger("").getHandlers()) {
+            if (handler.getFormatter() == null) {
+                handler.setFormatter(new SimpleFormatter());
+            }
+        }
 
         new JmxCollector(resource).register(prometheusRegistry);
         new BuildInfoMetrics().register(prometheusRegistry);
