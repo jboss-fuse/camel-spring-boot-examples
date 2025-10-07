@@ -29,7 +29,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <category>Beginner</category>
         <camel-spring-boot-version>4.10.7.redhat-00008</camel-spring-boot-version>
-        <spring-boot-version>3.5.6</spring-boot-version>
+        <spring-boot-version>3.4.10</spring-boot-version>
         <guava-version>33.5.0-jre</guava-version>
         <exec-maven-plugin-version>3.5.1</exec-maven-plugin-version>
     </properties>
