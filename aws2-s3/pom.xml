@@ -21,12 +21,12 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>camel-example-spring-boot-aws2-s3</artifactId>
     <groupId>org.apache.camel.springboot.example</groupId>
-    <version>4.10.7-SNAPSHOT</version>
+    <version>4.10.7.redhat-00001</version>
     <name>Camel SB Examples :: AWS2 S3</name>
     <description>An example showing the Camel AWS2 S3 component with Spring Boot</description>
     <properties>
         <category>Cloud</category>
-        <camel-spring-boot-version>4.10.7.redhat-00008</camel-spring-boot-version>
+        <camel-spring-boot-version>4.10.7.redhat-00013</camel-spring-boot-version>
         <spring-boot-version>3.4.10</spring-boot-version>
     </properties>
     <!-- Spring-Boot and Camel BOM -->
@@ -90,5 +90,6 @@
                 </executions>
             </plugin>
         </plugins>
+        <pluginManagement />
     </build>
 </project>

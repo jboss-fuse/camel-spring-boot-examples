@@ -21,14 +21,14 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>camel-example-spring-boot-routetemplate</artifactId>
     <groupId>org.apache.camel.springboot.example</groupId>
-    <version>4.10.7-SNAPSHOT</version>
+    <version>4.10.7.redhat-00001</version>
     <name>Camel SB Examples :: Spring Boot :: Route Template</name>
     <description>How to use route templates (parameterized routes)</description>
     <properties>
         <category>Beginner</category>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <camel-spring-boot-version>4.10.7.redhat-00008</camel-spring-boot-version>
+        <camel-spring-boot-version>4.10.7.redhat-00013</camel-spring-boot-version>
         <spring-boot-version>3.4.10</spring-boot-version>
     </properties>
     <dependencyManagement>
@@ -116,5 +116,6 @@
                 </executions>
             </plugin>
         </plugins>
+        <pluginManagement />
     </build>
 </project>

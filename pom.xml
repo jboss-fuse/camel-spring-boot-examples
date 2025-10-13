@@ -22,11 +22,11 @@
     <parent>
         <groupId>org.apache.camel.springboot</groupId>
         <artifactId>spring-boot</artifactId>
-        <version>4.10.7.redhat-00003</version>
+        <version>4.10.7.redhat-00013</version>
     </parent>
     <groupId>org.apache.camel.springboot.example</groupId>
     <artifactId>examples</artifactId>
-    <version>4.10.7-SNAPSHOT</version>
+    <version>4.10.7.redhat-00001</version>
     <name>Camel SB :: Examples</name>
     <description>Camel Examples</description>
     <packaging>pom</packaging>
@@ -95,29 +95,10 @@
         <module>xml-import</module>
     </modules>
     <repositories>
-        <repository>
-            <id>apache.snapshots</id>
-            <url>https://repository.apache.org/snapshots/</url>
-            <name>Apache Snapshot Repo</name>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-        </repository>
+        
     </repositories>
     <pluginRepositories>
-        <pluginRepository>
-            <id>apache.snapshots</id>
-            <url>https://repository.apache.org/snapshots/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-        </pluginRepository>
+        
     </pluginRepositories>
     <build>
         <plugins>
@@ -134,7 +115,7 @@
                 <artifactId>camel-package-maven-plugin</artifactId>
                 <version>${camel-community-version}</version>
                 <configuration>
-                    <startingFolder/>
+                    <startingFolder />
                     <filter>spring-boot</filter>
                 </configuration>
                 <executions>
@@ -350,3 +331,6 @@
         </profile>
     </profiles>
 </project>
+<!--
+Modified by POM Manipulation Extension for Maven 4.22 ( SHA: 37322da5 )
+-->
