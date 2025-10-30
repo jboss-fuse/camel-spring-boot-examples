@@ -28,7 +28,7 @@
         <category>Messaging</category>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <camel-spring-boot-version>4.14.1.redhat-00008</camel-spring-boot-version>
+        <camel-spring-boot-version>4.14.1.redhat-00011</camel-spring-boot-version>
         <spring-boot-version>3.5.7</spring-boot-version>
     </properties>
     <dependencyManagement>
@@ -138,7 +138,7 @@
                 <spring.profiles.active>openshift</spring.profiles.active>
                 <jkube.generator.from>registry.access.redhat.com/ubi9/openjdk-17:latest</jkube.generator.from>
                 <jkube.build.switchToDeployment>true</jkube.build.switchToDeployment>
-                <jkube-maven-plugin-version>1.18.1.redhat-00056</jkube-maven-plugin-version>
+                <jkube-maven-plugin-version>1.18.1.redhat-00066</jkube-maven-plugin-version>
             </properties>
             <dependencies>
             </dependencies>

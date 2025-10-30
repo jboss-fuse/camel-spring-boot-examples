@@ -15,7 +15,7 @@ See the link:src/main/resources/application.properties[configuration file] and t
 Start the apicurio registry in a docker container:
 
 ----
-podman run -d --rm --name apicurio -p 8080:8080 quay.io/apicurio/apicurio-registry-mem:2.6.8.Final
+podman run -d --rm --name apicurio -p 8080:8080 quay.io/apicurio/apicurio-registry-mem:2.6.13.Final
 ----
 
 Start the kafka broker:
@@ -36,7 +36,7 @@ podman run --rm -d \
 -e KAFKA_CONTROLLER_QUORUM_VOTERS='1@localhost:9093' \
 -e KAFKA_AUTO_CREATE_TOPICS_ENABLE=true \
 -e KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1 \
-confluentinc/cp-kafka:7.9.0-2-ubi8
+confluentinc/cp-kafka:7.9.4-1-ubi8
 ----
 
 === How to run the example
@@ -66,7 +66,7 @@ oc new-project csb-example-avro
 Start a new deployment for the apicurio registry:
 
 ----
-oc new-app quay.io/apicurio/apicurio-registry-mem:2.6.8.Final
+oc new-app quay.io/apicurio/apicurio-registry-mem:2.6.13.Final
 ----
 
 Install operator `Streams for Apache Kafka` in the created namespace using OperatorHub https://docs.redhat.com/en/documentation/red_hat_streams_for_apache_kafka/latest/html/getting_started_with_streams_for_apache_kafka_on_openshift/proc-deploying-cluster-operator-hub-str#proc-deploying-cluster-operator-hub-str[Documentation] then create managed resources

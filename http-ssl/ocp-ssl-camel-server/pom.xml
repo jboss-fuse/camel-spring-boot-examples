@@ -74,7 +74,7 @@
                 <jkube.enricher.jkube-openshift-route.tlsTermination>passthrough</jkube.enricher.jkube-openshift-route.tlsTermination>
                 <jkube.enricher.jkube-openshift-route.tlsInsecureEdgeTerminationPolicy>Redirect</jkube.enricher.jkube-openshift-route.tlsInsecureEdgeTerminationPolicy>
                 <jkube.generator.from>registry.access.redhat.com/ubi9/openjdk-17:latest</jkube.generator.from>
-                <jkube-maven-plugin-version>1.18.1.redhat-00056</jkube-maven-plugin-version>
+                <jkube-maven-plugin-version>1.18.1.redhat-00066</jkube-maven-plugin-version>
             </properties>
             <build>
                 <plugins>

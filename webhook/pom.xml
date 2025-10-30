@@ -27,7 +27,7 @@
     <packaging>jar</packaging>
     <properties>
         <category>Advanced</category>
-        <camel-spring-boot-version>4.14.1.redhat-00008</camel-spring-boot-version>
+        <camel-spring-boot-version>4.14.1.redhat-00011</camel-spring-boot-version>
         <spring-boot-version>3.5.7</spring-boot-version>
     </properties>
     <dependencyManagement>
