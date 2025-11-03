@@ -57,7 +57,6 @@
         <module>monitoring-micrometrics-grafana-prometheus</module>
         <module>multi-datasource-2pc</module>
         <module>observability-services</module>
-        <module>observation</module>
         <module>openapi-contract-first</module>
         <module>opentelemetry</module>
         <module>paho-mqtt5-shared-subscriptions</module>
