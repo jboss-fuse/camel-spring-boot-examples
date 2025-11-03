@@ -21,7 +21,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.apache.camel.springboot.example</groupId>
 	<artifactId>camel-example-spring-boot-http-streaming</artifactId>
-	<version>4.14.1-SNAPSHOT</version>
+	<version>4.14.1.redhat-00001</version>
 	<packaging>pom</packaging>
 	<name>Camel SB Examples :: HTTP Streaming</name>
 	<description>An example showing large data stream scenario using Camel Platform HTTP component</description>
@@ -50,4 +50,8 @@
 		<module>download/backend-server</module>
 		<module>download/proxy-server</module>
 	</modules>
+
+	<build>
+    <pluginManagement />
+  </build>
 </project>

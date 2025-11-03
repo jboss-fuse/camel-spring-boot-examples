@@ -21,7 +21,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>camel-example-spring-boot-rest-openapi</artifactId>
     <groupId>org.apache.camel.springboot.example</groupId>
-    <version>4.14.1-SNAPSHOT</version>
+    <version>4.14.1.redhat-00001</version>
     <name>Camel SB Examples :: REST DSL and OpenApi</name>
     <description>An example showing Camel REST DSL and OpenApi with Spring Boot</description>
     <properties>
@@ -108,5 +108,6 @@
                 </executions>
             </plugin>
         </plugins>
+        <pluginManagement />
     </build>
 </project>

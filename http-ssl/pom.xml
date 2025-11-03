@@ -22,7 +22,7 @@
     <groupId>org.apache.camel.springboot.example</groupId>
     <artifactId>camel-example-spring-boot-http-ssl</artifactId>
     <name>Camel SB Examples :: HTTP SSL</name>
-    <version>4.14.1-SNAPSHOT</version>
+    <version>4.14.1.redhat-00001</version>
     <description>An example showing the Camel HTTP component with Spring Boot and SSL</description>
     <packaging>pom</packaging>
     <properties>
@@ -48,4 +48,7 @@
         <module>ocp-ssl-camel-server</module>
         <module>ocp-ssl-client</module>
     </modules>
+    <build>
+    <pluginManagement />
+  </build>
 </project>

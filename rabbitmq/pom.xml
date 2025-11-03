@@ -21,7 +21,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>camel-example-spring-boot-rabbitmq</artifactId>
     <groupId>org.apache.camel.springboot.example</groupId>
-    <version>4.14.1-SNAPSHOT</version>
+    <version>4.14.1.redhat-00001</version>
     <name>Camel SB Examples :: RabbitMQ</name>
     <description>An example showing how to work with Camel and RabbitMQ</description>
     <properties>
@@ -116,5 +116,6 @@
                 </executions>
             </plugin>
         </plugins>
+        <pluginManagement />
     </build>
 </project>

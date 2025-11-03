@@ -21,7 +21,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>camel-example-spring-boot-widget-gadget</artifactId>
     <groupId>org.apache.camel.springboot.example</groupId>
-    <version>4.14.1-SNAPSHOT</version>
+    <version>4.14.1.redhat-00001</version>
     <name>Camel SB Examples :: Widget Gadget</name>
     <description>The widget and gadget example from EIP book, running on Spring Boot</description>
     <properties>
@@ -116,6 +116,7 @@
                 </executions>
             </plugin>
         </plugins>
+        <pluginManagement />
     </build>
     <profiles>
         <profile>

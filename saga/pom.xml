@@ -21,7 +21,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>camel-example-spring-boot-saga</artifactId>
     <groupId>org.apache.camel.springboot.example</groupId>
-    <version>4.14.1-SNAPSHOT</version>
+    <version>4.14.1.redhat-00001</version>
     <name>Camel SB Examples :: Saga</name>
     <description>This example shows how to work with a simple Apache Camel application using Spring Boot and Narayana LRA Coordinator to manage distributed actions implementing SAGA pattern</description>
     <packaging>pom</packaging>
@@ -106,4 +106,7 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+    <build>
+    <pluginManagement />
+  </build>
 </project>

@@ -22,7 +22,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>camel-example-spring-boot-observability-services</artifactId>
     <groupId>org.apache.camel.springboot.example</groupId>
-    <version>4.14.1-SNAPSHOT</version>
+    <version>4.14.1.redhat-00001</version>
     <name>Camel SB Examples :: Observability Services</name>
     <description>This example shows how to work with Apache Camel observability services using Spring Boot</description>
 
@@ -89,30 +89,10 @@
     </dependencies>
 
     <repositories>
-        <repository>
-            <id>redhat-ga</id>
-            <url>https://maven.repository.redhat.com/ga/</url>
-            <name>Red Hat GA repository</name>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-        </repository>
+        
     </repositories>
     <pluginRepositories>
-        <pluginRepository>
-            <id>redhat-ga</id>
-            <url>https://maven.repository.redhat.com/ga/</url>
-            <name>Red Hat GA repository</name>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-        </pluginRepository>
+        
     </pluginRepositories>
 
     <build>
@@ -174,6 +154,7 @@
                 </executions>
             </plugin>
         </plugins>
+        <pluginManagement />
     </build>
 
     <profiles>

@@ -22,7 +22,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.apache.camel.springboot.example</groupId>
     <artifactId>camel-example-spring-boot-salesforce</artifactId>
-    <version>4.14.1-SNAPSHOT</version>
+    <version>4.14.1.redhat-00001</version>
     <packaging>jar</packaging>
     <name>Camel SB Examples :: Salesforce</name>
     <description>How to work with Salesforce contacts using REST endpoints and Streaming API</description>
@@ -33,8 +33,8 @@
         <camel-spring-boot-version>4.14.1.redhat-00011</camel-spring-boot-version>
         <spring-boot-version>3.5.7</spring-boot-version>
         <camel-community-version>4.14.1</camel-community-version>
-		<camelSalesforce.clientId></camelSalesforce.clientId>
-		<camelSalesforce.clientSecret></camelSalesforce.clientSecret>
+		<camelSalesforce.clientId />
+		<camelSalesforce.clientSecret />
 		<camelSalesforce.sslContextParameters.secureSocketProtocol>TLSv1.3</camelSalesforce.sslContextParameters.secureSocketProtocol>
 		<camelSalesforce.loginUrl>https://login.salesforce.com</camelSalesforce.loginUrl>
 	</properties>
@@ -112,6 +112,7 @@
                 </executions>
             </plugin>
         </plugins>
+        <pluginManagement />
     </build>
 
 
