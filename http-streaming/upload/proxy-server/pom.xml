@@ -25,7 +25,7 @@
 	<parent>
 		<groupId>org.apache.camel.springboot.example</groupId>
 		<artifactId>camel-example-spring-boot-http-streaming</artifactId>
-		<version>4.14.1-SNAPSHOT</version>
+		<version>4.14.2-SNAPSHOT</version>
 		<relativePath>../../pom.xml</relativePath>
 	</parent>
 
@@ -93,7 +93,7 @@
 				<spring.profiles.active>openshift</spring.profiles.active>
 				<jkube.generator.from>registry.access.redhat.com/ubi9/openjdk-17:latest</jkube.generator.from>
 				<jkube.build.switchToDeployment>true</jkube.build.switchToDeployment>
-				<jkube-maven-plugin-version>1.18.1.redhat-00066</jkube-maven-plugin-version>
+				<jkube-maven-plugin-version>1.18.2.redhat-00002</jkube-maven-plugin-version>
 			</properties>
 			<build>
 				<plugins>

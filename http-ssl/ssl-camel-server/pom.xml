@@ -22,7 +22,7 @@
     <parent>
         <groupId>org.apache.camel.springboot.example</groupId>
         <artifactId>camel-example-spring-boot-http-ssl</artifactId>
-        <version>4.14.1-SNAPSHOT</version>
+        <version>4.14.2-SNAPSHOT</version>
     </parent>
     <artifactId>camel-example-spring-boot-http-ssl-camel-server</artifactId>
     <name>Camel SB Examples :: HTTP SSL :: SSL Camel server</name>
