@@ -27,7 +27,7 @@
     <description>An example showing how to use Resilience4j EIP as circuit breaker in Camel routes</description>
     <properties>
         <category>EIP</category>
-        <camel-spring-boot-version>4.14.2.redhat-00001</camel-spring-boot-version>
+        <camel-spring-boot-version>4.14.2.redhat-00003</camel-spring-boot-version>
         <spring-boot-version>3.5.7</spring-boot-version>
     </properties>
     <modules>

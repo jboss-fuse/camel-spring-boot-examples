@@ -25,7 +25,7 @@
     <description>An example showing Camel reverse proxy with platform HTTP</description>
     <properties>
         <category>EIP</category>
-        <camel-spring-boot-version>4.14.2.redhat-00001</camel-spring-boot-version>
+        <camel-spring-boot-version>4.14.2.redhat-00003</camel-spring-boot-version>
         <spring-boot-version>3.5.7</spring-boot-version>
     </properties>
 

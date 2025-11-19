@@ -29,7 +29,7 @@
         <category>Rest</category>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <camel-spring-boot-version>4.14.2.redhat-00001</camel-spring-boot-version>
+        <camel-spring-boot-version>4.14.2.redhat-00003</camel-spring-boot-version>
         <spring-boot-version>3.5.7</spring-boot-version>
         <json-unit-assertj.version>4.1.0</json-unit-assertj.version>
         <testcontainers-keycloak.version>3.6.0</testcontainers-keycloak.version>
