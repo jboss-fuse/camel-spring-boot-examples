@@ -30,7 +30,7 @@
         <category>Management and Monitoring</category>
         <title>OpenTelemetry</title>
         <camel-spring-boot-version>4.14.2.redhat-00003</camel-spring-boot-version>
-        <spring-boot-version>3.5.7</spring-boot-version>
+        <spring-boot-version>3.5.8</spring-boot-version>
         <opentelemetry-agent.version>2.19.0</opentelemetry-agent.version>
         <!-- otel agent configuration variables -->
         <otel.traces.sampler>always_on</otel.traces.sampler>
