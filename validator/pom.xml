@@ -21,7 +21,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>camel-example-spring-boot-validator</artifactId>
     <groupId>org.apache.camel.springboot.example</groupId>
-    <version>4.14.2-SNAPSHOT</version>
+    <version>4.14.2.redhat-00001</version>
     <name>Camel SB Examples :: Validator</name>
     <description>An example showing how to work with declarative validation and Spring Boot</description>
     <properties>
@@ -29,7 +29,7 @@
         <title>Validator Spring Boot</title>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <camel-spring-boot-version>4.14.2.redhat-00003</camel-spring-boot-version>
+        <camel-spring-boot-version>4.14.2.redhat-00015</camel-spring-boot-version>
         <spring-boot-version>3.5.8</spring-boot-version>
     </properties>
     <dependencyManagement>
@@ -117,6 +117,7 @@
                 </executions>
             </plugin>
         </plugins>
+        <pluginManagement />
     </build>
     <profiles>
         <profile>
@@ -129,7 +130,7 @@
             <properties>
                 <jkube.generator.from>registry.access.redhat.com/ubi9/openjdk-17:latest</jkube.generator.from>
                 <jkube.build.switchToDeployment>true</jkube.build.switchToDeployment>
-                <jkube-maven-plugin-version>1.18.2.redhat-00002</jkube-maven-plugin-version>
+                <jkube-maven-plugin-version>1.18.2.redhat-00011</jkube-maven-plugin-version>
             </properties>
             <dependencies>
                 <dependency>
