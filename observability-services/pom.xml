@@ -31,8 +31,8 @@
         <opentelemetry-agent.version>2.19.0</opentelemetry-agent.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <camel-spring-boot-version>4.14.2.redhat-00003</camel-spring-boot-version>
-        <spring-boot-version>3.5.8</spring-boot-version>
+        <camel-spring-boot-version>4.14.2.redhat-00016</camel-spring-boot-version>
+        <spring-boot-version>3.5.9</spring-boot-version>
     </properties>
 
     <dependencyManagement>
@@ -182,7 +182,7 @@
             <properties>
                 <jkube.generator.from>registry.access.redhat.com/ubi9/openjdk-17:latest</jkube.generator.from>
                 <jkube.build.switchToDeployment>true</jkube.build.switchToDeployment>
-                <jkube-maven-plugin-version>1.18.2.redhat-00002</jkube-maven-plugin-version>
+                <jkube-maven-plugin-version>1.18.2.redhat-00012</jkube-maven-plugin-version>
             </properties>
             <build>
                 <defaultGoal>install</defaultGoal>
