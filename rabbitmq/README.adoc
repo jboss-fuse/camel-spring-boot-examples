@@ -28,6 +28,50 @@ Then you can run this example using
 
     mvn spring-boot:run
 
+== Trying out the example on OpenShift
+
+First, start with creating a new OpenShift project:
+
+----
+$ oc new-project csb-example-rabbitmq
+----
+
+Deploy the RabbitMQ broker using the RabbitMQ Cluster Operator. Install the operator in the current namespace following the https://www.rabbitmq.com/kubernetes/operator/install-operator.html[documentation] and run the following command with the `oc` client https://docs.openshift.com/container-platform/latest/cli_reference/openshift_cli/getting-started-cli.html[doc]:
+
+----
+$ cat << EOF| oc apply -f -
+apiVersion: rabbitmq.com/v1beta1
+kind: RabbitmqCluster
+metadata:
+  name: rabbitmq
+  namespace: csb-example-rabbitmq
+spec:
+  replicas: 1
+  service:
+    type: ClusterIP
+EOF
+----
+
+Wait for the RabbitMQ cluster to be ready:
+
+----
+$ oc wait --for=condition=ReconcileSuccess rabbitmqcluster/rabbitmq --timeout=300s
+----
+
+=== How to run
+
+The application is deployed using the `openshift-maven-plugin` that takes care of creating all the necessary OpenShift resources.
+
+Simply use the following command to deploy the application:
+
+----
+$ mvn clean package -Popenshift
+----
+
+After the application pod reaches the `Ready` state, you can try the same steps as in the local machine deployment.
+
+To view the application logs, use `oc logs deployment/csb-rabbitmq`
+
 === Help and contributions
 
 If you hit any problem using Camel or have some feedback, then please

@@ -102,6 +102,7 @@
         </dependency>
     </dependencies>
     <build>
+        <finalName>csb-rabbitmq</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -117,4 +118,33 @@
             </plugin>
         </plugins>
     </build>
+    <profiles>
+        <profile>
+            <id>openshift</id>
+            <properties>
+                <jkube.generator.from>registry.access.redhat.com/ubi9/openjdk-17:latest</jkube.generator.from>
+                <jkube.build.switchToDeployment>true</jkube.build.switchToDeployment>
+                <jkube-maven-plugin-version>1.18.2.redhat-00012</jkube-maven-plugin-version>
+            </properties>
+            <build>
+                <defaultGoal>install</defaultGoal>
+                <plugins>
+                    <plugin>
+                        <groupId>org.eclipse.jkube</groupId>
+                        <artifactId>openshift-maven-plugin</artifactId>
+                        <version>${jkube-maven-plugin-version}</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>resource</goal>
+                                    <goal>build</goal>
+                                    <goal>apply</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
