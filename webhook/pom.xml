@@ -21,14 +21,14 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>camel-example-spring-boot-webhook</artifactId>
     <groupId>org.apache.camel.springboot.example</groupId>
-    <version>4.14.2-SNAPSHOT</version>
+    <version>4.14.4-SNAPSHOT</version>
     <name>Camel SB Examples :: Webhook</name>
     <description>Example on how to use the Camel Webhook component</description>
     <packaging>jar</packaging>
     <properties>
         <category>Advanced</category>
-        <camel-spring-boot-version>4.14.2.redhat-00016</camel-spring-boot-version>
-        <spring-boot-version>3.5.9</spring-boot-version>
+        <camel-spring-boot-version>4.14.4.redhat-00001</camel-spring-boot-version>
+        <spring-boot-version>3.5.10</spring-boot-version>
     </properties>
     <dependencyManagement>
         <dependencies>

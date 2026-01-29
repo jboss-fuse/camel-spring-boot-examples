@@ -21,7 +21,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>camel-example-tomcat-jdbc</artifactId>
     <groupId>org.apache.camel.springboot.example</groupId>
-    <version>4.14.2-SNAPSHOT</version>
+    <version>4.14.4-SNAPSHOT</version>
     <name>Camel SB Examples :: Tomcat JDBC</name>
     <description>An example showing how to deploy a Camel Spring Boot application in Tomcat using its JDBC Data Source</description>
     <packaging>war</packaging>
@@ -29,8 +29,8 @@
         <category>Beginner</category>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <camel-spring-boot-version>4.14.2.redhat-00016</camel-spring-boot-version>
-        <spring-boot-version>3.5.9</spring-boot-version>
+        <camel-spring-boot-version>4.14.4.redhat-00001</camel-spring-boot-version>
+        <spring-boot-version>3.5.10</spring-boot-version>
     </properties>
     <dependencyManagement>
         <dependencies>
