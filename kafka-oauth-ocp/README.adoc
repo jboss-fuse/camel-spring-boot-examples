@@ -101,7 +101,6 @@ spec:
           customClaimCheck: >-
             @.['kubernetes.io'] && @.['kubernetes.io'].['namespace'] in
             ['{ocp-project}']
-    version: 4.0.0
   entityOperator:
     topicOperator: {}
     userOperator: {}

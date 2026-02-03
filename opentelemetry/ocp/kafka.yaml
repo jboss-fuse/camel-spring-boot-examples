@@ -39,4 +39,3 @@ spec:
         port: 9093
         type: internal
         tls: true
-    version: 3.9.0
