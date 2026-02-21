@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.apache.camel.springboot.example</groupId>
     <artifactId>spring-boot-cxf-jaxws</artifactId>
-    <version>4.14.4-SNAPSHOT</version>
+    <version>4.18.0-SNAPSHOt</version>
     <name>Camel SB Examples :: Spring Boot :: CXF JAXWS</name>
     <description>Spring Boot example running a CXF JAXWS Endpoint</description>
     <properties>
@@ -12,7 +12,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <category>CXF</category>
         <camel-spring-boot-version>4.14.4.redhat-00006</camel-spring-boot-version>
-        <spring-boot-version>3.5.10</spring-boot-version>
+        <spring-boot-version>3.5.11</spring-boot-version>
     </properties>
     <dependencyManagement>
         <dependencies>

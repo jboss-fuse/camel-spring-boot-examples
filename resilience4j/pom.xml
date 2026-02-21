@@ -22,13 +22,13 @@
     <artifactId>camel-example-spring-boot-resilience4j</artifactId>
     <packaging>pom</packaging>
     <groupId>org.apache.camel.springboot.example</groupId>
-    <version>4.14.4-SNAPSHOT</version>
+    <version>4.18.0-SNAPSHOt</version>
     <name>Camel SB Examples :: Resilience4j</name>
     <description>An example showing how to use Resilience4j EIP as circuit breaker in Camel routes</description>
     <properties>
         <category>EIP</category>
         <camel-spring-boot-version>4.14.4.redhat-00006</camel-spring-boot-version>
-        <spring-boot-version>3.5.10</spring-boot-version>
+        <spring-boot-version>3.5.11</spring-boot-version>
     </properties>
     <modules>
         <module>client</module>

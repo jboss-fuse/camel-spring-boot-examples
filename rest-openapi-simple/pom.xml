@@ -21,7 +21,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>camel-example-spring-boot-rest-openapi-simple</artifactId>
     <groupId>org.apache.camel.springboot.example</groupId>
-    <version>4.14.4-SNAPSHOT</version>
+    <version>4.18.0-SNAPSHOt</version>
     <name>Camel SB Examples :: Rest :: OpenApi Simple</name>
     <description>This example shows how to call a Rest service defined using OpenApi specification</description>
     <properties>
@@ -30,7 +30,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <camel-spring-boot-version>4.14.4.redhat-00006</camel-spring-boot-version>
-        <spring-boot-version>3.5.10</spring-boot-version>
+        <spring-boot-version>3.5.11</spring-boot-version>
         <maven-resources-plugin-version>3.4.0</maven-resources-plugin-version>
     </properties>
     <dependencyManagement>

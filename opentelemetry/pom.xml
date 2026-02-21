@@ -22,7 +22,7 @@
     <artifactId>camel-example-spring-boot-opentelemetry</artifactId>
     <packaging>pom</packaging>
     <groupId>org.apache.camel.springboot.example</groupId>
-    <version>4.14.4-SNAPSHOT</version>
+    <version>4.18.0-SNAPSHOt</version>
     <name>Camel SB Examples :: OpenTelemetry</name>
     <description>An example showing how to use Camel with OpenTelemetry
     </description>
@@ -30,7 +30,7 @@
         <category>Management and Monitoring</category>
         <title>OpenTelemetry</title>
         <camel-spring-boot-version>4.14.4.redhat-00006</camel-spring-boot-version>
-        <spring-boot-version>3.5.10</spring-boot-version>
+        <spring-boot-version>3.5.11</spring-boot-version>
         <opentelemetry-agent.version>2.19.0</opentelemetry-agent.version>
         <!-- otel agent configuration variables -->
         <otel.traces.sampler>always_on</otel.traces.sampler>

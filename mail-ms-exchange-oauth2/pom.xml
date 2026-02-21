@@ -4,7 +4,7 @@
     <artifactId>camel-example-spring-boot-mail-exchange-oauth2</artifactId>
     <packaging>jar</packaging>
     <groupId>org.apache.camel.springboot.example</groupId>
-    <version>4.14.4-SNAPSHOT</version>
+    <version>4.18.0-SNAPSHOt</version>
     <name>Camel SB Examples :: Mail :: Microsoft Exchange Oauth2 Authentication</name>
     <description>An example showing how to use Camel on Spring Boot to connect
         with IMAP protocol and access email data for Office 365 users using OAuth2 authentication</description>
@@ -13,7 +13,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <category>Mail</category>
         <camel-spring-boot-version>4.14.4.redhat-00006</camel-spring-boot-version>
-        <spring-boot-version>3.5.10</spring-boot-version>
+        <spring-boot-version>3.5.11</spring-boot-version>
     </properties>
     <dependencyManagement>
         <dependencies>

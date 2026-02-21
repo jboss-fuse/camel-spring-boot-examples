@@ -21,7 +21,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>camel-example-spring-boot-master</artifactId>
     <groupId>org.apache.camel.springboot.example</groupId>
-    <version>4.14.4-SNAPSHOT</version>
+    <version>4.18.0-SNAPSHOt</version>
     <name>Camel SB Examples :: Master</name>
     <description>An example showing how to work with Camel's Master component and Spring Boot</description>
     <packaging>jar</packaging>
@@ -30,7 +30,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <camel-spring-boot-version>4.14.4.redhat-00006</camel-spring-boot-version>
-        <spring-boot-version>3.5.10</spring-boot-version>
+        <spring-boot-version>3.5.11</spring-boot-version>
     </properties>
     <dependencyManagement>
         <dependencies>
