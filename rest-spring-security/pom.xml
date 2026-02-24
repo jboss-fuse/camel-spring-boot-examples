@@ -277,7 +277,7 @@
 				<jkube.enricher.jkube-service.name>csb-rest-spring-security</jkube.enricher.jkube-service.name>
 				<jkube.enricher.jkube-controller.name>csb-rest-spring-security</jkube.enricher.jkube-controller.name>
 				<jkube.enricher.jkube-controller.type>Deployment</jkube.enricher.jkube-controller.type>
-				<jkube-maven-plugin-version>1.18.2.redhat-00020</jkube-maven-plugin-version>
+				<jkube-maven-plugin-version>1.19.0.redhat-00001</jkube-maven-plugin-version>
 			</properties>
 	      	<build>
 				<plugins>
