@@ -124,7 +124,7 @@
                 <sbProfile>openshift</sbProfile>
                 <jkube.generator.from>registry.access.redhat.com/ubi9/openjdk-17:latest</jkube.generator.from>
                 <jkube.build.switchToDeployment>true</jkube.build.switchToDeployment>
-                <jkube-maven-plugin-version>1.18.2.redhat-00020</jkube-maven-plugin-version>
+                <jkube-maven-plugin-version>1.19.0.redhat-00001</jkube-maven-plugin-version>
             </properties>
             <activation>
                 <property>
