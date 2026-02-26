@@ -20,12 +20,12 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.apache.camel.springboot.example</groupId>
     <artifactId>camel-example-spring-boot-platform-http-proxy</artifactId>
-    <version>4.14.4-SNAPSHOT</version>
+    <version>4.14.4.redhat-00001</version>
     <name>Camel SB Examples :: Platform HTTP as reverse proxy</name>
     <description>An example showing Camel reverse proxy with platform HTTP</description>
     <properties>
         <category>EIP</category>
-        <camel-spring-boot-version>4.14.4.redhat-00006</camel-spring-boot-version>
+        <camel-spring-boot-version>4.14.4.redhat-00010</camel-spring-boot-version>
         <spring-boot-version>3.5.11</spring-boot-version>
     </properties>
 
@@ -78,30 +78,10 @@
         </dependency>
     </dependencies>
     <repositories>
-        <repository>
-            <id>redhat-ga</id>
-            <url>https://maven.repository.redhat.com/ga/</url>
-            <name>Red Hat GA repository</name>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-        </repository>
+        
     </repositories>
     <pluginRepositories>
-        <pluginRepository>
-            <id>redhat-ga</id>
-            <url>https://maven.repository.redhat.com/ga/</url>
-            <name>Red Hat GA repository</name>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-        </pluginRepository>
+        
     </pluginRepositories>
 
 
@@ -129,6 +109,7 @@
                 </configuration>
             </plugin>
         </plugins>
+        <pluginManagement />
     </build>
 
     <profiles>
@@ -137,7 +118,7 @@
             <properties>
                 <jkube.generator.from>registry.access.redhat.com/ubi9/openjdk-17:latest</jkube.generator.from>
                 <jkube.build.switchToDeployment>true</jkube.build.switchToDeployment>
-                <jkube-maven-plugin-version>1.19.0.redhat-00001</jkube-maven-plugin-version>
+                <jkube-maven-plugin-version>1.19.0.redhat-00008</jkube-maven-plugin-version>
                 <jkube.openshift.generateRoute>false</jkube.openshift.generateRoute>
             </properties>
             <build>
