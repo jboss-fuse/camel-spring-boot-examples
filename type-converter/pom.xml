@@ -13,7 +13,7 @@
         <camel-spring-boot-version>4.18.0.redhat-00006</camel-spring-boot-version>
         <spring-boot-version>3.5.11</spring-boot-version>
         <build-helper-maven-plugin-version>3.6.1</build-helper-maven-plugin-version>
-        <camel-community-version>4.14.4</camel-community-version>
+        <camel-community-version>4.18.0</camel-community-version>
     </properties>
     <dependencyManagement>
         <dependencies>
