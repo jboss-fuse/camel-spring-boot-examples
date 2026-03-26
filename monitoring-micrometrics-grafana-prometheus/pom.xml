@@ -15,9 +15,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8
         </project.reporting.outputEncoding>
-        <camel-spring-boot-version>4.18.0.redhat-00006</camel-spring-boot-version>
-        <spring-boot-version>3.5.11</spring-boot-version>
-        <jolokia-version>2.3.0.redhat-00001</jolokia-version>
+        <camel-spring-boot-version>4.18.1.redhat-00001</camel-spring-boot-version>
+        <spring-boot-version>3.5.12</spring-boot-version>
+        <jolokia-version>2.5.0.redhat-00001</jolokia-version>
         <prometheus-version>1.5.0</prometheus-version>
         <docker-maven-plugin.version>0.42.0</docker-maven-plugin.version>
         <docker.containerNamePattern>%a</docker.containerNamePattern>
