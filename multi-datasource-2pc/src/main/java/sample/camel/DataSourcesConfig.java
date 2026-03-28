@@ -21,8 +21,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.jta.JtaTransactionManager;
 
-import java.util.ArrayList;
-
 import javax.sql.DataSource;
 
 @Configuration
@@ -45,8 +43,8 @@ public class DataSourcesConfig {
         ObjectProvider<AgroalDataSourceJndiBinder> jndiBinder,
         ObjectProvider<AgroalSecurityProvider> securityProvider) {
 
-        return new AgroalDataSourceAutoConfiguration(jtaPlatform, xaResourceRecoveryRegistry, jndiBinder, securityProvider)
-            .dataSource(properties, true, false, false, new ArrayList<Object>(), new ArrayList<Object>());
+        return new AgroalDataSourceAutoConfiguration(jtaPlatform.getIfAvailable(), xaResourceRecoveryRegistry.getIfAvailable())
+            .dataSource(properties, true, false, jndiBinder);
     }
 
     @Bean("ds1jdbc")
@@ -77,8 +75,8 @@ public class DataSourcesConfig {
         ObjectProvider<AgroalDataSourceJndiBinder> jndiBinder,
         ObjectProvider<AgroalSecurityProvider> securityProvider) {
 
-        return new AgroalDataSourceAutoConfiguration(jtaPlatform, xaResourceRecoveryRegistry, jndiBinder, securityProvider)
-            .dataSource(properties, true, false, false, new ArrayList<Object>(), new ArrayList<Object>());
+        return new AgroalDataSourceAutoConfiguration(jtaPlatform.getIfAvailable(), xaResourceRecoveryRegistry.getIfAvailable())
+            .dataSource(properties, true, false, jndiBinder);
     }
 
     @Bean("ds2jdbc")
