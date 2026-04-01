@@ -21,14 +21,14 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>camel-example-spring-boot-rest-cxf-opentelemetry</artifactId>
     <groupId>org.apache.camel.springboot.example</groupId>
-    <version>4.18.0-SNAPSHOT</version>
+    <version>4.18.1-SNAPSHOT</version>
     <name>Camel SB Examples :: REST using CXF and OpenTelemetry</name>
     <description>An example showing Camel REST using CXF and OpenTelemetry with Spring Boot</description>
     <packaging>pom</packaging>
     <properties>
         <category>CXF</category>
         <opentelemetry-javaagent.version>2.19.0</opentelemetry-javaagent.version>
-        <camel-spring-boot-version>4.18.1.redhat-00001</camel-spring-boot-version>
+        <camel-spring-boot-version>4.18.1.redhat-00003</camel-spring-boot-version>
         <spring-boot-version>3.5.13</spring-boot-version>
         <cxf-version>4.1.5.rhbac-redhat-00007</cxf-version>
         <camel-community-version>4.18.1</camel-community-version>
