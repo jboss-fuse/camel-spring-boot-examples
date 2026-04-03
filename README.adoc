@@ -27,7 +27,7 @@ readme's instructions.
 === Examples
 
 // examples: START
-Number of Examples: 65 (0 deprecated)
+Number of Examples: 67 (0 deprecated)
 
 [width="100%",cols="4,2,4",options="header"]
 |===
@@ -37,11 +37,11 @@ Number of Examples: 65 (0 deprecated)
 
 | link:spring-boot-jta-jpa-xml/README.adoc[Spring Boot Jta Jpa Xml] (spring-boot-jta-jpa-xml) | Advanced | An example showing JTA with Spring Boot using Spring XML configuration
 
+| link:webhook/README.adoc[Webhook] (webhook) | Advanced | Example on how to use the Camel Webhook component
+
 | link:milvus/readme.adoc[Milvus] (milvus) | AI | An example showing vector similarity search on European cities using Camel OpenAI and Milvus
 
 | link:qdrant/readme.adoc[Qdrant] (qdrant) | AI | An example showing a full RAG pipeline using Camel OpenAI and Qdrant as vector store
-
-| link:webhook/README.adoc[Webhook] (webhook) | Advanced | Example on how to use the Camel Webhook component
 
 | link:endpointdsl/README.adoc[Endpointdsl] (endpointdsl) | Beginner | Using type-safe Endpoint DSL
 
@@ -101,6 +101,8 @@ Number of Examples: 65 (0 deprecated)
 
 | link:docling/readme.adoc[Docling] (docling) | Document Processing | An example showing how to convert documents to Markdown using Camel Docling component and Spring Boot
 
+| link:platform-http-proxy/README.adoc[Platform Http Proxy] (platform-http-proxy) | EIP | An example showing Camel reverse proxy with platform HTTP
+
 | link:resilience4j/README.adoc[Resilience4j] (resilience4j) | EIP | An example showing how to use Resilience4j EIP as circuit breaker in Camel routes
 
 | link:saga/README.adoc[Saga] (saga) | EIP | This example shows how to work with a simple Apache Camel application using Spring Boot and Narayana LRA Coordinator to manage distributed actions implementing SAGA pattern
@@ -108,7 +110,7 @@ Number of Examples: 65 (0 deprecated)
 | link:fhir/README.adoc[Fhir] (fhir) | Health Care | An example showing how to work with Camel, FHIR and Spring Boot
 
 | link:fhir-auth-tx/README.adoc[Fhir Auth Tx] (fhir-auth-tx) | Health Care | An example showing how to work with Camel, FHIR Authorization, FHIR Transaction and Spring Boot
-
+    
 
 | link:health-checks/README.adoc[Health Checks] (health-checks) | Health Care | An example on how to work with health checks ib a simple Apache Camel application using Spring Boot.
 
@@ -123,12 +125,12 @@ Number of Examples: 65 (0 deprecated)
 
 | link:monitoring-micrometrics-grafana-prometheus/README.adoc[Monitoring Micrometrics Grafana Prometheus] (monitoring-micrometrics-grafana-prometheus) | Management and Monitoring | Example on how to use Spring Boot's Actuator endpoints to
         gather info like mappings or metrics
+    
 
-| link:observability-services/README.adoc[Observability Services] | Management and Monitoring | An example showing how to use Camel with Observability Services
-
+| link:observability-services/README.adoc[Observability Services] (observability-services) | Management and Monitoring | This example shows how to work with Apache Camel observability services using Spring Boot
 
 | link:opentelemetry/README.adoc[OpenTelemetry] (opentelemetry) | Management and Monitoring | An example showing how to use Camel with OpenTelemetry
-
+    
 
 | link:supervising-route-controller/README.adoc[Supervising Route Controller] (supervising-route-controller) | Management and Monitoring | An example showing how to work with Camel's Supervising Route Controller and Spring Boot
 
@@ -152,7 +154,7 @@ Number of Examples: 65 (0 deprecated)
 
 | link:strimzi/README.adoc[Strimzi] (strimzi) | Messaging | Camel example which a route is defined in XML for Strimzi
         integration on Openshift/Kubernetes
-
+    
 
 | link:widget-gadget/README.adoc[Widget Gadget] (widget-gadget) | Messaging | The widget and gadget example from EIP book, running on Spring Boot
 
@@ -164,14 +166,12 @@ Number of Examples: 65 (0 deprecated)
 
 | link:platform-http/README.adoc[Platform Http] (platform-http) | Rest | An example showing Camel REST DSL with platform HTTP
 
-| link:platform-http-proxy/README.adoc[Platform Http Proxy] (platform-http-proxy) | EIP | An example with Camel Platform HTTP act as reverse proxy
-
 | link:rest-openapi/README.adoc[Rest Openapi] (rest-openapi) | Rest | An example showing Camel REST DSL and OpenApi with Spring Boot
 
 | link:rest-openapi-springdoc/README.adoc[Rest Openapi Springdoc] (rest-openapi-springdoc) | Rest | An example showing Camel REST DSL and OpenApi with a Springdoc UI in a Spring Boot application
 
 | link:rest-spring-security/README.adoc[Rest Spring Security] (rest-spring-security) | Rest | An example showing Camel REST DSL secured with Spring Security and JWT token in a Spring Boot application
-
+    
 
 | link:salesforce/README.adoc[Salesforce] (salesforce) | SaaS | How to work with Salesforce contacts using REST endpoints and Streaming API
 |===
