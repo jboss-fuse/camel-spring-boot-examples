@@ -18,9 +18,9 @@ package com.example.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.apache.camel.opentelemetry.starter.CamelOpenTelemetry;
+import org.apache.camel.opentelemetry2.starter.CamelOpenTelemetry2;
 
-@CamelOpenTelemetry
+@CamelOpenTelemetry2
 @SpringBootApplication
 public class DemoApplication {
 

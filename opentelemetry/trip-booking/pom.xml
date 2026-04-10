@@ -94,7 +94,7 @@
         <!-- OpenTelemetry -->
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
-            <artifactId>camel-opentelemetry-starter</artifactId>
+            <artifactId>camel-opentelemetry2-starter</artifactId>
         </dependency>
         <!-- to generate jmx beans for metrics -->
         <dependency>
@@ -198,7 +198,7 @@
                 <sbProfile>openshift</sbProfile>
                 <jkube.generator.from>registry.access.redhat.com/ubi9/openjdk-17:latest</jkube.generator.from>
                 <jkube.build.switchToDeployment>true</jkube.build.switchToDeployment>
-                <jkube-maven-plugin-version>1.19.0.redhat-00016</jkube-maven-plugin-version>
+                <jkube-maven-plugin-version>1.19.0.redhat-00017</jkube-maven-plugin-version>
             </properties>
             <build>
                 <plugins>
