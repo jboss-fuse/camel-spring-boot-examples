@@ -55,6 +55,115 @@ camel.component.openai.embedding-model=text-embedding-3-small
 
 Note: when switching to a different embedding model, update the vector size in the collection creation accordingly (e.g., 1536 for text-embedding-3-small).
 
+== Trying out the example on OpenShift
+
+First, start with creating a new OpenShift project:
+
+----
+$ oc new-project csb-example-qdrant
+----
+
+Deploy a Qdrant instance:
+
+----
+$ cat << EOF| oc apply -f -
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: qdrant
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: qdrant
+  template:
+    metadata:
+      labels:
+        app: qdrant
+    spec:
+      containers:
+        - name: qdrant
+          image: qdrant/qdrant:latest
+          ports:
+            - containerPort: 6333
+            - containerPort: 6334
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: qdrant
+spec:
+  selector:
+    app: qdrant
+  ports:
+    - name: http
+      port: 6333
+      targetPort: 6333
+    - name: grpc
+      port: 6334
+      targetPort: 6334
+EOF
+----
+
+Deploy an Ollama instance with the required models:
+
+----
+$ cat << EOF| oc apply -f -
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ollama
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ollama
+  template:
+    metadata:
+      labels:
+        app: ollama
+    spec:
+      containers:
+        - name: ollama
+          image: ollama/ollama:latest
+          ports:
+            - containerPort: 11434
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ollama
+spec:
+  selector:
+    app: ollama
+  ports:
+    - port: 11434
+      targetPort: 11434
+EOF
+----
+
+Wait for both pods to be ready, then pull the required models:
+
+----
+$ oc wait --for=condition=available deployment/qdrant deployment/ollama --timeout=300s
+$ oc exec deployment/ollama -- ollama pull nomic-embed-text
+$ oc exec deployment/ollama -- ollama pull granite4:3b
+----
+
+=== How to run
+
+The application is deployed using the `openshift-maven-plugin` that takes care of creating all the necessary OpenShift resources.
+
+Simply use the following command to deploy the application:
+
+----
+$ mvn clean package -Popenshift
+----
+
+After the application pod reaches the `Ready` state, you can try the same steps as in the local machine deployment.
+
+To view the application logs, use `oc logs deployment/csb-qdrant`
+
 === Help and contributions
 
 If you hit any problem using Camel or have some feedback, then please
