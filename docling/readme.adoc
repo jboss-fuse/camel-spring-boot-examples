@@ -92,6 +92,76 @@ The application includes two routes defined in `src/main/java/org/apache/camel/e
 * Action: Extracts structured data as JSON
 * Output: `src/main/resources/output/metadata/{filename}.json`
 
+== Trying out the example on OpenShift
+
+First, start with creating a new OpenShift project:
+
+----
+$ oc new-project csb-example-docling
+----
+
+Deploy the Docling-Serve instance:
+
+----
+$ cat << EOF| oc apply -f -
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docling
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: docling
+  template:
+    metadata:
+      labels:
+        app: docling
+    spec:
+      containers:
+        - name: docling
+          image: quay.io/docling-project/docling-serve:latest
+          ports:
+            - containerPort: 5001
+          env:
+            - name: HOME
+              value: /tmp
+            - name: XDG_CACHE_HOME
+              value: /tmp/.cache
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: docling
+spec:
+  selector:
+    app: docling
+  ports:
+    - port: 5001
+      targetPort: 5001
+EOF
+----
+
+Wait for the Docling pod to be ready (the container downloads models on startup, which may take a few minutes):
+
+----
+$ oc wait --for=condition=available deployment/docling --timeout=300s
+----
+
+=== How to run
+
+The application is deployed using the `openshift-maven-plugin` that takes care of creating all the necessary OpenShift resources.
+
+Simply use the following command to deploy the application:
+
+----
+$ mvn clean package -Popenshift
+----
+
+After the application pod reaches the `Ready` state, you can try the same steps as in the local machine deployment.
+
+To view the application logs, use `oc logs deployment/csb-docling`
+
 === Using Camel components
 
 Apache Camel provides 200+ components which you can use to integrate and route messages between many systems
