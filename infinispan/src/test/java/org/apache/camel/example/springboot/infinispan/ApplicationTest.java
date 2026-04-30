@@ -9,7 +9,7 @@ import org.apache.camel.EndpointInject;
 import org.apache.camel.ProducerTemplate;
 import org.apache.camel.component.infinispan.InfinispanConstants;
 import org.apache.camel.component.mock.MockEndpoint;
-import org.apache.camel.test.spring.junit6.CamelSpringBootTest;
+import org.apache.camel.test.spring.junit5.CamelSpringBootTest;
 import org.awaitility.Awaitility;
 import org.junit.jupiter.api.*;
 import org.slf4j.Logger;

@@ -25,7 +25,7 @@ import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.spring.boot.CamelContextConfiguration;
 import org.apache.camel.test.infra.fhir.services.FhirService;
 import org.apache.camel.test.infra.fhir.services.FhirServiceFactory;
-import org.apache.camel.test.spring.junit6.CamelSpringBootTest;
+import org.apache.camel.test.spring.junit5.CamelSpringBootTest;
 import org.apache.commons.io.FileUtils;
 import org.hl7.fhir.r4.model.Patient;
 import org.junit.jupiter.api.Assertions;
