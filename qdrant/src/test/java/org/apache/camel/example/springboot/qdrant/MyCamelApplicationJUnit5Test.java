@@ -28,7 +28,7 @@ import org.apache.camel.ServiceStatus;
 import org.apache.camel.component.qdrant.rag.RAGCreateCollection;
 import org.apache.camel.component.qdrant.rag.RAGResultExtractor;
 import org.apache.camel.support.DefaultExchange;
-import org.apache.camel.test.spring.junit6.CamelSpringBootTest;
+import org.apache.camel.test.spring.junit5.CamelSpringBootTest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
