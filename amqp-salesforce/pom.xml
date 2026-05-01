@@ -35,7 +35,7 @@
         <camelSalesforce.sslContextParameters.secureSocketProtocol>TLSv1.3</camelSalesforce.sslContextParameters.secureSocketProtocol>
         <camelSalesforce.loginUrl>https://login.salesforce.com</camelSalesforce.loginUrl>
         <camel-spring-boot-version>4.19.0.redhat-00001</camel-spring-boot-version>
-        <spring-boot-version>4.0.4</spring-boot-version>
+        <spring-boot-version>4.0.6</spring-boot-version>
         <camel-community-version>4.19.0</camel-community-version>
     </properties>
     <dependencyManagement>
