@@ -21,14 +21,14 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>camel-example-endpointdsl</artifactId>
     <groupId>org.apache.camel.springboot.example</groupId>
-    <version>4.18.1-SNAPSHOT</version>
+    <version>4.18.1.redhat-00001</version>
     <name>Camel SB Examples :: Endpoint DSL</name>
     <description>Using type-safe Endpoint DSL</description>
     <properties>
         <category>Beginner</category>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <camel-spring-boot-version>4.18.1.redhat-00006</camel-spring-boot-version>
+        <camel-spring-boot-version>4.18.1.redhat-00014</camel-spring-boot-version>
         <spring-boot-version>3.5.14</spring-boot-version>
     </properties>
     <dependencyManagement>
@@ -98,5 +98,6 @@
                 </executions>
             </plugin>
         </plugins>
+        <pluginManagement />
     </build>
 </project>
