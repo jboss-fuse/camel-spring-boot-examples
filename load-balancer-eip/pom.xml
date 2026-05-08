@@ -10,7 +10,7 @@
         <category>Beginner</category>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <camel-spring-boot-version>4.19.0.redhat-00001</camel-spring-boot-version>
+        <camel-spring-boot-version>4.19.0.redhat-00002</camel-spring-boot-version>
         <spring-boot-version>4.0.6</spring-boot-version>
     </properties>
     <dependencyManagement>
@@ -66,6 +66,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-resttestclient</artifactId>
+            <version>${spring-boot-version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>

@@ -28,9 +28,9 @@
     <properties>
         <category>CXF</category>
         <opentelemetry-javaagent.version>2.19.0</opentelemetry-javaagent.version>
-        <camel-spring-boot-version>4.19.0.redhat-00001</camel-spring-boot-version>
+        <camel-spring-boot-version>4.19.0.redhat-00002</camel-spring-boot-version>
         <spring-boot-version>4.0.6</spring-boot-version>
-        <cxf-version>4.2.0.rhbac-redhat-00001</cxf-version>
+        <cxf-version>4.2.0</cxf-version>
         <camel-community-version>4.19.0</camel-community-version>
         <build-helper-maven-plugin-version>3.6.0</build-helper-maven-plugin-version>
     </properties>

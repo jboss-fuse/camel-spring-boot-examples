@@ -18,12 +18,9 @@ package org.apache.camel.example.springboot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration;
 
 // CHECKSTYLE:OFF
 @SpringBootApplication
-@EntityScan(basePackages = {"org.apache.camel.example.springboot.model"})
 public class CamelApplication {
     /**
      * Main method to start the application.

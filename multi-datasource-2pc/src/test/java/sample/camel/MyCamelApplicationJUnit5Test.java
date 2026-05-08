@@ -28,7 +28,6 @@ import org.apache.camel.builder.NotifyBuilder;
 import org.apache.camel.test.spring.junit6.CamelSpringBootTest;
 import org.apache.camel.test.spring.junit6.EnableRouteCoverage;
 import org.apache.camel.util.FileUtil;
-import org.junit.After;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

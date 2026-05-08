@@ -21,11 +21,6 @@ import org.apache.camel.component.jpa.springboot.JpaComponentAutoConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;
-import org.springframework.boot.autoconfigure.jms.artemis.ArtemisAutoConfiguration;
-import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
-import org.springframework.boot.autoconfigure.transaction.jta.JtaAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ImportResource;
 
@@ -35,12 +30,7 @@ import dev.snowdrop.boot.narayana.autoconfigure.NarayanaAutoConfiguration;
 @ComponentScan
 @EnableAutoConfiguration(exclude = {
 	NarayanaAutoConfiguration.class,
-	JtaAutoConfiguration.class,
-	DataSourceAutoConfiguration.class,
-	DataSourceTransactionManagerAutoConfiguration.class,
-	HibernateJpaAutoConfiguration.class,
 	JpaComponentAutoConfiguration.class,
-	ArtemisAutoConfiguration.class,
 	JmsComponentAutoConfiguration.class
 })
 @ImportResource("classpath:spring-camel.xml")
