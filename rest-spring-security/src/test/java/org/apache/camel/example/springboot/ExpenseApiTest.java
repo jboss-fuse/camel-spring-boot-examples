@@ -22,7 +22,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
-import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
@@ -53,6 +52,10 @@ public class ExpenseApiTest {
 
     private static final String EXPENSES_API_CLIENT_ID = "expenses-api";
     private static final String EXPENSES_API_CLIENT_SECRET = "YIQvHh3ny8T7thPu3HKgJXX3VvEhlxY6";
+
+    // OAuth2 parameter names not available in Spring Security 6.x
+    private static final String USERNAME = "username";
+    private static final String PASSWORD = "password";
 
     private final ObjectMapper mapper = new ObjectMapper();
 
@@ -271,7 +274,7 @@ public class ExpenseApiTest {
                 //.basic("expenses-api", "YIQvHh3ny8T7thPu3HKgJXX3VvEhlxY6")
                 .header(CONTENT_TYPE, APPLICATION_FORM_URLENCODED_VALUE)
                 .baseUri(baseUri)
-                .formParam(GRANT_TYPE, AuthorizationGrantType.PASSWORD.getValue())
+                .formParam(GRANT_TYPE, "password")
                 .formParam(CLIENT_ID, EXPENSES_API_CLIENT_ID)
                 .formParam(CLIENT_SECRET, EXPENSES_API_CLIENT_SECRET)
                 .formParam(USERNAME, username)
