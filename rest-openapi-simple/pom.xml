@@ -21,7 +21,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>camel-example-spring-boot-rest-openapi-simple</artifactId>
     <groupId>org.apache.camel.springboot.example</groupId>
-    <version>4.18.1-SNAPSHOT</version>
+    <version>4.19.0-SNAPSHOT</version>
     <name>Camel SB Examples :: Rest :: OpenApi Simple</name>
     <description>This example shows how to call a Rest service defined using OpenApi specification</description>
     <properties>
