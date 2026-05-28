@@ -21,7 +21,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>camel-example-spring-boot-xml-import</artifactId>
     <groupId>org.apache.camel.springboot.example</groupId>
-    <version>4.18.1-SNAPSHOT</version>
+    <version>4.19.0-SNAPSHOT</version>
     <name>Camel SB Examples :: XML Import</name>
     <description>An example showing how to work with Spring XML files imported with embedded CamelContext</description>
     <properties>
