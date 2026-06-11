@@ -16,7 +16,7 @@ This project consists of the following examples:
 Start the kafka broker:
 
 ----
-docker run -d -e ALLOW_PLAINTEXT_LISTENER=yes -e KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092 -e KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE=true -p 9092:9092 bitnami/kafka:latest
+docker run -d -p 9092:9092 apache/kafka:latest
 ----
 
 === How to run the example
