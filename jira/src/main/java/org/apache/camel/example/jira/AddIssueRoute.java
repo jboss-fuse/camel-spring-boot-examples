@@ -40,6 +40,9 @@ public class AddIssueRoute extends RouteBuilder {
     @Value("${example.jira.issue-type}")
     private String issueType;
 
+    @Value("${example.jira.issue-priority:Low}")
+    private String issuePriority;
+
     @Override
     public void configure() {
 
@@ -49,7 +52,7 @@ public class AddIssueRoute extends RouteBuilder {
                 .setHeader(ISSUE_PROJECT_KEY, () -> project)
                 .setHeader(ISSUE_TYPE_NAME, () -> issueType)
                 .setHeader(ISSUE_SUMMARY, () -> "Example Demo Bug jira " + (new Date()))
-                .setHeader(ISSUE_PRIORITY_NAME, () -> "Low")
+                .setHeader(ISSUE_PRIORITY_NAME, () -> issuePriority)
 
                 // uncomment to add a component
                 // .setHeader(ISSUE_COMPONENTS, () -> {
