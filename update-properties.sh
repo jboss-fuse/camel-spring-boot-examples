@@ -71,7 +71,7 @@ if [ -z "$JOLOKIA_VERSION" ]; then
   read -p "Enter the Jolokia version (ex. 2.2.5.redhat-00001): " JOLOKIA_VERSION
 fi
 
-PROPERTIES="hapi-version,guava-version,exec-maven-plugin-version,metrics-version,lombok-mapstruct-binding.version,mapstruct-version,activemq-version,testcontainers-version,javafaker-version,apicurio-version,avro.maven.plugin-version,prometheus-version,reactor-version,build-helper-maven-plugin-version,maven-resources-plugin-version,awaitility-version"
+PROPERTIES="hapi-version,guava-version,exec-maven-plugin-version,metrics-version,lombok-mapstruct-binding.version,mapstruct-version,activemq-version,testcontainers-version,javafaker-version,avro.maven.plugin-version,prometheus-version,reactor-version,build-helper-maven-plugin-version,maven-resources-plugin-version,awaitility-version"
 echo "Automatically updating the following properties $PROPERTIES"
 mvn versions:update-property -Dproperty=$PROPERTIES -DgenerateBackupPoms=false -DallowMajorUpdates=false -maven.version.ignore='(?i).*-(alpha|beta|m|rc)([-.]?\d+)?'
 
