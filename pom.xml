@@ -187,7 +187,7 @@
                             <executable>mvn</executable>
                             <arguments>
                                 <argument>versions:update-property</argument>
-                                <argument>-Dproperty=hapi-version,guava-version,exec-maven-plugin-version,metrics-version,lombok-mapstruct-binding.version,mapstruct-version,activemq-version,testcontainers-version,javafaker-version,apicurio-version,avro.maven.plugin-version,prometheus-version,reactor-version,build-helper-maven-plugin-version,maven-resources-plugin-version,awaitility-version</argument>
+                                <argument>-Dproperty=hapi-version,guava-version,exec-maven-plugin-version,metrics-version,lombok-mapstruct-binding.version,mapstruct-version,activemq-version,testcontainers-version,javafaker-version,avro.maven.plugin-version,prometheus-version,reactor-version,build-helper-maven-plugin-version,maven-resources-plugin-version,awaitility-version</argument>
                                 <argument>-DgenerateBackupPoms=false</argument>
                                 <argument>-Dmaven.version.ignore=(?i).*-(alpha|beta|m|rc)([-.]?\d+)?</argument>
                             </arguments>
