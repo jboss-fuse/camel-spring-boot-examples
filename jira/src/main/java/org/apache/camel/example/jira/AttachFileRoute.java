@@ -19,7 +19,6 @@ package org.apache.camel.example.jira;
 import org.apache.camel.builder.RouteBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import static org.apache.camel.component.jira.JiraConstants.ISSUE_KEY;
@@ -29,16 +28,13 @@ public class AttachFileRoute extends RouteBuilder {
 
     private static final Logger LOG = LoggerFactory.getLogger(AttachFileRoute.class);
 
-    @Value("${example.jira.issue-attach}")
-    private String issue;
-
     @Override
     public void configure() {
         LOG.info(" >>>>>>>>>>>>>>>>>>>>> jira example - add attachment");
         // change the fields accordinly to your target jira server
         from("file://{{example.jira.upload-directory}}?fileName={{example.jira.upload-file-name}}&noop=true&delay=50000")
-                .setHeader(ISSUE_KEY, () -> issue)
-                .log("  JIRA attach: ${header.camelFileName} to ${headers.CamelJiraIssueKey}")
+                .setHeader(ISSUE_KEY, simple("{{example.jira.issue-attach}}"))
+                .log("  JIRA attach: ${header.camelFileName} to {{example.jira.issue-attach}}")
                 .to("jira://attach");
 
 
