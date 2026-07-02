@@ -22,7 +22,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>camel-example-spring-boot-observability-services</artifactId>
     <groupId>org.apache.camel.springboot.example</groupId>
-    <version>4.18.1-SNAPSHOT</version>
+    <version>4.18.1.redhat-00001</version>
     <name>Camel SB Examples :: Observability Services</name>
     <description>This example shows how to work with Apache Camel observability services using Spring Boot</description>
 
@@ -31,7 +31,7 @@
         <opentelemetry-agent.version>2.19.0</opentelemetry-agent.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <camel-spring-boot-version>4.18.1.redhat-00006</camel-spring-boot-version>
+        <camel-spring-boot-version>4.18.1.redhat-00029</camel-spring-boot-version>
         <spring-boot-version>3.5.15</spring-boot-version>
     </properties>
 
@@ -89,30 +89,10 @@
     </dependencies>
 
     <repositories>
-        <repository>
-            <id>redhat-ga</id>
-            <url>https://maven.repository.redhat.com/ga/</url>
-            <name>Red Hat GA repository</name>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-        </repository>
+        
     </repositories>
     <pluginRepositories>
-        <pluginRepository>
-            <id>redhat-ga</id>
-            <url>https://maven.repository.redhat.com/ga/</url>
-            <name>Red Hat GA repository</name>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-        </pluginRepository>
+        
     </pluginRepositories>
 
     <build>
@@ -174,6 +154,7 @@
                 </executions>
             </plugin>
         </plugins>
+        <pluginManagement />
     </build>
 
     <profiles>
@@ -182,7 +163,7 @@
             <properties>
                 <jkube.generator.from>registry.access.redhat.com/ubi9/openjdk-17:latest</jkube.generator.from>
                 <jkube.build.switchToDeployment>true</jkube.build.switchToDeployment>
-                <jkube-maven-plugin-version>1.19.0.redhat-00016</jkube-maven-plugin-version>
+                <jkube-maven-plugin-version>1.19.0.redhat-00073</jkube-maven-plugin-version>
             </properties>
             <build>
                 <defaultGoal>install</defaultGoal>
