@@ -29,8 +29,8 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <camel-spring-boot-version>4.21.0-SNAPSHOT</camel-spring-boot-version>
-    <spring-boot-version>4.0.6</spring-boot-version>
-    <cxf-version>4.2.0</cxf-version>
+    <spring-boot-version>4.1.0</spring-boot-version>
+    <cxf-version>4.2.2</cxf-version>
   </properties>
   <dependencyManagement>
     <dependencies>

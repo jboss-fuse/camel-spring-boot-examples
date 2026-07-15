@@ -38,7 +38,7 @@ public class AttachFileRoute extends RouteBuilder {
         // change the fields accordinly to your target jira server
         from("file://{{example.jira.upload-directory}}?fileName={{example.jira.upload-file-name}}&noop=true&delay=50000")
                 .setHeader(ISSUE_KEY, () -> issue)
-                .log("  JIRA attach: ${header.camelFileName} to ${headers.IssueKey}")
+                .log("  JIRA attach: ${header.camelFileName} to ${headers.CamelJiraIssueKey}")
                 .to("jira://attach");
 
 

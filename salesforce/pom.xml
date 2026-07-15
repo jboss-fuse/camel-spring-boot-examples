@@ -31,8 +31,8 @@
         <category>SaaS</category>
 
         <camel-spring-boot-version>4.21.0-SNAPSHOT</camel-spring-boot-version>
-        <spring-boot-version>4.0.6</spring-boot-version>
-        <camel-community-version>4.19.0</camel-community-version>
+        <spring-boot-version>4.1.0</spring-boot-version>
+        <camel-community-version>4.21.0</camel-community-version>
 		<camelSalesforce.clientId></camelSalesforce.clientId>
 		<camelSalesforce.clientSecret></camelSalesforce.clientSecret>
 		<camelSalesforce.sslContextParameters.secureSocketProtocol>TLSv1.3</camelSalesforce.sslContextParameters.secureSocketProtocol>
