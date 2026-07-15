@@ -16,8 +16,8 @@
         <project.reporting.outputEncoding>UTF-8
         </project.reporting.outputEncoding>
         <camel-spring-boot-version>4.21.0-SNAPSHOT</camel-spring-boot-version>
-        <spring-boot-version>4.0.6</spring-boot-version>
-        <jolokia-version>2.5.1</jolokia-version>
+        <spring-boot-version>4.1.0</spring-boot-version>
+        <jolokia-version>2.6.0</jolokia-version>
         <prometheus-version>1.5.0</prometheus-version>
         <docker-maven-plugin.version>0.42.0</docker-maven-plugin.version>
         <docker.containerNamePattern>%a</docker.containerNamePattern>
@@ -256,7 +256,7 @@
             <properties>
                 <jkube.generator.from>registry.access.redhat.com/ubi9/openjdk-17:latest</jkube.generator.from>
                 <jkube.build.switchToDeployment>true</jkube.build.switchToDeployment>
-                <jkube-maven-plugin-version>1.19.0.redhat-00032</jkube-maven-plugin-version>
+                <jkube-maven-plugin-version>1.18.1.redhat-00007</jkube-maven-plugin-version>
             </properties>
             <build>
                 <plugins>
