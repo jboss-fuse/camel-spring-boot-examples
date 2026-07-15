@@ -20,7 +20,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.apache.camel.springboot.example</groupId>
-    <version>4.19.0-SNAPSHOT</version>
+    <version>4.21.0-SNAPSHOT</version>
     <artifactId>camel-example-spring-boot-kafka-avro</artifactId>
     <name>Camel SB Examples :: Kafka :: Avro</name>
     <description>An example for Kafka avro</description>
@@ -28,7 +28,7 @@
         <category>Messaging</category>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <camel-spring-boot-version>4.19.0.redhat-00006</camel-spring-boot-version>
+        <camel-spring-boot-version>4.21.0-SNAPSHOT</camel-spring-boot-version>
         <spring-boot-version>4.0.6</spring-boot-version>
         <avro.maven.plugin-version>1.12.1</avro.maven.plugin-version>
         <apicurio-version>2.6.13.redhat-00004</apicurio-version>

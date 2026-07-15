@@ -21,14 +21,14 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>camel-example-spring-boot-jira</artifactId>
     <groupId>org.apache.camel.springboot.example</groupId>
-    <version>4.19.0-SNAPSHOT</version>
+    <version>4.21.0-SNAPSHOT</version>
     <name>Camel SB Examples :: Jira</name>
     <description>An example that uses Jira Camel API</description>
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <category>Beginner</category>
-        <camel-spring-boot-version>4.19.0.redhat-00006</camel-spring-boot-version>
+        <camel-spring-boot-version>4.21.0-SNAPSHOT</camel-spring-boot-version>
         <spring-boot-version>4.0.6</spring-boot-version>
         <guava-version>33.6.0-jre</guava-version>
         <exec-maven-plugin-version>3.6.3</exec-maven-plugin-version>

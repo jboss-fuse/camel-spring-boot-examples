@@ -22,11 +22,11 @@
     <parent>
         <groupId>org.apache.camel.springboot</groupId>
         <artifactId>spring-boot</artifactId>
-        <version>4.19.0.redhat-00006</version>
+        <version>4.21.0-SNAPSHOT</version>
     </parent>
     <groupId>org.apache.camel.springboot.example</groupId>
     <artifactId>examples</artifactId>
-    <version>4.19.0-SNAPSHOT</version>
+    <version>4.21.0-SNAPSHOT</version>
     <name>Camel SB :: Examples</name>
     <description>Camel Examples</description>
     <packaging>pom</packaging>
