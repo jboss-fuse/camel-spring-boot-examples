@@ -76,6 +76,11 @@
             <groupId>org.apache.camel.springboot</groupId>
             <artifactId>camel-http-starter</artifactId>
         </dependency>
+        <!-- CSB-10486: Spring Boot 4 web-server starter (provides relocated org.springframework.boot.web.server.autoconfigure.ServerProperties) -->
+        <dependency>
+            <groupId>com.redhat.integration</groupId>
+            <artifactId>spring-boot-starter-undertow</artifactId>
+        </dependency>
     </dependencies>
     <repositories>
         <repository>

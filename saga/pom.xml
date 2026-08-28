@@ -87,8 +87,8 @@
         </dependency>
         <!-- artemis jms pooled connections-->
         <dependency>
-            <groupId>org.apache.activemq</groupId>
-            <artifactId>artemis-jakarta-client</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-artemis</artifactId>
         </dependency>
         <dependency>
             <groupId>org.messaginghub</groupId>
@@ -104,6 +104,11 @@
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-test-spring-junit6</artifactId>
             <scope>test</scope>
+        </dependency>
+        <!-- CSB-10486: Spring Boot 4 web-server starter (provides relocated org.springframework.boot.web.server.autoconfigure.ServerProperties) -->
+        <dependency>
+            <groupId>com.redhat.integration</groupId>
+            <artifactId>spring-boot-starter-undertow</artifactId>
         </dependency>
     </dependencies>
 </project>
