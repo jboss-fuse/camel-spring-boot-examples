@@ -30,7 +30,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <camel-spring-boot-version>4.22.0-SNAPSHOT</camel-spring-boot-version>
-        <spring-boot-version>4.1.0</spring-boot-version>
+        <spring-boot-version>4.1.1</spring-boot-version>
         <json-unit-assertj.version>4.1.0</json-unit-assertj.version>
         <rest-assured-version>6.0.0</rest-assured-version>
         <testcontainers-keycloak.version>3.6.0</testcontainers-keycloak.version>

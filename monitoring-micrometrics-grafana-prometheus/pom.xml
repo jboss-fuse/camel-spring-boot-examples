@@ -16,7 +16,7 @@
         <project.reporting.outputEncoding>UTF-8
         </project.reporting.outputEncoding>
         <camel-spring-boot-version>4.22.0-SNAPSHOT</camel-spring-boot-version>
-        <spring-boot-version>4.1.0</spring-boot-version>
+        <spring-boot-version>4.1.1</spring-boot-version>
         <jolokia-version>2.6.0</jolokia-version>
         <prometheus-version>1.5.0</prometheus-version>
         <docker-maven-plugin.version>0.42.0</docker-maven-plugin.version>

@@ -12,7 +12,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <category>CXF</category>
         <camel-spring-boot-version>4.22.0-SNAPSHOT</camel-spring-boot-version>
-        <spring-boot-version>4.1.0</spring-boot-version>
+        <spring-boot-version>4.1.1</spring-boot-version>
         <cxf-version>4.2.2</cxf-version>
         <category>CXF</category>
     </properties>
