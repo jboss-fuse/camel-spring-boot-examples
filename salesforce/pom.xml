@@ -31,7 +31,7 @@
         <category>SaaS</category>
 
         <camel-spring-boot-version>4.22.0-SNAPSHOT</camel-spring-boot-version>
-        <spring-boot-version>4.1.0</spring-boot-version>
+        <spring-boot-version>4.1.1</spring-boot-version>
         <camel-community-version>4.22.0</camel-community-version>
 		<camelSalesforce.clientId></camelSalesforce.clientId>
 		<camelSalesforce.clientSecret></camelSalesforce.clientSecret>
