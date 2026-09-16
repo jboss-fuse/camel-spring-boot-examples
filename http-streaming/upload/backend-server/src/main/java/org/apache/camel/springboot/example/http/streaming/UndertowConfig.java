@@ -17,7 +17,7 @@
 package org.apache.camel.springboot.example.http.streaming;
 
 import io.undertow.UndertowOptions;
-import com.redhat.integration.undertow.servlet.UndertowServletWebServerFactory;
+import io.undertow.springboot.servlet.UndertowServletWebServerFactory;
 import org.springframework.boot.web.server.WebServerFactoryCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

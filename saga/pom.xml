@@ -107,8 +107,8 @@
         </dependency>
         <!-- CSB-10486: Spring Boot 4 web-server starter (provides relocated org.springframework.boot.web.server.autoconfigure.ServerProperties) -->
         <dependency>
-            <groupId>com.redhat.integration</groupId>
-            <artifactId>spring-boot-starter-undertow</artifactId>
+            <groupId>io.undertow</groupId>
+            <artifactId>undertow-spring-boot-starter</artifactId>
         </dependency>
     </dependencies>
 </project>
