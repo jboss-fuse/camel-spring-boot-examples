@@ -39,6 +39,7 @@ public class DoclingServeRoute extends RouteBuilder {
             .log("Extracting metadata from: ${header.CamelFileName}")
             .to("docling:EXTRACT_STRUCTURED_DATA?useDoclingServe=true&doclingServeUrl={{docling.serve.url}}&outputFormat=json&contentInBody=true")
             .log("Metadata extracted from: ${header.CamelFileName}")
+            .marshal().json()
             .setHeader("CamelFileName", simple("${file:name.noext}.json"))
             .to("file:{{output.directory}}/metadata")
             .log("Saved metadata to: {{output.directory}}/metadata/${header.CamelFileName}");
