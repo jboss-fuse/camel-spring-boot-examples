@@ -46,6 +46,34 @@ image::docs/route-monitor.png[]
 The Jolokia autoconfiguration is an alternative to the Jolokia agent,
 more information about the usage and the configuration can be found on https://github.com/apache/camel-spring-boot/blob/main/components-starter/camel-jolokia-starter/src/main/docs/jolokia.adoc[component guide]
 
+=== Run Jolokia HTTPS on a FIPS-enabled RHEL host
+
+Jolokia versions affected by https://redhat.atlassian.net/browse/CSB-11240[CSB-11240]
+cannot create their fallback self-signed certificate on a RHEL FIPS host, because that path requests
+the unavailable `SHA1PRNG` random-number generator. A practical workaround is to supply the server
+certificate and private key explicitly.
+
+Set the paths to a PEM certificate and its matching RSA private key. In a container deployment,
+these would normally be paths to files mounted from a TLS Secret:
+
+    export JOLOKIA_SERVER_CERT=/etc/jolokia/tls/tls.crt
+    export JOLOKIA_SERVER_KEY=/etc/jolokia/tls/tls.key
+
+Start the application with the `fips-workaround` profile:
+
+    mvn spring-boot:run -Dspring-boot.run.profiles=fips-workaround
+
+The profile configures the following Jolokia options:
+
+    camel.component.jolokia.serverConfig.protocol=https
+    camel.component.jolokia.serverConfig.serverCert=${JOLOKIA_SERVER_CERT}
+    camel.component.jolokia.serverConfig.serverKey=${JOLOKIA_SERVER_KEY}
+    camel.component.jolokia.serverConfig.serverKeyAlgorithm=RSA
+
+With both `serverCert` and `serverKey` present, Jolokia loads the supplied key material and does not
+enter its self-signed-certificate generation path. The certificate and key must be generated with
+algorithms permitted by the active FIPS provider.
+
 === How to run on OpenShift cluster
 
 1. create openshift project:
