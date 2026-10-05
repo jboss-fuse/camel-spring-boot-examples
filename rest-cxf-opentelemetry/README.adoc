@@ -32,9 +32,27 @@ Run docker-compose to start all the needed services:
 
 the command runs:
 
-- https://github.com/minio/minio[minio] as application storage
+- a S3-compatible object store (MinIO in the local compose setup) as application storage
 - https://github.com/open-telemetry/opentelemetry-collector[opentelemetry-collector] to receive the generated Trace/Span
 - https://github.com/jaegertracing/jaeger[Jaeger] to visualize the traces
+
+The `random` service stores the generated numbers in an S3-compatible object
+store. The local compose setup provides MinIO as the development server. The
+configured endpoint uses path-style addressing and creates the `evenodd` bucket
+automatically.
+
+To use a different S3-compatible store, such as a Ceph Object Gateway, provide
+the endpoint and credentials through the following application properties:
+
+[source,properties]
+----
+camel.component.aws2-s3.access-key = <access-key>
+camel.component.aws2-s3.secret-key = <secret-key>
+camel.component.aws2-s3.region = <region>
+camel.component.aws2-s3.uri-endpoint-override = <s3-endpoint>
+camel.component.aws2-s3.override-endpoint = true
+camel.component.aws2-s3.force-path-style = true
+----
 
 Run each services on separated terminals:
 

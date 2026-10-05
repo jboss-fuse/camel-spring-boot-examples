@@ -18,19 +18,18 @@ package org.apache.camel.example.springboot.cxf.otel;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.builder.RouteBuilder;
+import org.apache.camel.component.aws2.s3.AWS2S3Constants;
 import org.apache.camel.component.bean.validator.BeanValidationException;
 import org.apache.camel.component.cxf.common.message.CxfConstants;
-import org.apache.camel.component.minio.MinioConstants;
 import org.apache.camel.model.dataformat.JsonLibrary;
 
 import org.springframework.stereotype.Component;
 
 import java.security.SecureRandom;
 
-import io.minio.Result;
-import io.minio.messages.Contents;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import software.amazon.awssdk.services.s3.model.S3Object;
 
 @Component
 public class CamelRouter extends RouteBuilder {
@@ -102,23 +101,17 @@ public class CamelRouter extends RouteBuilder {
                 });
 
         from("direct:save-obj").routeId("save-obj")
-                .setHeader(MinioConstants.OBJECT_NAME, header("objectName"))
+                .setHeader(AWS2S3Constants.KEY, header("objectName"))
                 .marshal().json(JsonLibrary.Jackson)
-                .toD("minio://{{bucket.name}}");
+                .toD("aws2-s3://{{bucket.name}}");
 
         from("direct:load-results").routeId("load-results")
                 .setVariable("results", Results::new)
-                .toD("minio://{{bucket.name}}?operation=listObjects")
+                .toD("aws2-s3://{{bucket.name}}?operation=listObjects")
                 .split(body())
-                    .process(exchange -> {
-						try {
-                            exchange.getIn().setHeader(MinioConstants.OBJECT_NAME
-                                    , ((Contents) exchange.getIn().getBody(Result.class).get()).objectName());
-						} catch (Exception e) {
-							throw new RuntimeException(e);
-						}
-					})
-                    .toD("minio://{{bucket.name}}?operation=getObject")
+                    .process(exchange -> exchange.getIn().setHeader(AWS2S3Constants.KEY,
+                            exchange.getIn().getBody(S3Object.class).key()))
+                    .toD("aws2-s3://{{bucket.name}}?operation=getObject")
                     .unmarshal().json(JsonLibrary.Jackson, RandomNumber.class)
                     .process(exchange -> exchange.getVariable("results", Results.class)
 							.addNumber(exchange.getIn().getBody(RandomNumber.class)))

@@ -37,7 +37,7 @@
         </dependency>
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
-            <artifactId>camel-minio-starter</artifactId>
+            <artifactId>camel-aws2-s3-starter</artifactId>
         </dependency>
     </dependencies>
     <build>
