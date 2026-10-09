@@ -13,7 +13,7 @@
         <category>CXF</category>
         <camel-spring-boot-version>4.22.1-SNAPSHOT</camel-spring-boot-version>
         <spring-boot-version>4.1.1</spring-boot-version>
-        <cxf-version>4.2.3.rhbac-redhat-00013</cxf-version>
+        <cxf-version>4.2.4-rhbac-SNAPSHOT</cxf-version>
         <category>CXF</category>
     </properties>
     <dependencyManagement>
