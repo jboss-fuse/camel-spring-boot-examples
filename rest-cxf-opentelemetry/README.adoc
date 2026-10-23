@@ -59,19 +59,19 @@ Run each services on separated terminals:
     $ source containers/env.sh \
         && java -javaagent:target/opentelemetry-javaagent.jar \
         -Dotel.service.name=random \
-        -jar rest-cxf-otel-random/target/*.jar
+        -jar rest-cxf-otel-random/target/camel-example-spring-boot-rest-cxf-otel-random-*.jar
 
     $ source containers/env.sh \
         && java -javaagent:target/opentelemetry-javaagent.jar \
         -Dotel.service.name=even \
         -Dserver.port=8081 \
-        -jar rest-cxf-otel-even/target/*.jar
+        -jar rest-cxf-otel-even/target/camel-example-spring-boot-rest-cxf-otel-even-*.jar
 
     $ source containers/env.sh \
         && java -javaagent:target/opentelemetry-javaagent.jar \
         -Dotel.service.name=odd \
         -Dserver.port=8082 \
-        -jar rest-cxf-otel-odd/target/*.jar
+        -jar rest-cxf-otel-odd/target/camel-example-spring-boot-rest-cxf-otel-odd-*.jar
 
 After the Spring Boot applications have been started, you can open the following URL in your web browser http://localhost:8080/services/ to access the list of services,  including WADL definition
 
@@ -79,7 +79,7 @@ You can also access the REST endpoint from the command line:
 
 i.e. to generate 5 random numbers run:
 
-    $ curl -X POST http://localhost:8080/services/api/play/5 -s | jq .
+    $ curl -X POST -H "Content-Type: application/json" http://localhost:8080/services/api/play/5 -s | jq .
 
 The command will produce an output like:
 
@@ -126,6 +126,14 @@ The services can be stopped pressing `[CTRL] + [C]` in the shell, and the contai
     $ docker-compose -f containers/docker-compose.yml down
 
 === Explain the code
+
+The Camel routes use `org.apache.camel.springboot:camel-opentelemetry2-starter`.
+Each application enables Camel OpenTelemetry2 with `@CamelOpenTelemetry2`.
+
+The OpenTelemetry Java agent configured in the run commands supplies the global
+tracer and context propagators used by Camel OpenTelemetry2. Keep the agent
+attached to all three applications so the Camel and CXF spans share the tracing
+context across service calls.
 
 The dependency `org.apache.cxf:cxf-integration-tracing-opentelemetry` provides `org.apache.cxf.tracing.opentelemetry.jaxrs.OpenTelemetryFeature` that instruments the OpenTelemetry API implemented in the java agent.
 
