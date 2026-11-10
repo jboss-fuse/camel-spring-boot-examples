@@ -1,0 +1,35 @@
+flowchart LR
+    subgraph APP[One Camel Spring Boot application]
+        V[Unmarshal and validate] --> A[direct:adjudicate]
+        A <-->|InOut evidence reads| Q[JDBC lookup routes]
+        T[Claim and coverage tools] <--> Q
+        A --> CHECK[Recheck evidence and decision]
+        CHECK --> R[Serialize automatic decision]
+        V -->|Invalid event| F[Failure route]
+        A -->|Retries exhausted| F
+        CHECK -->|Invalid recommendation| F
+        P[Project review and human-decision events]
+        L[list_manual_reviews]
+        S[get_human_decision]
+        H[submit_human_decision]
+        W[Validate command, reserve review, record audit]
+    end
+    IN[Kafka: incoming-claims] --> V
+    A <-->|HTTP| AI[AI server]
+    MCP[Bob or another MCP client] <-->|Streamable HTTP on Undertow| T
+    MCP <-->|List open reviews| L
+    MCP <-->|Read decision status| S
+    MCP -->|Human-confirmed decision| H
+    Q <-->|Parameterized JDBC| DB[(Claims, coverage, and review audit)]
+    CHECK <-->|JDBC verification| DB
+    L <--> DB
+    S <--> DB
+    W <--> DB
+    R --> OUT[Kafka: adjudicated-claims]
+    OUT --> P
+    P --> DB
+    H --> CMD[Kafka: human-claim-decisions]
+    CMD --> W
+    W -->|Final human decision| OUT
+    W -->|Rejected command| ERR[Kafka: failed-claims]
+    F --> ERR

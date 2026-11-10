@@ -55,6 +55,7 @@
         <module>load-balancer-eip</module>
         <module>mail-ms-exchange-oauth2</module>
         <module>master</module>
+        <module>medical-claim-adjudication</module>
         <module>milvus</module>
         <module>monitoring-micrometrics-grafana-prometheus</module>
         <module>multi-datasource-2pc</module>

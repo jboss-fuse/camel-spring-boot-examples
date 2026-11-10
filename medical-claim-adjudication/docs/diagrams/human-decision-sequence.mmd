@@ -1,0 +1,19 @@
+sequenceDiagram
+    participant H as Human reviewer
+    participant A as Bob / MCP client
+    participant C as Camel tool and routes
+    participant K as Kafka
+    participant D as JDBC audit and reviews
+    H->>A: Confirm outcome, reviewer ID, and reason
+    A->>C: submit_human_decision, confirmed=true
+    C->>K: Human decision command
+    K-->>C: Publication acknowledged
+    C-->>A: SUBMITTED and decisionId
+    K->>C: Deliver command to worker group
+    C->>D: Validate, reserve review, and record decision
+    C->>K: HUMAN_DECISION final event
+    K-->>C: Publication acknowledged
+    C->>D: Mark PUBLISHED and close review
+    C->>K: Commit command offset
+    A->>C: get_human_decision
+    C-->>A: Audit details and PUBLISHED status

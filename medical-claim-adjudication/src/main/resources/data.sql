@@ -1,0 +1,7 @@
+MERGE INTO claims KEY(claim_id) VALUES ('CLM-1001','MEM-501','PROC-A',120.00,'EUR');
+MERGE INTO claims KEY(claim_id) VALUES ('CLM-1002','MEM-502','PROC-X',120.00,'EUR');
+MERGE INTO claims KEY(claim_id) VALUES ('CLM-1003','MEM-503','PROC-A',750.00,'EUR');
+MERGE INTO claims KEY(claim_id) VALUES ('CLM-1004','MEM-504','PROC-A',120.00,'EUR');
+MERGE INTO coverage KEY(member_id) VALUES ('MEM-501',true,'PROC-A',500.00,'EUR','DEMO-POLICY-v1');
+MERGE INTO coverage KEY(member_id) VALUES ('MEM-502',true,'PROC-A',500.00,'EUR','DEMO-POLICY-v1');
+MERGE INTO coverage KEY(member_id) VALUES ('MEM-503',true,'PROC-A',500.00,'EUR','DEMO-POLICY-v1');

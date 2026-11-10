@@ -1,0 +1,18 @@
+sequenceDiagram
+    participant A as External AI agent / MCP client
+    participant M as Camel MCP server
+    participant T as Shared Camel tool routes
+    participant D as JDBC database
+    A->>M: tools/call get_claim_details(CLM-1001)
+    M->>T: claim-details-tool / direct:lookupClaim
+    T->>D: Parameterized claim query
+    D-->>T: Claim facts, memberId MEM-501
+    T-->>M: Tool result
+    M-->>A: MCP result
+    A->>M: tools/call get_member_coverage(MEM-501)
+    M->>T: member-coverage-tool / direct:lookupCoverage
+    T->>D: Parameterized coverage query
+    D-->>T: Coverage facts
+    T-->>M: Tool result
+    M-->>A: MCP result
+    A->>A: Use facts in its own workflow

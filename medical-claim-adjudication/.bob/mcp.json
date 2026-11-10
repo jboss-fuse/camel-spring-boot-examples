@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "medical-claim-tools": {
+      "type": "streamable-http",
+      "url": "http://127.0.0.1:8081/mcp",
+      "protocolNegotiation": "legacy"
+    }
+  }
+}

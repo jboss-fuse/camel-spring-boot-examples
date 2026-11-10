@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "claimId": {"type": "string"},
+    "outcome": {"type": "string", "enum": ["APPROVED", "DENIED", "MANUAL_REVIEW"]},
+    "reasonCodes": {"type": "array", "items": {"type": "string"}},
+    "policyVersion": {"type": ["string", "null"]}
+  },
+  "required": ["claimId", "outcome", "reasonCodes", "policyVersion"],
+  "additionalProperties": false
+}
