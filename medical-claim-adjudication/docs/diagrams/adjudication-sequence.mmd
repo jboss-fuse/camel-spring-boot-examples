@@ -1,0 +1,17 @@
+sequenceDiagram
+    participant K as Kafka
+    participant C as Camel adjudication route
+    participant D as JDBC lookup routes
+    participant AI as HTTP AI server
+    K->>C: Claim reference
+    C->>D: InOut claim and member coverage lookups
+    D-->>C: Authoritative evidence snapshot
+    C->>AI: Evidence and generated policy rules, no tools
+    AI-->>C: Decision JSON
+    Note over C: Strict parsing and local schema validation
+    C->>D: Re-read evidence after inference
+    D-->>C: Current facts
+    Note over C: Reject stale evidence and inconsistent decisions
+    C->>K: Validated result or failure
+    C->>K: Commit offset after publication
+    Note over C,K: Commit failures propagate without a claim-failure event

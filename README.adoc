@@ -27,7 +27,7 @@ readme's instructions.
 === Examples
 
 // examples: START
-Number of Examples: 67 (0 deprecated)
+Number of Examples: 68 (0 deprecated)
 
 [width="100%",cols="4,2,4",options="header"]
 |===
@@ -38,6 +38,8 @@ Number of Examples: 67 (0 deprecated)
 | link:spring-boot-jta-jpa-xml/README.adoc[Spring Boot Jta Jpa Xml] (spring-boot-jta-jpa-xml) | Advanced | An example showing JTA with Spring Boot using Spring XML configuration
 
 | link:webhook/README.adoc[Webhook] (webhook) | Advanced | Example on how to use the Camel Webhook component
+
+| link:medical-claim-adjudication/README.adoc[Medical Claim Adjudication] (medical-claim-adjudication) | AI | Kafka-driven claim evaluation using Camel OpenAI, shared AI tools exposed through MCP, and JDBC
 
 | link:milvus/readme.adoc[Milvus] (milvus) | AI | An example showing vector similarity search on European cities using Camel OpenAI and Milvus
 
